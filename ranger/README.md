@@ -1,0 +1,4 @@
+# fzf config  commands.py
+> fzf_select
+# set default editor rifle.conf
+> mime ^text,  label editor = /home/zdz/Application/neovim/v5/nvim.appimage -- "$@"

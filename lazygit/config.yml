@@ -1,0 +1,3 @@
+os:
+  editCommand: '/home/zdz/Application/neovim/v5/nvim.appimage' 
+  openCommand: 'sh -c "echo \"use \"e\" key to edit\""'
