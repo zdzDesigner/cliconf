@@ -1,16 +1,3 @@
-" let g:lightline = {
-"       \ 'component_function': {
-"       \   'filename': 'LightlineFilename',
-"       \ },
-"       \ }
-
-" function! LightlineFilename()
-"   return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-"         \ &filetype ==# 'unite' ? unite#get_status_string() :
-"         \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-"         \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-" endfunction
-
 
 let g:lightline = {
       \ 'colorscheme':'one',
@@ -32,11 +19,20 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' },
       \ }
 
+let g:lightline.tabline = {
+      \ 'left': [ [ 'tabs' ] ],
+      \ 'right': [ [] ] }
+
+
+let g:lightline.tab = {
+      \ 'active': [ 'filename', 'modified' ],
+      \ 'inactive': [ 'filename', 'modified' ] }
+
+
 " function! Filename()
 "     " return '%f'
 "     return expand('%f')
 " endfunction
-
 
 
 " %f 相对路径, %F 绝对路径

@@ -1,5 +1,5 @@
-
-" let g:workspace_autocreate = 1
+" vim 中暂存插件
+" lazygit let g:workspace_autocreate = 1
 " 新tab自动保存
 let g:workspace_create_new_tabs = 0
 let g:workspace_session_directory = $HOME . '/.config/nvim/sessions/'

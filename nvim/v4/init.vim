@@ -1,4 +1,4 @@
-source $NVIM_HOME/sources/core.vim
+source $CLIENV/nvim/sources/core.vim
 
 call plug#begin('~/.config/nvim/plugged')
 " workspace
@@ -24,8 +24,8 @@ Plug 'Chiel92/vim-autoformat'
 
 " File navigation
 " on: 开启方式
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeFind' }
-Plug 'Xuyuanp/nerdtree-git-plugin' 
+" Plug 'preservim/nerdtree', { 'on': 'NERDTreeFind' }
+" Plug 'Xuyuanp/nerdtree-git-plugin' 
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -103,18 +103,19 @@ Plug 'mg979/vim-visual-multi'
 
 call plug#end()
 
-source $NVIM_HOME/sources/plugins/coc.vim
-source $NVIM_HOME/sources/plugins/fzf.vim
-source $NVIM_HOME/sources/plugins/go.vim
-source $NVIM_HOME/sources/plugins/gutentags.vim
-source $NVIM_HOME/sources/plugins/markdown.vim
-source $NVIM_HOME/sources/plugins/lazygit.vim
-" source $NVIM_HOME/sources/plugins/airline.vim
-source $NVIM_HOME/sources/plugins/lightline.vim
-source $NVIM_HOME/sources/plugins/ranger.vim
-" source $NVIM_HOME/sources/plugins/rnvimr.vim
-source $NVIM_HOME/sources/plugins/tcomment.vim
-source $NVIM_HOME/sources/plugins/workspace.vim
+source $CLIENV/nvim/sources/plugins/coc.vim
+source $CLIENV/nvim/sources/plugins/fzf.vim
+source $CLIENV/nvim/sources/plugins/go.vim
+source $CLIENV/nvim/sources/plugins/gutentags.vim
+source $CLIENV/nvim/sources/plugins/markdown.vim
+source $CLIENV/nvim/sources/plugins/lazygit.vim
+" source $CLIENV/nvim/sources/plugins/nerdtree.vim
+" source $CLIENV/nvim/sources/plugins/airline.vim
+source $CLIENV/nvim/sources/plugins/lightline.vim
+source $CLIENV/nvim/sources/plugins/ranger.vim
+" source $CLIENV/nvim/sources/plugins/rnvimr.vim
+source $CLIENV/nvim/sources/plugins/tcomment.vim
+source $CLIENV/nvim/sources/plugins/workspace.vim
 
 
 " ===
@@ -131,17 +132,6 @@ xmap ga <Plug>(EasyAlign)
 let g:formatters_vue = ['eslint_local', 'stylelint']
 let g:run_all_formatters_vue = 1
 
-
-" ===
-" === NERDTree
-" ===
-" map TT :NERDTreeToggle<CR>
-" map TF :NERDTreeFind<CR>
-map <C-t> :NERDTreeFind<CR>
-" 显示隐藏文件
-let g:NERDTreeHidden=1
-""当NERDTree为剩下的唯一窗口时自动关闭
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 
@@ -196,7 +186,7 @@ colorscheme dracula
 " === 自定义函数  
 " ===
 "=================================================================================
-source $NVIM_HOME/sources/scripts/kibanalog.vim
+source $CLIENV/nvim/sources/scripts/kibanalog.vim
 
 
 
@@ -245,3 +235,42 @@ source $NVIM_HOME/sources/scripts/kibanalog.vim
   " endif
 " endfunction
 
+
+"
+" function MyTabLabel(n)
+"   let buflist = tabpagebuflist(a:n)
+"   let winnr = tabpagewinnr(a:n)
+"   return bufname(buflist[winnr - 1])
+" endfunction
+"
+" function MyTabLine()
+"   let s = ''
+"   for i in range(tabpagenr('$'))
+"     " select the highlighting
+"     if i + 1 == tabpagenr()
+"       let s .= '%#TabLineSel#'
+"     else
+"       let s .= '%#TabLine#'
+"     endif
+"
+"     " set the tab page number (for mouse clicks)
+"     let s .= '%' . (i + 1) . 'T'
+"
+"     " the label is made by MyTabLabel()
+"     let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+"   endfor
+"
+"   " after the last tab fill with TabLineFill and reset tab page nr
+"   let s .= '%#TabLineFill#%T'
+"
+"   " right-align the label to close the current tab page
+"   " if tabpagenr('$') > 1
+"   "   let s .= '%=%#TabLine#%999Xclose'
+"   " endif
+"
+"   return s
+" endfunction
+"
+"
+" set tabline=%!MyTabLine()
+"
