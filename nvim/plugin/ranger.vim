@@ -1,3 +1,4 @@
+"
 " Copyright (c) 2015 François Cabrol
 "
 " MIT License
@@ -23,6 +24,17 @@
 
 
 " ================ Ranger =======================
+function! s:ClearNumber()
+    set nonumber
+    set norelativenumber
+endfunction
+
+
+function! s:AddNumber()
+    set number
+    set relativenumber
+endfunction
+
 if exists('g:ranger_choice_file')
   if empty(glob(g:ranger_choice_file))
     let s:choice_file_path = g:ranger_choice_file
@@ -44,24 +56,12 @@ if !exists('s:choice_file_path')
   let s:choice_file_path = '/tmp/chosenfile'
 endif
 
-function! s:ClearNumber()
-    set nonumber
-    set norelativenumber
-endfunction
-
-
-function! s:AddNumber()
-    set number
-    set relativenumber
-endfunction
-
-
 if has('nvim')
   function! OpenRangerIn(path, edit_cmd)
     let currentPath = expand(a:path)
     let rangerCallback = { 'name': 'ranger', 'edit_cmd': a:edit_cmd }
     function! rangerCallback.on_exit(job_id, code, event)
-            call s:AddNumber()
+      call s:AddNumber()
       if a:code == 0
         silent! Bclose!
       endif
