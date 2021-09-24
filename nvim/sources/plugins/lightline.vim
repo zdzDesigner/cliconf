@@ -22,6 +22,8 @@ let g:lightline = {
 let g:lightline.tabline = {
       \ 'left': [ [ 'tabs' ] ],
       \ 'right': [ [] ] }
+" let g:lightline.tabline = {
+"       \ 'left': [ [ 'tabs' ] ] }
 
 
 let g:lightline.tab = {

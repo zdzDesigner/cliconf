@@ -17,14 +17,23 @@ padding:
     x: 5
     y: 5
 
-# 背景半透明，方便抄代码
-background_opacity: 0.9
+# 背景半透明
+background_opacity: 0.95
+
+mouse:
+  hide_when_typing: true
 
 # 实时重载配置文件，不用重启测试配置选项
 live_config_reload: true
+selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  # shift key and doubleclick left key to clipboard.
+  save_to_clipboard: true
 
-save_to_clipboard: false
 # 字体设置为等宽字体，可以用命令 fc-list 查看你系统的字体
 font:
   size: 10

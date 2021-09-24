@@ -68,6 +68,7 @@ if has('nvim')
       try
         if filereadable(s:choice_file_path)
           for f in readfile(s:choice_file_path)
+              " echom f
             exec self.edit_cmd . f
           endfor
           call delete(s:choice_file_path)
@@ -77,8 +78,15 @@ if has('nvim')
     enew
     if isdirectory(currentPath)
       call termopen(s:ranger_command . ' --choosefiles=' . s:choice_file_path . ' "' . currentPath . '"', rangerCallback)
+      " call termopen(s:ranger_command . ' --choosedir=' . s:choice_file_path . ' "' . currentPath . '"', rangerCallback)
+
     else
+      " echom currentPath 
       call termopen(s:ranger_command . ' --choosefiles=' . s:choice_file_path . ' --selectfile="' . currentPath . '"', rangerCallback)
+      "
+      " printf('--%s=%s %s', l:choose_arg, shellescape(g:ranger_tempfile), shellescape(a:path))
+      " call termopen(s:ranger_command . ' --choosefiles=' . s:choice_file_path . ' ' . shellescape(currentPath) , rangerCallback)
+      " call termopen('ranger --choosefiles=/tmp/chosenfile "' . currentPath . '"', rangerCallback)
     endif
     startinsert
     call s:ClearNumber()

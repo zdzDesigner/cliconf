@@ -5,7 +5,8 @@ colors:
     # background: '#251736'
     # background: '#352d3a'
     # background: '#2b242e'
-    background: '#2c2836'
+    # background: '#2c2836'
+    background: '#1a1824'
 
     foreground: '0xf8f8f2'
   cursor:

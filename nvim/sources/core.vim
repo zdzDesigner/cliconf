@@ -169,6 +169,8 @@ map <right> :vertical resize +5<CR>
 
 
 noremap r <nop>
+vnoremap <LEADER>y "ay
+nnoremap <LEADER>p "ap
 " " lazygit
 " lazygit
 " noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>

@@ -25,7 +25,7 @@ Plug 'Chiel92/vim-autoformat'
 " File navigation
 " on: 开启方式
 " Plug 'preservim/nerdtree', { 'on': 'NERDTreeFind' }
-" Plug 'Xuyuanp/nerdtree-git-plugin' 
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -35,6 +35,8 @@ Plug 'junegunn/fzf.vim'
 " ranger
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
+" bug: exist tab no jump
+" Plug 'rafaqz/ranger.vim'
 
 " ranger 2
 " Plug 'kevinhwang91/rnvimr'
@@ -100,6 +102,10 @@ Plug 'mg979/vim-visual-multi'
 
 
 " Plug 'kdheepak/lazygit.nvim'
+"
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 
 call plug#end()
 
@@ -116,6 +122,7 @@ source $CLIENV/nvim/sources/plugins/ranger.vim
 " source $CLIENV/nvim/sources/plugins/rnvimr.vim
 source $CLIENV/nvim/sources/plugins/tcomment.vim
 source $CLIENV/nvim/sources/plugins/workspace.vim
+source $CLIENV/nvim/sources/plugins/snippets.vim
 
 
 " ===

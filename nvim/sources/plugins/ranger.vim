@@ -11,4 +11,8 @@ let g:ranger_open_new_tab = 1
 " noremap <leader>; :RangerNewTab<CR>
 " 当前tab不存在时打开新tab，存在跳转
 noremap <leader>; :RangerCurrentFileExistingOrNewTab<CR>
+" ranger --choosefiles='/tmp/nvim0Bscu3/32' '/home/zdz/.zdz/tmux'
+
+
+
 
