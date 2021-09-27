@@ -27,6 +27,8 @@ set expandtab
 " set noexpandtab
 set tabstop=4
 set shiftwidth=4
+autocmd filetype vue set tabstop=2
+autocmd filetype vue set shiftwidth=2
 set softtabstop=-1
 
 " 上下预留空间
@@ -40,44 +42,10 @@ set encoding=utf-8
 
 set statusline +=%{resolve(expand('%:p'))}\ %*
 
-" set nocompatible
-"filetype on
-"filetype indent on
-"filetype plugin on
-"filetype plugin indent on
-"set mouse=a
-"let &t_ut=''
-"set expandtab
-"set list
-"" set listchars=tab:▸\ ,trail:▫
-"set tw=0
-"set indentexpr=
-"set backspace=indent,eol,start
-"" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"" let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-"" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-"set laststatus=2
-"set autochdir
-"" au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 set clipboard=unnamedplus
 " set clipboard=unnamed
 set smartindent
-
-" === 改建"
-" === 改建 END"
-"成对"
-""inoremap ' ''<ESC>i
-""inoremap " ""<ESC>i
-""inoremap ( ()<ESC>i
-""inoremap [ []<ESC>i
-""inoremap { {<CR>}<ESC>O
-
-
-
-" Indentation
-"nnoremap < <<
-"nnoremap > >>
 
 
 
@@ -93,15 +61,6 @@ cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-w> <S-Right>
 
-" *******************************
-" * status line                 *
-" *******************************
-" set laststatus=2                               " always show status line
-" set statusline=%<%f\                           " Filename
-" set statusline+=%w%h%m%r                       " Options
-" set statusline+=\ [%{&ff}/%Y]                  " filetype
-" set statusline+=\ [%{split(getcwd(),'/')[-1]}] " current dir
-" set statusline+=%=%-14.(%l,%c%V%)\ %p%%        " Right aligned file nav info
 
 
 
@@ -169,8 +128,18 @@ map <right> :vertical resize +5<CR>
 
 
 noremap r <nop>
-vnoremap <LEADER>y "ay
-nnoremap <LEADER>p "ap
+
+
+" 寄存器复制
+nnoremap <LEADER>y :call ZReg()<CR>
+nnoremap <LEADER>p "bp
+
+function ZReg()
+    let @b=@+
+endfunction
+
+
+
 " " lazygit
 " lazygit
 " noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>

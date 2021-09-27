@@ -11,6 +11,7 @@ noremap <silent> <C-h> :History<CR>
 noremap <silent> <C-f> :Rg<CR>
 " noremap <silent> <C-b> :Buffers<CR>
 
+
 let g:fzf_layout = { 'down': '80%' }
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 " let g:fzf_preview_window = ['right:50%', 'ctrl-/']
