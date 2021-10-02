@@ -74,7 +74,7 @@ noremap J 5j
 noremap <LEADER><CR> :nohlsearch<CR>
 
 " Copy to system clipboard
-vnoremap Y "+y
+" vnoremap Y "+y
 
 
 " v-mode tab indent

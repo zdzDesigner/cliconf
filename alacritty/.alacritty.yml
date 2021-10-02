@@ -36,7 +36,8 @@ selection:
 
 # 字体设置为等宽字体，可以用命令 fc-list 查看你系统的字体
 font:
-  size: 10
+  # size: 10
+  size: 8.5
 
   # normal:
      # family: Sauce Code Pro Light Nerd Font Complete Mono
