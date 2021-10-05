@@ -3,11 +3,12 @@ import:
   - /home/zdz/.zdz/alacritty/.themes/dracula.yml
 # 默认窗口无标题栏，16:9的窗口比例启动
 window:
-    decorations: "none"
-    # decorations: "Full"
-    dimensions:
-      columns: 200
-      lines: 200
+    startup_mode: Fullscreen
+    # decorations: "none"
+    # decorations: "full"
+    # dimensions:
+    #   columns: 120
+    #   lines: 40
 
 position:
     x: 0
