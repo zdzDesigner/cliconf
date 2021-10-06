@@ -19,7 +19,7 @@ padding:
     y: 5
 
 # 背景半透明
-background_opacity: 0.94
+background_opacity: 0.9
 
 mouse:
   hide_when_typing: true
@@ -57,9 +57,9 @@ font:
 
 # 外壳
 # shell:
-  # program: /usr/bin/zsh
-  # args:
-    # - "/usr/bin/tmux new -A -s main"
+#   program: /usr/bin/zsh
+#   args:
+#     - "/usr/bin/tmux new -A -s main"
 
 
 

@@ -2,7 +2,6 @@
 
 
 
-/bin/bash /home/zdz/.zdz/dwm/scripts/dwm-status.sh &
 # 缩放
 export QT_AUTO_SCREEN_SCALE_FACTOR=0.5
 # export QT_DEVICE_PIXEL_RATIO=1
@@ -12,8 +11,7 @@ export GDK_DPI_SCALE=1.5
 compton -b
 
 
-# 壁纸
-feh --bg-fill --randomize --no-fehbg $HOME/.bg/*
+/bin/bash /home/zdz/.zdz/dwm/scripts/dwm-status.sh &
 
 # 网络
 nm-applet &
@@ -36,6 +34,10 @@ xset r rate 250 30
 google-chrome-stable &
 # goldendict &
 # systemctl start trojan.service &
+
+# ======清除字体缓存==============
+# fc-cache -fv
+# =======================
 
 exec dwm
 
