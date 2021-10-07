@@ -106,10 +106,10 @@ map sj :set splitbelow<CR>:split<CR>
 map <LEADER>sc :set spell!<CR>
 " map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
 
-map <LEADER>l <C-w>l
-map <LEADER>h <C-w>h
-map <LEADER>j <C-w>j
-map <LEADER>k <C-w>k
+" map <LEADER>l <C-w>l
+" map <LEADER>h <C-w>h
+" map <LEADER>j <C-w>j
+" map <LEADER>k <C-w>k
 
 map <LEADER>i O<Esc>
 map <LEADER>o o<Esc>
@@ -124,6 +124,8 @@ map tl :tabn<CR>
 noremap <silent> <C-j> :tabp<CR>
 noremap <silent> <C-k> :tabn<CR>
 noremap <silent> <C-m> :tabmove<CR>
+noremap <LEADER>j :call TabPrev()<CR>
+noremap <LEADER>k :call TabNext()<CR>
 map <left> :vertical resize -5<CR>
 map <right> :vertical resize +5<CR>
 
@@ -141,12 +143,32 @@ endfunction
 
 
 
-" " lazygit
+" lazygit
 " lazygit
 " noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 
 
+function! Call()
+    echo TabPrev()
+endfunction
 
+function! TabPrev()
+    let l:n = tabpagenr()-2
+    if l:n < 0
+        exe 'tabm '.tabpagenr('$')
+        return
+    endif
+    exe 'tabm '.l:n 
+endfunction
+
+function! TabNext()
+    let l:n = tabpagenr()+1
+    if l:n > tabpagenr('$')
+        exe 'tabm '.0
+        return
+    endif
+    exe 'tabm '.l:n 
+endfunction
 
 " function MyTabLine()
 "   let s = ''
