@@ -123,6 +123,7 @@ map tl :tabn<CR>
 
 noremap <silent> <C-j> :tabp<CR>
 noremap <silent> <C-k> :tabn<CR>
+noremap <silent> <C-m> :tabmove<CR>
 map <left> :vertical resize -5<CR>
 map <right> :vertical resize +5<CR>
 
