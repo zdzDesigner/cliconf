@@ -38,20 +38,26 @@ selection:
 # 字体设置为等宽字体，可以用命令 fc-list 查看你系统的字体
 font:
   # size: 10
-  size: 8.5
+  # size: 9
+  size: 8
 
-  # normal:
-     # family: Sauce Code Pro Light Nerd Font Complete Mono
-     # family: Sauce Code Pro Light Nerd Font Complete Mono
-     # style: Regular
+  normal:
+     # family: SauceCodePro Nerd Font Mono
+     family: Hack Nerd Font Mono
+     # family: monospace
+     style: Regular
 
-  # bold:
-     # family: Sauce Code Pro Bold Nerd Font Complete Mono
-     # style: Bold
+  bold:
+     # family: SauceCodePro Nerd Font Mono
+     family: Hack Nerd Font Mono
+     # family: monospace
+     style: Bold
 
-  # italic:
-     # family: Sauce Code Pro Italic Nerd Font Complete Mono
-     # style: Italic
+  italic:
+     # family: SauceCodePro Nerd Font Mono
+     family: Hack Nerd Font Mono
+     # family: monospace
+     style: Italic
 
 
 
