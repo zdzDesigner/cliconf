@@ -97,10 +97,10 @@ map W :q<CR>
 map E :e<CR>
 map R :source $MYVIMRC<CR>
 
-map sl :set splitright<CR>:vsplit ~/temp/@@<CR>
-map sh :set nosplitright<CR>:vsplit<CR>
-map sk :set nosplitbelow<CR>:split<CR>
-map sj :set splitbelow<CR>:split<CR>
+noremap <silent> Sl :set splitright<CR>:vsplit ~/temp/@@<CR>
+noremap <silent> Sh :set nosplitright<CR>:vsplit<CR>
+noremap <silent> Sk :set nosplitbelow<CR>:split<CR>
+noremap <silent> Sj :set splitbelow<CR>:split<CR>
 
 " 拼写检测, prompt key z=
 map <LEADER>sc :set spell!<CR>
@@ -118,14 +118,16 @@ map <LEADER>o o<Esc>
 
 map tt <nop>
 map tn :tabe<CR>
-map th :tabp<CR>
-map tl :tabn<CR>
+" map th :tabp<CR>
+" map tl :tabn<CR>
 
+" <C-m> 和 Enter 相同
 noremap <silent> <C-j> :tabp<CR>
 noremap <silent> <C-k> :tabn<CR>
-noremap <silent> <C-m> :tabmove<CR>
-noremap <LEADER>j :call TabPrev()<CR>
-noremap <LEADER>k :call TabNext()<CR>
+"
+noremap <silent> <LEADER>l :tabmove<CR>
+noremap <silent> <LEADER>j :call TabPrev()<CR>
+noremap <silent> <LEADER>k :call TabNext()<CR>
 map <left> :vertical resize -5<CR>
 map <right> :vertical resize +5<CR>
 

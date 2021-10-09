@@ -2,9 +2,10 @@
 " ===
 " === vim-go
 " ===
+" :GoDef  gd  和 ctrl + ] 相同
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-" 冲突 conflict K key
+" 冲突 conflict "K" key
 let g:go_doc_keywordprg_enabled = 0
 " 函数在同一个文件中时不需要打开新窗口
 let g:godef_same_file_in_same_window=1 
@@ -23,5 +24,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_generate_tags = 1
 let g:godef_split=2
 
+" :GoAutoTypeInfoToggle 开启自动显示类型
+" :GoAddTags  快速定义struct ， 默认json
+" :GoAddTags xml 添加 xml 
+
 " autocmd filetype go map <C-w> <nop> 
-" GoAutoTypeInfoToggle
+

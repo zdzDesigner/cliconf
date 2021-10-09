@@ -4,12 +4,11 @@
 " ===
 "" GFiles: show hide file
 noremap <silent> <C-p> :Files<CR>
-noremap <silent> <LEADER>l :Lines<CR>
-noremap <silent> <C-l> :Windows<CR>
-" noremap <silent> <C-l> :Lines<CR>
 noremap <silent> <C-h> :History<CR>
+noremap <silent> <C-l> :Windows<CR>
+
 noremap <silent> <C-f> :Rg<CR>
-" noremap <silent> <C-b> :Buffers<CR>
+noremap <silent> <C-b> :Lines<CR>
 
 
 let g:fzf_layout = { 'down': '80%' }

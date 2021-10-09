@@ -1,12 +1,13 @@
 #! /bin/bash
 
 
+# export QT_DEVICE_PIXEL_RATIO=1
 
 # 缩放
 export QT_AUTO_SCREEN_SCALE_FACTOR=0.5
-# export QT_DEVICE_PIXEL_RATIO=1
 export GDK_SCALE=1
 export GDK_DPI_SCALE=1.5
+
 # 透明度 依赖了 xorg openbox
 compton -b
 
@@ -40,5 +41,15 @@ goldendict &
 # =======================
 
 exec dwm
+
+
+
+
+
+##  问题
+### 字体图标导致崩溃
+### < 打开vuex github 时 title中包含了 emoji 图标, 导致dwm，st 崩溃
+### << https://wiki.archlinux.org/title/st 
+### > sudo apt install fonts-symbola
 
 

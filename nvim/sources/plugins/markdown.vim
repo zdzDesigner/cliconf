@@ -3,11 +3,12 @@
 " ===
 
 "=== vim-table-mode
-"====== default  <leader>tm :TableModeToggle
-"====== default  <leader>tr :TableModeRealign
+"====== 开启和关闭  <leader>tm :TableModeToggle
+"====== 对齐        <leader>tr :TableModeRealign
+"===
 " let g:table_mode_corner='|'
 " let g:table_mode_corner_corner='+'
-let g:table_mode_header_fillchar='='
+let g:table_mode_header_fillchar='-'
 
 
 
