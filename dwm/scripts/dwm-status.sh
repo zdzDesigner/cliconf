@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curbuf=$(cat .temp)
+curbuf=$(cat $HOME/.bg/.temp)
 # curnum=${curbuf%%@*}
 cururl=${curbuf##*@}
 # 壁纸

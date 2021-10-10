@@ -1,12 +1,10 @@
 #!/bin/bash
-
-#!/bin/bash
-
-if [[ ! -f ".temp" ]]; then
-    echo "" > .temp
+TEMP_PATH=$HOME/.bg/.temp
+if [[ ! -f $TEMP_PATH ]]; then
+    echo "" > $TEMP_PATH
 fi
 
-curbuf=$(cat .temp)
+curbuf=$(cat $TEMP_PATH)
 echo $curbuf
 curnum=${curbuf%%@*}
 cururl=${curbuf##*@}
@@ -24,14 +22,14 @@ function getwp() {
         if [ -f "$f" ];then
             tarurl="${f##*/}"
             if [[ $count == 1 ]]; then
-                echo "1@$tarurl" > .temp
+                echo "1@$tarurl" > $TEMP_PATH
                 break
             fi
             if [[ $1 == 0  ]]; then
-                echo "1@$tarurl" > .temp
+                echo "1@$tarurl" > $TEMP_PATH
                 break
             fi
-            # echo ${f##*/}
+
             if [[ $2 == $tarurl ]]; then
                 count=1
             fi

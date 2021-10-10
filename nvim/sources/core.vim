@@ -97,10 +97,10 @@ map W :q<CR>
 map E :e<CR>
 map R :source $MYVIMRC<CR>
 
-noremap <silent> Sl :set splitright<CR>:vsplit ~/temp/@@<CR>
-noremap <silent> Sh :set nosplitright<CR>:vsplit<CR>
-noremap <silent> Sk :set nosplitbelow<CR>:split<CR>
-noremap <silent> Sj :set splitbelow<CR>:split<CR>
+noremap <silent> Tl :set splitright<CR>:vsplit ~/temp/@@<CR>
+noremap <silent> Th :set nosplitright<CR>:vsplit<CR>
+noremap <silent> Tk :set nosplitbelow<CR>:split<CR>
+noremap <silent> Tj :set splitbelow<CR>:split<CR>
 
 " 拼写检测, prompt key z=
 map <LEADER>sc :set spell!<CR>
@@ -171,6 +171,18 @@ function! TabNext()
     endif
     exe 'tabm '.l:n 
 endfunction
+
+
+noremap <silent> <C-g> :call AbsolutePath()<CR>
+function! AbsolutePath()
+    let @+=expand("%:p")
+endfunction
+
+function! TempVal()
+    echo expand("%") 
+    echo expand("%:p")
+endfunction
+
 
 " function MyTabLine()
 "   let s = ''
