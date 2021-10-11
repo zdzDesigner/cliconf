@@ -41,7 +41,8 @@ selection:
 font:
   # size: 10
   # size: 9
-  size: 8
+  # size: 8
+  size: 8.5
 
   normal:
      # family: SauceCodePro Nerd Font Mono

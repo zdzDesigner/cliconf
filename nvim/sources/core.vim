@@ -34,9 +34,13 @@ set softtabstop=-1
 " 上下预留空间
 set scrolloff=10
 " 折叠方式
-set foldmethod=indent
+" set foldmethod=indent
+" set foldmethod=manual
+" set foldmethod=marker
+set foldmethod=syntax
+
 " 设置折叠层数 
-set foldlevel=3
+set foldlevel=5
 
 set encoding=utf-8
 
