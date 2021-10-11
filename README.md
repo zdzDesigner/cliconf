@@ -17,3 +17,8 @@ prev line: alt + k
 next line: alt + j
 prev page: alt + ctrl + k
 next page: alt + ctrl + j
+
+
+## lazygit
+下滚动: shfit+j
+上滚动: shfit+k
