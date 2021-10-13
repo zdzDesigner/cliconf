@@ -46,22 +46,26 @@ font:
 
   normal:
      # family: SauceCodePro Nerd Font Mono
-     family: Hack Nerd Font Mono
+     # family: Hack Nerd Font Mono
+     family: mono
      # family: monospace
      style: Regular
 
   bold:
      # family: SauceCodePro Nerd Font Mono
-     family: Hack Nerd Font Mono
+     # family: Hack Nerd Font Mono
+     family: mono
+     # family: monospace
      # family: monospace
      style: Bold
 
   italic:
      # family: SauceCodePro Nerd Font Mono
-     family: Hack Nerd Font Mono
+     # family: Hack Nerd Font Mono
+     family: mono
+     # family: monospace
      # family: monospace
      style: Italic
-
 
 
 # 外壳

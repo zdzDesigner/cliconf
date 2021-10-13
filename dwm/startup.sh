@@ -7,7 +7,7 @@
 export QT_AUTO_SCREEN_SCALE_FACTOR=0.5
 export GDK_SCALE=1
 export GDK_DPI_SCALE=1.5
-
+export WINIT_HIDPI_FACTOR=1
 # 透明度 依赖了 xorg openbox
 compton -b
 

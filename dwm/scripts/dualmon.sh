@@ -8,3 +8,4 @@ xrandr --auto --output eDP-1  --size 2560x1440
 
 
 
+# xrandr --auto --output eDP-1 --mode 1920x1080

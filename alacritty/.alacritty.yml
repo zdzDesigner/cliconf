@@ -4,11 +4,13 @@ import:
 # 默认窗口无标题栏，16:9的窗口比例启动
 window:
     startup_mode: Fullscreen
+    # startup_mode: Windowed
+    # startup_mode: Maximized
     # decorations: "none"
-    # decorations: "Full"
+    # decorations: "full"
     # dimensions:
-    #   columns: 200
-    #   lines: 200
+    #   columns: 100
+    #   lines: 40
 
 position:
     x: 0
@@ -19,7 +21,7 @@ padding:
     y: 5
 
 # 背景半透明
-background_opacity: 0.9
+background_opacity: 0.85
 
 mouse:
   hide_when_typing: true
@@ -44,19 +46,24 @@ font:
 
   normal:
      # family: SauceCodePro Nerd Font Mono
-     family: Hack Nerd Font Mono
+     # family: Hack Nerd Font Mono
+     family: mono
      # family: monospace
      style: Regular
 
   bold:
      # family: SauceCodePro Nerd Font Mono
-     family: Hack Nerd Font Mono
+     # family: Hack Nerd Font Mono
+     family: mono
+     # family: monospace
      # family: monospace
      style: Bold
 
   italic:
      # family: SauceCodePro Nerd Font Mono
-     family: Hack Nerd Font Mono
+     # family: Hack Nerd Font Mono
+     family: mono
+     # family: monospace
      # family: monospace
      style: Italic
 
