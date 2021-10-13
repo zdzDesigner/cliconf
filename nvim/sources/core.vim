@@ -128,6 +128,8 @@ map tn :tabe<CR>
 " <C-m> 和 Enter 相同
 noremap <silent> <C-j> :tabp<CR>
 noremap <silent> <C-k> :tabn<CR>
+" noremap <silent> <C-1> :tabfirst<CR>
+" noremap <silent> <C-9> :tablast<CR>
 "
 noremap <silent> <LEADER>l :tabmove<CR>
 noremap <silent> <LEADER>j :call TabPrev()<CR>
