@@ -29,6 +29,8 @@ set tabstop=4
 set shiftwidth=4
 autocmd filetype vue set tabstop=2
 autocmd filetype vue set shiftwidth=2
+autocmd filetype javascript set tabstop=2
+autocmd filetype javascript set shiftwidth=2
 set softtabstop=-1
 
 " 上下预留空间
@@ -106,6 +108,8 @@ noremap <silent> Th :set nosplitright<CR>:vsplit<CR>
 noremap <silent> Tk :set nosplitbelow<CR>:split<CR>
 noremap <silent> Tj :set splitbelow<CR>:split<CR>
 
+map <left> :vertical resize -5<CR>
+map <right> :vertical resize +5<CR>
 " 拼写检测, prompt key z=
 map <LEADER>sc :set spell!<CR>
 " map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
@@ -129,13 +133,13 @@ map tn :tabe<CR>
 noremap <silent> <C-j> :tabp<CR>
 noremap <silent> <C-k> :tabn<CR>
 " noremap <silent> <C-1> :tabfirst<CR>
-" noremap <silent> <C-9> :tablast<CR>
+" map <C-9> :tablast<CR>
+noremap <silent> <LEADER>0 :tabfirst<CR>
+noremap <silent> <LEADER>9 :tablast<CR>
 "
 noremap <silent> <LEADER>l :tabmove<CR>
 noremap <silent> <LEADER>j :call TabPrev()<CR>
 noremap <silent> <LEADER>k :call TabNext()<CR>
-map <left> :vertical resize -5<CR>
-map <right> :vertical resize +5<CR>
 
 
 noremap r <nop>
@@ -184,6 +188,8 @@ function! AbsolutePath()
     let @+=expand("%:p")
 endfunction
 
+
+" 测试
 function! TempVal()
     echo expand("%") 
     echo expand("%:p")

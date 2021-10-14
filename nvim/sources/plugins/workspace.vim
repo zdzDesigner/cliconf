@@ -5,4 +5,10 @@ let g:workspace_persist_undo_history = 0
 let g:workspace_create_new_tabs = 0
 let g:workspace_session_directory = $HOME . '/.config/nvim/sessions/'
 
+let g:workspace_autosave = 0
+let g:workspace_autosave_untrailspaces = 0
+let g:workspace_autosave_untrailtabs = 0
 nnoremap <leader>s :ToggleWorkspace<CR>
+
+
+

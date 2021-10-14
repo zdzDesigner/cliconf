@@ -8,6 +8,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0.5
 export GDK_SCALE=1
 export GDK_DPI_SCALE=1.5
 export WINIT_HIDPI_FACTOR=1
+export WINIT_X11_SCALE_FACTOR=1
 # 透明度 依赖了 xorg openbox
 compton -b
 
@@ -19,7 +20,7 @@ nm-applet &
 # 网络图形界面
 # nm-connection-editor
 
-# 输入法
+# 输入法 启动fcitx mod + shift + f
 # fcitx &
 # 输入法图形界面
 # fcitx-configtool
@@ -27,7 +28,7 @@ nm-applet &
 # 电源管理, 屏幕亮度
 xfce4-power-manager &
 
-# 键盘延迟, 长按延迟
+#解决 键盘延迟, 长按延迟
 xset r rate 250 30
 
 # 解除静音
