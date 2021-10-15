@@ -137,6 +137,8 @@ noremap <silent> <C-k> :tabn<CR>
 noremap <silent> <LEADER>0 :tabfirst<CR>
 noremap <silent> <LEADER>9 :tablast<CR>
 "
+noremap <silent> <LEADER>[ :tabmove 0<CR>
+noremap <silent> <LEADER>] :tabmove<CR>
 noremap <silent> <LEADER>l :tabmove<CR>
 noremap <silent> <LEADER>j :call TabPrev()<CR>
 noremap <silent> <LEADER>k :call TabNext()<CR>
