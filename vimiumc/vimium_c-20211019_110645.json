@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "2021/10/15 上午10:12:09",
-	"time": 1634263929820,
+	"@time": "2021/10/19 上午11:06:45",
+	"time": 1634612805598,
 	"environment": {
 		"extension": "1.92.4",
 		"platform": "linux",
@@ -25,6 +25,15 @@
 		"",
 		"shortcut userCustomized5 command=\"simulateBackspace\"",
 		"shortcut userCustomized6 command=\"removeTab\"",
+		"",
+		"shortcut userCustomized7 command=\"Vomnibar.activateEditUrl\"",
+		"shortcut userCustomized8 command=\"Vomnibar.activate\"",
+		"",
+		"shortcut userCustomized9 command=\"Vomnibar.activateBookmarks\"",
+		"shortcut userCustomized10 command=\"Vomnibar.activateTabs\"",
+		"",
+		"",
+		"unmap <c-e>",
 		""
 	],
 	"linkHintCharacters": "sadjklecmpgh",

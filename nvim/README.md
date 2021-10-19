@@ -9,3 +9,7 @@
 
 # plugin
 > `自定义` 插件
+
+
+# alacritty 
+> V-BLOCK: Ctrl+Alt+V

@@ -27,10 +27,6 @@ set expandtab
 " set noexpandtab
 set tabstop=4
 set shiftwidth=4
-autocmd filetype vue set tabstop=2
-autocmd filetype vue set shiftwidth=2
-autocmd filetype javascript set tabstop=2
-autocmd filetype javascript set shiftwidth=2
 set softtabstop=-1
 
 " 上下预留空间
@@ -41,7 +37,7 @@ set scrolloff=10
 " set foldmethod=marker
 set foldmethod=syntax
 
-" 设置折叠层数 
+" 设置折叠层数
 set foldlevel=5
 
 set encoding=utf-8
@@ -98,6 +94,7 @@ map <C-x> <nop>
 map <C-a> :tabnew  ~/temp/log/
 map s <nop>
 map S :w<CR>
+" imap <C-s> <Esc> :w<CR> alacritty tmux 不支持
 map Q :q<CR>
 map W :q<CR>
 map E :e<CR>
@@ -151,6 +148,29 @@ noremap r <nop>
 nnoremap <LEADER>y :call ZReg()<CR>
 nnoremap <LEADER>p "bp
 
+
+
+" autocmd BufNewFile,BufRead *.vue set filetype=vvvv
+" filetype
+autocmd filetype vue set tabstop=2
+autocmd filetype vue set shiftwidth=2
+" autocmd BufNewFile,BufRead *.vue map S :Autoformat html<CR> :w<CR>
+" autocmd BufNewFile,BufRead *.js map :w<CR>
+" autocmd filetype vvvv map S :Autoformat html<CR> :w<CR>
+
+autocmd filetype javascript set tabstop=2
+autocmd filetype javascript set shiftwidth=2
+" autocmd filetype javascript map S :w<CR>
+
+
+
+
+
+
+
+
+
+
 function ZReg()
     let @b=@+
 endfunction
@@ -172,7 +192,7 @@ function! TabPrev()
         exe 'tabm '.tabpagenr('$')
         return
     endif
-    exe 'tabm '.l:n 
+    exe 'tabm '.l:n
 endfunction
 
 function! TabNext()
@@ -181,7 +201,7 @@ function! TabNext()
         exe 'tabm '.0
         return
     endif
-    exe 'tabm '.l:n 
+    exe 'tabm '.l:n
 endfunction
 
 
@@ -193,7 +213,7 @@ endfunction
 
 " 测试
 function! TempVal()
-    echo expand("%") 
+    echo expand("%")
     echo expand("%:p")
 endfunction
 

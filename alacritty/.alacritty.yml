@@ -92,13 +92,15 @@ key_bindings:
     # - { key: F11,       mode: ~Search,                action: ToggleFullscreen      }
     - { key: V,         mods: Control,                action: Paste                 }
     - { key: C,         mods: Control,                action: Copy                  }
-    # - { key: C,         mods: Control|Shift,          chars: "\x03"                 }  
+    - { key: V,         mods: Control|Shift,          action: None                 }
+    # - { key: C,         mods: Control|Shift,          action: None                  }
+    # - { key: C,         mods: Control|Shift,        chars: "\x03"                 }  
     - { key: Q,         mods: Control|Shift|Alt,      action: "Quit"                }
 
     # - { key: K,         mods: Alt,                  action: ScrollPageUp          }
     # - { key: J,         mods: Alt,                  action: ScrollPageDown        }
-    - { key: K,         mods: Alt,                  action: ScrollHalfPageUp          }
-    - { key: J,         mods: Alt,                  action: ScrollHalfPageDown        }
+    - { key: K,         mods: Alt,                    action: ScrollHalfPageUp          }
+    - { key: J,         mods: Alt,                    action: ScrollHalfPageDown        }
     # - { key: PageUp,    mods: Shift,                  action: ScrollPageUp          }
     # - { key: PageDown,  mods: Shift,                  action: ScrollPageDown        }
     # - { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }

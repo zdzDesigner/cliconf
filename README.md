@@ -1,3 +1,9 @@
+## font
+> install nerd-fonts
+> install font-manager  [https://github.com/FontManager/font-manager](font-manager) 
+**把展示错误的图标放置在font-manager中，禁用错误的地址** <++>
+
+
 ## checking env
 > export env CLIENV current dir
 

@@ -11,3 +11,11 @@ userCustomized4     Ctrl + L
 
 userCustomized5     Ctrl + W
 userCustomized6     Ctrl + Q
+
+
+
+## short key
+> ctrl + o: 打开历史
+> ctrl + p: 当前Tag
+> ctrl + b: 收藏历史
+
