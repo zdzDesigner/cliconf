@@ -16,7 +16,7 @@ let g:table_mode_header_fillchar='-'
 let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 0
 
-
+autocmd filetype markdown set wrap
 " 刷新
 autocmd filetype markdown nnoremap <leader>r :InstantMarkdownPreview<CR>
 " 快速添加锚点

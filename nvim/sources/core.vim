@@ -170,7 +170,6 @@ autocmd filetype javascript set shiftwidth=2
 
 
 
-
 function ZReg()
     let @b=@+
 endfunction
