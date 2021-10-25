@@ -19,6 +19,8 @@ next page: mod1(alt) + j
 
 
 ## st
+> st-copyout, depend xclip
+
 prev line: alt + k
 next line: alt + j
 prev page: alt + ctrl + k

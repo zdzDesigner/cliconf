@@ -1,1 +1,1 @@
-/home/zdz/.zdz/nvim/v4/init.vim
+/home/zdz/.zdz/nvim/v5/init.vim
