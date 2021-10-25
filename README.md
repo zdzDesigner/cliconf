@@ -29,5 +29,5 @@ next page: alt + ctrl + j
 
 
 ## lazygit
-下滚动: shfit+j
-上滚动: shfit+k
+scroll up  : shfit+k
+scroll down: shfit+j
