@@ -19,8 +19,9 @@ next page: mod1(alt) + j
 
 
 ## st
-> st-copyout, depend xclip
-
+> **st-copyout** and **st-urlhandler**, depend **xclip** 
+> *cat c.md | xclip -selection clipboard* 
+> *cat c.md | xclip -sel clip* alias
 prev line: alt + k
 next line: alt + j
 prev page: alt + ctrl + k
