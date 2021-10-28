@@ -38,7 +38,7 @@ set scrolloff=10
 set foldmethod=syntax
 
 " 设置折叠层数
-set foldlevel=5
+set foldlevel=15
 
 set encoding=utf-8
 
@@ -201,6 +201,15 @@ function! TabNext()
         return
     endif
     exe 'tabm '.l:n
+endfunction
+function! TabJump()
+    let l:n = tabpagenr()+1
+    echo l:n
+    " if l:n > tabpagenr('$')
+    "     exe 'tabm '.0
+    "     return
+    " endif
+    " exe 'tabm '.l:n
 endfunction
 
 

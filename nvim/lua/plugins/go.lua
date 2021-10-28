@@ -10,6 +10,7 @@ function goimports(timeout_ms)
     -- (lua/vim/lsp/handler.lua) for how to do this properly.
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
     if not result or next(result) == nil then return end
+    if result[1] == nil then return end
     local actions = result[1].result
     if not actions then return end
     local action = actions[1]
@@ -29,14 +30,9 @@ function goimports(timeout_ms)
     end
 end
 
-function format()
-    vim.lsp.buf.formatting()
-    vim.cmd('write')
-end
 
 vim.cmd([[autocmd BufWritePre *.go lua goimports(1000)]])
 vim.cmd([[autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc]])
-vim.cmd([[autocmd BufWritePre *.go noremap S :lua format()<CR>]])
 -- vim.cmd([[autocmd FileType go noremap <C-]> :lua vim.lsp.buf.definition()<CR>]])
 -- vim.cmd([[autocmd FileType go noremap gd :lua vim.lsp.buf.definition()<CR>]])
 -- vim.cmd([[autocmd FileType go noremap S :lua format()<CR>]])

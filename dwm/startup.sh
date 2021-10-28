@@ -53,4 +53,8 @@ exec dwm
 ### << https://wiki.archlinux.org/title/st 
 ### > sudo apt install fonts-symbola
 
+# urxvt  ranger 可以显示图片terminal 
 
+
+# key map
+# > /usr/include/X11/keysymdef.h

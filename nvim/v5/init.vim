@@ -44,7 +44,7 @@ Plug 'Chiel92/vim-autoformat'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+" Plug 'ojroques/nvim-lspfuzzy'
 
 " ranger
 Plug 'rbgrouleff/bclose.vim'

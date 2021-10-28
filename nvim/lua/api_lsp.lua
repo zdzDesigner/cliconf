@@ -14,6 +14,9 @@
 -- 查看函数相关引用
 -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
+-- 查看当前提示
+-- vim.lsp.diagnostic.show_line_diagnostics()
+
 -- 查看前一处语法错误
 -- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 
