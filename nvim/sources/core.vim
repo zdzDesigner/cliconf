@@ -130,6 +130,7 @@ map tn :tabe<CR>
 noremap <silent> <C-j> :tabp<CR>
 noremap <silent> <C-k> :tabn<CR>
 noremap <silent> <C-s> :tabn #<CR>
+noremap <silent> <C-t> :tabnew <CR>
 
 " noremap <silent> <C-1> :tabfirst<CR>
 " map <C-9> :tablast<CR>
@@ -230,8 +231,16 @@ endfunction
 
 " 测试
 function! TempVal()
-    echo expand("%")
-    echo expand("%:p")
+    " echo expand("%")
+    " echo expand("%:p")
+    echo bufnr('#')
+    echo bufnr('%')
+    echo buflisted(bufnr('#'))
+    echo buflisted(bufnr('$'))
+    echo buflisted(1000)
+    echo winnr()
+
+    echo winnr('$')
 endfunction
 
 

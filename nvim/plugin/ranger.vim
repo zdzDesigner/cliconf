@@ -61,11 +61,16 @@ if has('nvim')
     let currentPath = expand(a:path)
     let rangerCallback = { 'name': 'ranger', 'edit_cmd': a:edit_cmd }
     function! rangerCallback.on_exit(job_id, code, event)
+        " echom "Got here============"
       call s:AddNumber()
       if a:code == 0
-        silent! Bclose!
+          " echo :buffers
+        " silent! Bclose!
+        silent exe ":buffer #"
+        " silent! :buffer %
       endif
       try
+        " echom "Got here============"
         if filereadable(s:choice_file_path)
           for f in readfile(s:choice_file_path)
               " echom f
@@ -76,12 +81,12 @@ if has('nvim')
       endtry
     endfunction
     enew
+    " echom s:ranger_command . ' --choosefiles=' . s:choice_file_path . ' --selectfile="' . currentPath . '"'
     if isdirectory(currentPath)
       call termopen(s:ranger_command . ' --choosefiles=' . s:choice_file_path . ' "' . currentPath . '"', rangerCallback)
       " call termopen(s:ranger_command . ' --choosedir=' . s:choice_file_path . ' "' . currentPath . '"', rangerCallback)
 
     else
-      " echom currentPath 
       call termopen(s:ranger_command . ' --choosefiles=' . s:choice_file_path . ' --selectfile="' . currentPath . '"', rangerCallback)
       "
       " printf('--%s=%s %s', l:choose_arg, shellescape(g:ranger_tempfile), shellescape(a:path))

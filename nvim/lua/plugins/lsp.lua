@@ -2,6 +2,7 @@ local lspconfig = require('lspconfig')
 require('plugins/go')
 
 lspconfig.tsserver.setup {}
+lspconfig.bashls.setup{}
 lspconfig.gopls.setup {
     cmd = {"gopls", "serve"},
     settings = {

@@ -1,6 +1,7 @@
 #!/bin/bash
 # Screenshot: http://s.natalian.org/2013-08-17/dwm_status.png
 # Network speed stuff stolen from http://linuxclues.blogspot.sg/2009/11/shell-script-show-network-speed.html
+rval=$1
 
 # This function parses /proc/net/dev file searching for a line containing $interface data.
 # Within that line, the first and ninth numbers after ':' are respectively the received and transmited bytes.
@@ -31,11 +32,6 @@ function get_velocity {
 	fi
 }
 
-# Get initial values
-get_bytes
-old_received_bytes=$received_bytes
-old_transmitted_bytes=$transmitted_bytes
-old_time=$now
 
 print_volume() {
 	volume="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
@@ -94,7 +90,11 @@ get_battery_charging_status() {
 	if $(acpi -b | grep --quiet Discharging)
 	then
         if [ $(get_battery_combined_percent) -lt 10 ]; then
-            echo " ";
+            if [ $rval = 0 ]; then
+                echo " ";
+            else
+                echo " ";
+            fi
         elif [ $(get_battery_combined_percent) -lt 20 ]; then
             echo " ";
         elif [ $(get_battery_combined_percent) -lt 30 ]; then
@@ -102,7 +102,12 @@ get_battery_charging_status() {
         elif [ $(get_battery_combined_percent) -lt 50 ]; then
             echo " ";
         elif [ $(get_battery_combined_percent) -lt 60 ]; then
-            echo " ";
+            # echo " ";
+            if [ $rval = 0 ]; then
+                echo " ";
+            else
+                echo " ";
+            fi
         elif [ $(get_battery_combined_percent) -lt 90 ]; then
             echo " ";
         elif [ $(get_battery_combined_percent) -lt 100 ]; then
@@ -148,37 +153,52 @@ show_record(){
 	echo " $size $(basename $rp)"
 }
 
+if [ $rval = 0 ]; then
 
-LOC=$(readlink -f "$0")
-DIR=$(dirname "$LOC")
-export IDENTIFIER="unicode"
+    # Get initial values
+    get_bytes
+    old_received_bytes=$received_bytes
+    old_transmitted_bytes=$transmitted_bytes
+    old_time=$now
 
-#. "$DIR/dwmbar-functions/dwm_transmission.sh"
-#. "$DIR/dwmbar-functions/dwm_cmus.sh"
-#. "$DIR/dwmbar-functions/dwm_resources.sh"
-#. "$DIR/dwmbar-functions/dwm_battery.sh"
-#. "$DIR/dwmbar-functions/dwm_mail.sh"
-#. "$DIR/dwmbar-functions/dwm_backlight.sh"
-. "$DIR/dwmbar-functions/dwm_alsa.sh"
-#. "$DIR/dwmbar-functions/dwm_pulse.sh"
-#. "$DIR/dwmbar-functions/dwm_weather.sh"
-#. "$DIR/dwmbar-functions/dwm_vpn.sh"
-#. "$DIR/dwmbar-functions/dwm_network.sh"
-#. "$DIR/dwmbar-functions/dwm_keyboard.sh"
-#. "$DIR/dwmbar-functions/dwm_ccurse.sh"
-#. "$DIR/dwmbar-functions/dwm_date.sh"
+    LOC=$(readlink -f "$0")
+    DIR=$(dirname "$LOC")
+    export IDENTIFIER="unicode"
 
-get_bytes
+    #. "$DIR/dwmbar-functions/dwm_transmission.sh"
+    #. "$DIR/dwmbar-functions/dwm_cmus.sh"
+    #. "$DIR/dwmbar-functions/dwm_resources.sh"
+    #. "$DIR/dwmbar-functions/dwm_battery.sh"
+    #. "$DIR/dwmbar-functions/dwm_mail.sh"
+    #. "$DIR/dwmbar-functions/dwm_backlight.sh"
+    . "$DIR/dwmbar-functions/dwm_alsa.sh"
+    #. "$DIR/dwmbar-functions/dwm_pulse.sh"
+    #. "$DIR/dwmbar-functions/dwm_weather.sh"
+    #. "$DIR/dwmbar-functions/dwm_vpn.sh"
+    #. "$DIR/dwmbar-functions/dwm_network.sh"
+    #. "$DIR/dwmbar-functions/dwm_keyboard.sh"
+    #. "$DIR/dwmbar-functions/dwm_ccurse.sh"
+    #. "$DIR/dwmbar-functions/dwm_date.sh"
 
-# Calculates speeds
-vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
-vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
+    get_bytes
 
-xsetroot -name "  💿$(print_mem)M ⬇️$vel_recv ⬆️$vel_trans $(dwm_alsa) [$(print_bat)]$(show_record)  $(print_date) "
+    # Calculates speeds
+    vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
+    vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
+
+    xsetroot -name "  💿$(print_mem)M ⬇️$vel_recv ⬆️$vel_trans $(dwm_alsa) [$(print_bat)]$(show_record)  $(print_date) "
+
+else
+    vel_recv=$old_vel_recv
+    vel_trans=$old_vel_trans
+    xsetroot -name "  💿$(print_mem)M ⬇️$vel_recv ⬆️$vel_trans $(dwm_alsa) [$(print_bat)]$(show_record)  $(print_date) "
+fi
 
 # Update old values to perform new calculations
 old_received_bytes=$received_bytes
 old_transmitted_bytes=$transmitted_bytes
 old_time=$now
+old_vel_recv=$vel_recv
+old_vel_trans=$vel_trans
 
 exit 0
