@@ -93,7 +93,24 @@ get_battery_charging_status() {
 
 	if $(acpi -b | grep --quiet Discharging)
 	then
-		echo "🔋";
+        if [ $(get_battery_combined_percent) -lt 10 ]; then
+            echo " ";
+        elif [ $(get_battery_combined_percent) -lt 20 ]; then
+            echo " ";
+        elif [ $(get_battery_combined_percent) -lt 30 ]; then
+            echo " ";
+        elif [ $(get_battery_combined_percent) -lt 50 ]; then
+            echo " ";
+        elif [ $(get_battery_combined_percent) -lt 60 ]; then
+            echo " ";
+        elif [ $(get_battery_combined_percent) -lt 90 ]; then
+            echo " ";
+        elif [ $(get_battery_combined_percent) -lt 100 ]; then
+            echo " ";
+        else
+            # echo "🔋";
+            echo " ";
+        fi
 	else # acpi can give Unknown or Charging if charging, https://unix.stackexchange.com/questions/203741/lenovo-t440s-battery-status-unknown-but-charging
 		echo "🔌";
 	fi
@@ -121,7 +138,7 @@ print_bat(){
 }
 
 print_date(){
-	date '+%d/%H:%M'
+	date '+%d!%u/%H:%M'
 }
 
 show_record(){

@@ -73,7 +73,7 @@ vnoremap L $h
 " noremap J 10jzz
 noremap K 5k
 noremap J 5j
-noremap <LEADER><CR> :nohlsearch<CR>
+noremap <silent> <LEADER><CR> :nohlsearch<CR>
 
 " Copy to system clipboard
 " vnoremap Y "+y
@@ -129,6 +129,8 @@ map tn :tabe<CR>
 " <C-m> 和 Enter 相同
 noremap <silent> <C-j> :tabp<CR>
 noremap <silent> <C-k> :tabn<CR>
+noremap <silent> <C-s> :tabn #<CR>
+
 " noremap <silent> <C-1> :tabfirst<CR>
 " map <C-9> :tablast<CR>
 noremap <silent> <LEADER>0 :tabfirst<CR>
@@ -203,13 +205,20 @@ function! TabNext()
     exe 'tabm '.l:n
 endfunction
 function! TabJump()
-    let l:n = tabpagenr()+1
-    echo l:n
+    :tabn #
+    " echo getcwd()
+    " let l:n = tabpagenr()
+    " echo l:n
+    " echo bufwinnr('~/.zdz/nvim/sources/core.vim')
+    " echo bufwinnr('~/.zdz/dwm/scripts/dwmbar-functions/dwm_battery.sh')
+
+    
+    " echo :tabs
     " if l:n > tabpagenr('$')
     "     exe 'tabm '.0
-    "     return
-    " endif
-    " exe 'tabm '.l:n
+"     return
+" endif
+" exe 'tabm '.l:n
 endfunction
 
 
