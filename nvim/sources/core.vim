@@ -129,7 +129,8 @@ map tn :tabe<CR>
 " <C-m> 和 Enter 相同
 noremap <silent> <C-j> :tabp<CR>
 noremap <silent> <C-k> :tabn<CR>
-noremap <silent> <C-s> :tabn #<CR>
+" noremap <silent> <C-e> :tabn #<CR>
+noremap <silent> <C-x> :tabn #<CR>
 noremap <silent> <C-t> :tabnew <CR>
 
 " noremap <silent> <C-1> :tabfirst<CR>
