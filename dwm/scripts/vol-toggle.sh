@@ -11,4 +11,4 @@ else
     /usr/bin/amixer set Speaker mute
     /usr/bin/amixer set Speaker mute
 fi
-bash ~/.zdz/dwm/scripts/dwm-status-refresh.sh
+bash $CLIENV/dwm/scripts/dwm-status-refresh.sh

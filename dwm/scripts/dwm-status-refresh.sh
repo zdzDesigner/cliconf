@@ -2,6 +2,12 @@
 # Screenshot: http://s.natalian.org/2013-08-17/dwm_status.png
 # Network speed stuff stolen from http://linuxclues.blogspot.sg/2009/11/shell-script-show-network-speed.html
 rval=$1
+rval=${rval:-0}
+
+TEMP_STATUS=$CLIENV/.temp/dwmbar
+if [[ ! -f $TEMP_STATUS ]]; then
+    echo "" > $TEMP_STATUS
+fi
 
 # This function parses /proc/net/dev file searching for a line containing $interface data.
 # Within that line, the first and ninth numbers after ':' are respectively the received and transmited bytes.
@@ -102,12 +108,7 @@ get_battery_charging_status() {
         elif [ $(get_battery_combined_percent) -lt 50 ]; then
             echo " ";
         elif [ $(get_battery_combined_percent) -lt 60 ]; then
-            # echo " ";
-            if [ $rval = 0 ]; then
-                echo " ";
-            else
-                echo " ";
-            fi
+            echo " ";
         elif [ $(get_battery_combined_percent) -lt 90 ]; then
             echo " ";
         elif [ $(get_battery_combined_percent) -lt 100 ]; then
@@ -186,19 +187,17 @@ if [ $rval = 0 ]; then
     vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
     vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-    xsetroot -name "  💿$(print_mem)M ⬇️$vel_recv ⬆️$vel_trans $(dwm_alsa) [$(print_bat)]$(show_record)  $(print_date) "
-
+    STATUS_BAR_NEW="  💿$(print_mem)M ⬇️$vel_recv ⬆️$vel_trans $(dwm_alsa) [$(print_bat)]$(show_record)  $(print_date) "
+    echo "$STATUS_BAR_NEW" > $TEMP_STATUS
+    xsetroot -name "$STATUS_BAR_NEW"
 else
-    vel_recv=$old_vel_recv
-    vel_trans=$old_vel_trans
-    xsetroot -name "  💿$(print_mem)M ⬇️$vel_recv ⬆️$vel_trans $(dwm_alsa) [$(print_bat)]$(show_record)  $(print_date) "
+    STATUS_BAR=$(sed -e "s/\[.*\]/[$(print_bat)]/g" "$TEMP_STATUS")
+    xsetroot -name "$STATUS_BAR"
 fi
 
 # Update old values to perform new calculations
 old_received_bytes=$received_bytes
 old_transmitted_bytes=$transmitted_bytes
 old_time=$now
-old_vel_recv=$vel_recv
-old_vel_trans=$vel_trans
 
 exit 0

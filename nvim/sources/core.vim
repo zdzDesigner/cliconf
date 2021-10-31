@@ -210,8 +210,8 @@ function! TabJump()
     " echo getcwd()
     " let l:n = tabpagenr()
     " echo l:n
-    " echo bufwinnr('~/.zdz/nvim/sources/core.vim')
-    " echo bufwinnr('~/.zdz/dwm/scripts/dwmbar-functions/dwm_battery.sh')
+    " echo bufwinnr($CLIENV.'/nvim/sources/core.vim')
+    " echo bufwinnr($CLIENV.'/dwm/scripts/dwmbar-functions/dwm_battery.sh')
 
     
     " echo :tabs
@@ -241,6 +241,7 @@ function! TempVal()
     echo winnr()
 
     echo winnr('$')
+    echo $CLIENV."/aaa"
 endfunction
 
 

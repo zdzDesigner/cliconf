@@ -1,50 +1,102 @@
 #!/bin/bash
-TEMP_PATH=$HOME/.bg/.temp
+
+direc=$1
+direc=${direc:-"asc"}
+
+TEMP_PATH=$CLIENV/.temp/bg
 if [[ ! -f $TEMP_PATH ]]; then
     echo "" > $TEMP_PATH
 fi
 
 curbuf=$(cat $TEMP_PATH)
-echo $curbuf
+echo "temppath::" $curbuf
+
 curnum=${curbuf%%@*}
 cururl=${curbuf##*@}
+cururl=${cururl:-"xxxxxxx"}
+echo "tempbg::" $cururl
 curnum=${curnum:-0}
 
 echo $cururl
 echo $curnum
 
 function getwp() {
-    tarurl=""
+
+    curnum=$1
+    cururl=$2
+    direc=$3
+    tempurl=""
+    headurl=""
+    tailurl=""
+    preurl=""
+    equrl=""
+    nexturl=""
+
     declare -i count=0
 
     for f in $HOME/.bg/*
     do
         if [ -f "$f" ];then
-            tarurl="${f##*/}"
-            if [[ $count == 1 ]]; then
-                echo "1@$tarurl" > $TEMP_PATH
-                break
+            tempurl="${f##*/}"
+            # echo "tempurl::$count::" $tempurl
+            # head
+            if [ $count = 0 ]; then
+                headurl=$tempurl
             fi
-            if [[ $1 == 0  ]]; then
-                echo "1@$tarurl" > $TEMP_PATH
+
+            if [ ! -z $equrl ]; then
+                # echo "nexturl::" $tempurl
+                nexturl=$tempurl
                 break
             fi
 
-            if [[ $2 == $tarurl ]]; then
-                count=1
+            if [[ $cururl == $tempurl ]] ; then
+                # resolve:: direction is desc first bug
+                if [[ $direc == "asc" ]] || ([[ $direc == "desc" ]] && [[ $count > 0 ]]); then
+                    # echo "equrl::" $tempurl
+                    equrl=$tempurl
+                fi
+            else
+                preurl=$tempurl
             fi
+            # tail
+            tailurl=$tempurl
+            count=$[count+1]
         fi
     done
-    echo $tarurl
+    # next
+    if [ $direc == "asc" ]; then
+        if [ ! -z $nexturl ]; then
+            echo "$count@$nexturl" > $TEMP_PATH
+            echo $nexturl
+            return
+        fi
+
+        echo "$count@$headurl" > $TEMP_PATH
+        echo $headurl
+        return
+    fi
+    
+    if [ $direc == "desc" ]; then
+        if [ ! -z $preurl ]; then
+            echo "$count@$preurl" > $TEMP_PATH
+            echo $preurl
+            return
+        fi
+        # echo "$count@$tailurl" > $TEMP_PATH
+        # echo $tailurl
+        # return
+    fi
 }
 
-ret=$(getwp $curnum $cururl)
+ret=$(getwp $curnum $cururl $direc)
 echo ret: "$ret"
-if [[ $ret == $cururl ]]; then
-    echo "equl"
-    ret=$(getwp 0 $cururl)
-fi
-echo ret rest: $ret
+# last bg, reset 0
+# if [[ $ret == $cururl ]]; then
+#     echo "equl"
+#     ret=$(getwp 0 $cururl)
+# fi
+# echo ret rest: $ret
 
 
 

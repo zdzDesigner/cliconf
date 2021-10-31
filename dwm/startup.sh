@@ -13,7 +13,7 @@ export WINIT_X11_SCALE_FACTOR=1
 compton -b
 
 
-/bin/bash /home/zdz/.zdz/dwm/scripts/dwm-status.sh &
+/bin/bash $CLIENV/dwm/scripts/dwm-status.sh &
 
 # 网络
 nm-applet &

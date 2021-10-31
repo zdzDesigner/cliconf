@@ -1,10 +1,21 @@
 #!/bin/bash
 
+
 # check environment
 if [ -z $CLIENV ]; then
     echo "\$CLIENV is empty, pleace set CLIENV env; CLIENV is current dir path."
     exit
 fi
+
+if [ ! -d "$HOME/.bg" ]; then
+    echo "dir $HOME/.bg not find, pleace create $HOME/.bg with feh window background image."
+    exit
+fi
+if [ ! -d "$HOME/.config" ]; then
+    echo "dir $HOME/.config not find, pleace create $HOME/.config with common conf."
+    exit
+fi
+
 
 function stdin() {
     read STDIN
