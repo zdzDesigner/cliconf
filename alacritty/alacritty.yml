@@ -86,18 +86,15 @@ shell:
 
 
 key_bindings:
-    - { key: V,         mods: Control,                                      action: Paste                   }
-    - { key: C,         mods: Control,                                      action: Copy                    }
-    - { key: V,         mods: Control|Shift,                                action: None                    }
-    - { key: E,                                      action: None                    }
-    - { key: E,         mods: Control,                                      action: None                    }
-    - { key: E,         mode: Vi,                                   action: None                    }
-    - { key: E,         mods: Shift,                mode: Vi|~Search,       action: None                    }
-    - { key: Q,         mods: Control|Shift|Alt,                            action: "Quit"                  }
-    - { key: K,         mods: Alt,                                          action: ScrollHalfPageUp        }
-    - { key: J,         mods: Alt,                                          action: ScrollHalfPageDown      }
     # - { key: Space,  mods:  Super,  mode: ~Search,    action: ToggleSimpleFullscreen}
     # - { key: F11,       mode: ~Search,                action: ToggleFullscreen      }
+    - { key: V,         mods: Control,                                      action: Paste                     }
+    - { key: C,         mods: Control,                                      action: Copy                      }
+    - { key: V,         mods: Control|Shift,                                chars: "\x16"                     }
+    - { key: E,         mods: Control,                                      chars: "\x05"                     }
+    - { key: Q,         mods: Control|Shift|Alt,                            action: "Quit"                    }
+    - { key: K,         mods: Alt,                                          action: ScrollHalfPageUp          }
+    - { key: J,         mods: Alt,                                          action: ScrollHalfPageDown        }
     # - { key: C,         mods: Control|Shift,          action: None                }
     # - { key: C,         mods: Control|Shift,        chars: "\x03"                 }  
     # - { key: K,         mods: Alt,                  action: ScrollPageUp          }

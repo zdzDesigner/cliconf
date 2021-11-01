@@ -144,7 +144,7 @@ print_bat(){
 }
 
 print_date(){
-	date '+%d!%u/%H:%M'
+	date '+%a|%d/%H:%M'
 }
 
 show_record(){
