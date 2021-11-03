@@ -14,7 +14,9 @@ set cursorline
 set wildmenu
 set showcmd
 set hlsearch
+" hlsearch match lighthigh color set in  colorscheme
 exec "nohlsearch"
+
 set incsearch
 " 设置默认进行大小写不敏感查找
 set ignorecase
@@ -71,8 +73,14 @@ noremap L $
 vnoremap L $h
 " noremap K 10kzz
 " noremap J 10jzz
-noremap K 5k
-noremap J 5j
+" noremap K 5k
+" noremap J 5j
+noremap K 10k
+noremap J 10j
+" noremap [[ <nop>
+" noremap ]] <nop>
+" noremap [ 10k
+" noremap ] 10j
 noremap <silent> <LEADER><CR> :nohlsearch<CR>
 
 " Copy to system clipboard
@@ -174,7 +182,7 @@ autocmd filetype javascript set shiftwidth=2
 
 
 
-function ZReg()
+function! ZReg()
     let @b=@+
 endfunction
 

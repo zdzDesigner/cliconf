@@ -30,6 +30,8 @@ xfce4-power-manager &
 
 #解决 键盘延迟, 长按延迟
 xset r rate 250 30
+# 禁用中建复制
+# xmodmap -e "pointer = 1 25 3 4 5 6 7 8"
 
 # 解除静音
 # alsamixer &
