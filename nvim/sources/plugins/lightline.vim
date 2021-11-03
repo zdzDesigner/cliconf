@@ -1,4 +1,4 @@
-
+" percent
 let g:lightline = {
       \ 'colorscheme':'one',
       \ 'active': {
@@ -6,22 +6,34 @@ let g:lightline = {
       \              [ 'gitbranch' ],
       \              [ 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
+      \              [ 'totallinesandpercent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ] 
       \ },
       \ 'component': {
       \   'filename': '%f',
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'gitbranch#name',
+      \   'totallines': 'LightLineTotalLines',
+      \   'totallinesandpercent': 'LightLineTotalLinesAndPercent'
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' },
       \ }
+" slash
+" let g:lightline.separator = { 'left': '', 'right': '' }
+" let g:lightline.subseparator = { 'left': '', 'right': '' }
+
+" fire
+let g:lightline.separator = { 'left': "\ue0c0", 'right': "\ue0c2" }
+let g:lightline.tabline_separator = { 'left': "\ue0c0", 'right': "" }
+let g:lightline.subseparator = { 'left': "\ue0c1", 'right': "\ue0c3" }
+
+" arrow
+" let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2"}
+" let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3"}
 
 let g:lightline.tabline = {
       \ 'left': [ [ 'tabs' ] ],
-      \ 'right': [ [] ] }
+      \ 'right': [ [''] ] }
 " let g:lightline.tabline = {
 "       \ 'left': [ [ 'tabs' ] ] }
 
@@ -30,7 +42,12 @@ let g:lightline.tab = {
       \ 'active': [ 'filename', 'modified' ],
       \ 'inactive': [ 'filename', 'modified' ] }
 
-
+function! LightLineTotalLines()
+  return line('$')
+endfunction
+function! LightLineTotalLinesAndPercent()
+  return line('$').''.(line('.')*100/line('$').'%')
+endfunction
 " function! Filename()
 "     " return '%f'
 "     return expand('%f')

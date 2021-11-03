@@ -94,6 +94,7 @@ key_bindings:
     - { key: C,         mods: Control,                                      action: Copy                      }
     - { key: V,         mods: Control|Shift,                                chars: "\x16"                     }
     - { key: E,         mods: Control,                                      chars: "\x05"                     }
+    - { key: Semicolon, mods: Control,                                      chars: "\x20\x3b"                 }
     - { key: Q,         mods: Control|Shift|Alt,                            action: "Quit"                    }
     - { key: K,         mods: Alt,                                          action: ScrollHalfPageUp          }
     - { key: J,         mods: Alt,                                          action: ScrollHalfPageDown        }

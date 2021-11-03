@@ -114,7 +114,7 @@ Plug 'gcmt/wildfire.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'mg979/vim-visual-multi'
 
-
+" Plug 'prettier/vim-prettier'
 " Plug 'kdheepak/lazygit.nvim'
 "
 Plug 'SirVer/ultisnips'
@@ -172,8 +172,8 @@ xmap ga <Plug>(EasyAlign)
 " ===
 " === vim-autoformat
 " ===
-let g:formatters_vue = ['eslint_local', 'stylelint']
-let g:run_all_formatters_vue = 1
+" let g:formatters_vue = ['eslint_local', 'stylelint']
+" let g:run_all_formatters_vue = 1
 
 
 

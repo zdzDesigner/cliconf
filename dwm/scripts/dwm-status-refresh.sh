@@ -142,9 +142,11 @@ print_bat(){
 	# echo "$(get_battery_charging_status) $(get_battery_combined_percent)%, $(get_time_until_charged )";
 	echo "$(get_battery_charging_status)$(get_battery_combined_percent)%";
 }
-
+# ☀
 print_date(){
-	date '+%a/%d/%H:%M'
+	# date '+%a/%d/%H:%M'
+	date '+%u%d/%H:%M'
+
 }
 
 show_record(){

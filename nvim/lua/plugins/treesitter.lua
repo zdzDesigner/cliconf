@@ -2,6 +2,7 @@ local treesitter = require('nvim-treesitter.configs')
 treesitter.setup {
   highlight = {
     enable = true,
+    disable = { "vue" },
     custom_captures = {
       -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
       ["foo.bar"] = "Identifier",

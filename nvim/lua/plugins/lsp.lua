@@ -1,20 +1,12 @@
 local lspconfig = require('lspconfig')
-require('plugins/go')
 
-lspconfig.tsserver.setup {}
+
+lspconfig.tsserver.setup{}
 lspconfig.bashls.setup{}
-lspconfig.gopls.setup {
-    cmd = {"gopls", "serve"},
-    settings = {
-        gopls = {
-            gofumpt = true,
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        },
-    },
-}
+require('plugins/go')
+-- require('plugins/vue')
+require('plugins/lua')
+
 
 -- require('lspfuzzy').setup {}
 
@@ -55,3 +47,5 @@ end
 
 vim.cmd([[autocmd BufWritePre *.go noremap S :lua format()<CR>]])
 vim.cmd([[autocmd BufWritePre *.js noremap S :lua format()<CR>]])
+vim.cmd([[autocmd BufWritePre *.vue noremap S :lua format()<CR>]])
+vim.cmd([[autocmd BufWritePre *.lua noremap S :lua format()<CR>]])

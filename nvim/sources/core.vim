@@ -227,22 +227,27 @@ endfunction
 noremap <silent> <C-g> :call AbsolutePath()<CR>
 function! AbsolutePath()
     let @+=expand("%:p")
+    " let @+=expand("%:h")
 endfunction
 
 
 " 测试
 function! TempVal()
-    " echo expand("%")
-    " echo expand("%:p")
-    echo bufnr('#')
-    echo bufnr('%')
-    echo buflisted(bufnr('#'))
-    echo buflisted(bufnr('$'))
-    echo buflisted(1000)
-    echo winnr()
+    echo expand("%")
+    echo expand("%:p")
+    echo expand("%:h")
+    " echo expand("#")
+    " echo expand("#2")
 
-    echo winnr('$')
-    echo $CLIENV."/aaa"
+    " echo bufnr('#')
+    " echo bufnr('%')
+    " echo buflisted(bufnr('#'))
+    " echo buflisted(bufnr('$'))
+    " echo buflisted(1000)
+    " echo winnr()
+    "
+    " echo winnr('$')
+    " echo $CLIENV."/aaa"
 endfunction
 
 

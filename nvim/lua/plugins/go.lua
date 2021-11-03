@@ -1,4 +1,17 @@
+local lspconfig = require('lspconfig')
 
+lspconfig.gopls.setup {
+    cmd = {"gopls", "serve"},
+    settings = {
+        gopls = {
+            gofumpt = true,
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+}
 function goimports(timeout_ms)
     local context = { only = { "source.organizeImports" } }
     vim.validate { context = { context, "t", true } }
