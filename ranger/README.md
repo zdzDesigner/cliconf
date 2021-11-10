@@ -9,7 +9,9 @@
 > backspace
 
 
-
+## filtered select
+> zf exp   <enter>
+> select
 
 
 

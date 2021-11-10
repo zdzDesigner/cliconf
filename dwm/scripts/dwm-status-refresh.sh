@@ -59,7 +59,6 @@ print_temp(){
 	echo $(head -c 2 /sys/class/thermal/thermal_zone0/temp)C
 }
 
-#!/bin/bash
 
 get_time_until_charged() {
 

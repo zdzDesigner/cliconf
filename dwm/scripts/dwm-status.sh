@@ -26,7 +26,8 @@ do
 	sleep 1
 
     count=$[count+1]
-    if [[ $[count%$[60*30]] == 0 ]]; then
+    if [[ $[count%$[60*60]] == 0 ]]; then
+    # if [[ $[count%$[60*30]] == 0 ]]; then
     # if [[ $[count%$[10]] == 0 ]]; then
         feh --recursive --randomize --bg-fill $HOME/.bg/green/*
         count=0

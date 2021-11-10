@@ -218,6 +218,9 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
 
 " ===
 " === dracula theme
+" ~/.config/nvim/pluggedv5/dracula/colors/dracula.vim
+" call s:h('DraculaSearch', s:none, s:none, [s:attrs.inverse])
+" call s:h('DraculaSearch', s:comment, s:fg, [s:attrs.inverse])
 " ===
 let g:dracula_colorterm = 0
 colorscheme dracula

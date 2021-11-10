@@ -75,8 +75,10 @@ vnoremap L $h
 " noremap J 10jzz
 " noremap K 5k
 " noremap J 5j
-noremap K 10k
-noremap J 10j
+" noremap K 10k
+" noremap J 10j
+noremap K 6k
+noremap J 6j
 " noremap [[ <nop>
 " noremap ]] <nop>
 " noremap [ 10k
@@ -101,10 +103,11 @@ map <C-a> <nop>
 map <C-x> <nop>
 map <C-a> :tabnew  ~/temp/log/
 map s <nop>
-map S :w<CR>
+map <silent> S :w<CR>
 " imap <C-s> <Esc> :w<CR> alacritty tmux 不支持
 map Q :q<CR>
-map W :q<CR>
+" map W :q<CR>
+map <silent> W :call TabCloseLeft()<CR>
 map E :e<CR>
 map R :source $MYVIMRC<CR>
 
@@ -119,10 +122,11 @@ map <right> :vertical resize +5<CR>
 map <LEADER>sc :set spell!<CR>
 " map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
 
-" map <LEADER>l <C-w>l
-" map <LEADER>h <C-w>h
-" map <LEADER>j <C-w>j
-" map <LEADER>k <C-w>k
+" ====== 分栏跳转=======
+" <C-w>l
+" <C-w>h
+" <C-w>j
+" <C-w>k
 
 map <LEADER>i O<Esc>
 map <LEADER>o o<Esc>
@@ -153,6 +157,7 @@ noremap <silent> <LEADER>j :call TabPrev()<CR>
 noremap <silent> <LEADER>k :call TabNext()<CR>
 
 
+nnoremap <Leader><C-]> <C-w><C-]><C-w>T
 noremap r <nop>
 
 
@@ -175,23 +180,18 @@ autocmd filetype javascript set shiftwidth=2
 " autocmd filetype javascript map S :w<CR>
 
 
-
-
-
-
-
-
-
 function! ZReg()
     let @b=@+
 endfunction
 
-
-
-" lazygit
-" lazygit
-" noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
-
+function! TabCloseLeft()
+    if winnr('$') == 1 && tabpagenr('$') > 1 && tabpagenr() > 1 && tabpagenr() < tabpagenr('$')
+        :q | tabprevious
+    else
+        :q
+    endif
+    " echon ''
+endfunction
 
 function! Call()
     echo TabPrev()
@@ -244,6 +244,18 @@ function! TempVal()
     echo expand("%")
     echo expand("%:p")
     echo expand("%:h")
+    echo nvim_get_current_line()
+    echo nvim_get_current_buf()
+    echo nvim_get_current_tabpage()
+    echo nvim_get_current_win()
+    echo nvim_list_bufs()
+    echo nvim_list_tabpages()
+    
+    " echo nvim_list_chans()
+    let tabpaths = nvim_command(":ls")
+    echo tabpaths
+
+    " echo nvim_list_runtime_paths()
     " echo expand("#")
     " echo expand("#2")
 
@@ -289,3 +301,8 @@ endfunction
 "
 "
 " set tabline=%!MyTabLine()
+
+" lazygit
+" lazygit
+" noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
+

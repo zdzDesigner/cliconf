@@ -1,10 +1,10 @@
-" percent
+" percent 'modified'
 let g:lightline = {
       \ 'colorscheme':'one',
       \ 'active': {
       \   'left':  [ [ 'mode', 'paste' ],
       \              [ 'gitbranch' ],
-      \              [ 'readonly', 'filename', 'modified' ] ],
+      \              [ 'readonly', 'filename' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'totallinesandpercent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ] 

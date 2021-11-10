@@ -27,12 +27,15 @@
 function! s:ClearNumber()
     set nonumber
     set norelativenumber
+    set nohlsearch
+
 endfunction
 
 
 function! s:AddNumber()
     set number
     set relativenumber
+    set hlsearch
 endfunction
 
 if exists('g:ranger_choice_file')
