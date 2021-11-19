@@ -98,6 +98,8 @@ noremap <silent> <LEADER><CR> :nohlsearch<CR>
 
 " 禁止visual 模式下转换小写，防止误碰
 vnoremap u <nop>
+" 合并一行 join
+vnoremap sj :join<CR>
 " 禁止快捷键数字增加
 map <C-a> <nop>
 map <C-x> <nop>
@@ -153,6 +155,7 @@ noremap <silent> <LEADER>9 :tablast<CR>
 noremap <silent> <LEADER>[ :tabmove 0<CR>
 noremap <silent> <LEADER>] :tabmove<CR>
 noremap <silent> <LEADER>l :tabmove<CR>
+noremap <silent> <LEADER>h :tabmove 0<CR>
 noremap <silent> <LEADER>j :call TabPrev()<CR>
 noremap <silent> <LEADER>k :call TabNext()<CR>
 

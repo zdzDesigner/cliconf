@@ -29,7 +29,7 @@ nm-applet &
 xfce4-power-manager &
 
 # 禁用中建复制
-# xmodmap -e "pointer = 1 25 3 4 5 6 7 8"
+xmodmap -e "pointer = 1 25 3 4 5 6 7 8"
 #解决 键盘延迟, 长按延迟
 xset r rate 250 30
 
@@ -60,3 +60,6 @@ exec dwm
 
 # key map
 # > /usr/include/X11/keysymdef.h
+
+# 设置亮度 
+# sudo ./brightness 90

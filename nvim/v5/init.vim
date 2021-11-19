@@ -10,10 +10,14 @@ Plug 'hrsh7th/nvim-cmp'
 " For vsnip user.
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 " For luasnip user.
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+
+" snippets show to cmp window
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 "
 " workspace
 Plug 'thaerkh/vim-workspace'
@@ -143,6 +147,7 @@ lua << EOF
     require('plugins/treesitter')
     require('plugins/lsp')
     require('plugins/cmp')
+    require('keymaps')
 EOF
 " :lua require('plugins/lsp')
 " :lua require('plugins/cmp')
