@@ -33,14 +33,15 @@ let g:lightline.subseparator = { 'left': "", 'right': "" }
 " let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2"}
 " let g:lightline.tabline_separator = { 'left': "\ue0b0", 'right': "" }
 " let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3"}
-
+let g:lightline.winwidth = winwidth(0)
 let g:lightline.tabline = {
       \ 'left': [ [ 'tabs' ] ],
       \ 'right': [ [''] ] }
 " let g:lightline.tabline = {
 "       \ 'left': [ [ 'tabs' ] ] }
-
-
+let g:lightline.component_expand = {
+	    \ 'tabs': 'lightline#tabs' }
+" let g:lightline.tabline.left = [ [ 'A', 'B', 'tabs', 'C', 'D' ] ]
 let g:lightline.tab = {
       \ 'active': [ 'filename', 'modified' ],
       \ 'inactive': [ 'filename', 'modified' ] }
@@ -67,3 +68,13 @@ endfunction
 "       \   'filename': '%f',
 "       \ },
 "       \ }
+
+
+" ===
+" === change srouce
+" ===
+" function! lightline#tabs() abort
+"   ...
+"   let n = min([max([&columns / 20, 2]), 8])
+"   ...
+" endfunction

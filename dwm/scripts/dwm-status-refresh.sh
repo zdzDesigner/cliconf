@@ -9,6 +9,25 @@ if [[ ! -f $TEMP_STATUS ]]; then
     echo "" > $TEMP_STATUS
 fi
 
+function wifi() {
+
+    WIFI=`iwconfig`
+    #function_body
+    for LINE in $WIFI ; do
+
+        if [[ "$LINE" =~ ESSID:\".+\" ]]; then
+            # echo ${LINE##*ESSID:}
+            CWIFI=`echo $LINE | sed -r "s/.*ESSID:\"(.+)\"/\1/g"`
+            CWIFI=${CWIFI:0:3}
+            # echo "(.${CWIFI^^})"
+            echo ".${CWIFI^^}"
+        elif [[ "$LINE" =~ ESSID:.+ ]]; then
+            # echo 睊 ${LINE##*ESSID:}
+            echo 
+        fi
+        
+    done
+}
 # This function parses /proc/net/dev file searching for a line containing $interface data.
 # Within that line, the first and ninth numbers after ':' are respectively the received and transmited bytes.
 function get_bytes {
@@ -32,9 +51,9 @@ function get_velocity {
 	velKB=$(echo "1000000000*($value-$old_value)/1024/$timediff" | bc)
 	if test "$velKB" -gt 1024
 	then
-		echo $(echo "scale=2; $velKB/1024" | bc)MB/s
+		echo $(echo "scale=2; $velKB/1024" | bc)M
 	else
-		echo ${velKB}KB/s
+		echo ${velKB}K
 	fi
 }
 
@@ -101,7 +120,12 @@ get_battery_charging_status() {
                 echo " ";
             fi
         elif [ $(get_battery_combined_percent) -lt 20 ]; then
-            echo " ";
+            if [ $rval = 0 ]; then
+                echo " ";
+            else
+                echo " ";
+            fi
+            # echo " ";
         elif [ $(get_battery_combined_percent) -lt 30 ]; then
             echo " ";
         elif [ $(get_battery_combined_percent) -lt 50 ]; then
@@ -188,7 +212,7 @@ if [ $rval = 0 ]; then
     vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
     vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-    STATUS_BAR_NEW="  💿$(print_mem)M ⬇️$vel_recv ⬆️$vel_trans $(dwm_alsa) [$(print_bat)]$(show_record)  $(print_date) "
+    STATUS_BAR_NEW="  ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) [$(print_bat)]$(show_record) $(wifi) $(print_date) "
     echo "$STATUS_BAR_NEW" > $TEMP_STATUS
     xsetroot -name "$STATUS_BAR_NEW"
 else
