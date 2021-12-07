@@ -10,3 +10,6 @@ let g:ultisnips_javascript = {
       \ 'semi': 'never',
       \ 'space-before-function-paren': 'always',
       \ }
+
+
+" :UltiSnipsAddFiletypes javascript.html

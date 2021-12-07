@@ -9,6 +9,14 @@ if [[ ! -f $TEMP_STATUS ]]; then
     echo "" > $TEMP_STATUS
 fi
 
+ 
+function getbrightness() {
+    # .
+    echo "☀$(($(cat /sys/class/backlight/intel_backlight/brightness)/15))%"
+    # echo ".$(($(cat /sys/class/backlight/intel_backlight/brightness)/15))%"
+    # echo "$(($(cat /sys/class/backlight/intel_backlight/brightness)/15))%"
+}
+
 function wifi() {
 
     WIFI=`iwconfig`
@@ -115,6 +123,7 @@ get_battery_charging_status() {
 	then
         if [ $(get_battery_combined_percent) -lt 10 ]; then
             if [ $rval = 0 ]; then
+                zenity --warning --text "请充电" --width=300 --height=10 --timeout=1
                 echo " ";
             else
                 echo " ";
@@ -168,7 +177,9 @@ print_bat(){
 # ☀
 print_date(){
 	# date '+%a/%d/%H:%M'
-	date '+%u%d/%H:%M'
+	# date '+%u%d/%H:%M'
+	# date '+%u/%m.%d/%H:%M'
+	date '+%H:%M/%d%u'
 
 }
 
@@ -212,9 +223,12 @@ if [ $rval = 0 ]; then
     vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
     vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-    STATUS_BAR_NEW="  ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) [$(print_bat)]$(show_record) $(wifi) $(print_date) "
+    STATUS_BAR_NEW="  ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) $(getbrightness) $(wifi) $(print_date) [$(print_bat)]$(show_record) "
+    # STATUS_BAR_NEW="  $(print_date) ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) $(getbrightness) $(wifi) [$(print_bat)]$(show_record) "
     echo "$STATUS_BAR_NEW" > $TEMP_STATUS
+    # STATUS_BAR_NEW="echo -e \033[34;41mColor Text\033[0m"
     xsetroot -name "$STATUS_BAR_NEW"
+    # xsetroot  -bitmap grey_9_9.xbm  -name "aaa     $STATUS_BAR_NEW"
 else
     STATUS_BAR=$(sed -e "s/\[.*\]/[$(print_bat)]/g" "$TEMP_STATUS")
     xsetroot -name "$STATUS_BAR"

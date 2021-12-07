@@ -126,6 +126,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'nvim-treesitter/nvim-treesitter'
 
+Plug 'pseewald/vim-anyfold'
 call plug#end()
 
 " source $CLIENV/nvim/sources/plugins/coc.vim
@@ -142,6 +143,7 @@ source $CLIENV/nvim/sources/plugins/ranger.vim
 source $CLIENV/nvim/sources/plugins/tcomment.vim
 source $CLIENV/nvim/sources/plugins/workspace.vim
 source $CLIENV/nvim/sources/plugins/snippets.vim
+source $CLIENV/nvim/sources/plugins/fold.vim
 
 
 lua << EOF
@@ -242,6 +244,11 @@ source $CLIENV/nvim/sources/scripts/kibanalog.vim
 
 
 
+" ===
+" === RESET
+"
+" === fold
+hi Folded term=bold cterm=NONE ctermbg=240 ctermfg=white
 
 
 

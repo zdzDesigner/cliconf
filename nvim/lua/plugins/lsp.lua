@@ -6,7 +6,7 @@ lspconfig.bashls.setup{}
 require('plugins/go')
 -- require('plugins/vue')
 require('plugins/lua')
-
+require('plugins/ccls')
 
 -- require('lspfuzzy').setup {}
 
