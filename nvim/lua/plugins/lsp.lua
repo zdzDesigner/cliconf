@@ -3,6 +3,10 @@ local lspconfig = require('lspconfig')
 
 lspconfig.tsserver.setup{}
 lspconfig.bashls.setup{}
+lspconfig.html.setup{
+    filetypes = { "html" , "vue"}
+}
+
 require('plugins/go')
 -- require('plugins/vue')
 require('plugins/lua')

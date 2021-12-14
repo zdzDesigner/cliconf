@@ -6,6 +6,7 @@ local has_words_before = function()
 end
 cmp.setup({
     snippet = {
+        -- https://github.com/hrsh7th/nvim-cmp/issues/351
         expand = function(args)
             -- For `vsnip` user.
             vim.fn["vsnip#anonymous"](args.body)
@@ -15,7 +16,7 @@ cmp.setup({
             -- require('luasnip').lsp_expand(args.body)
 
             -- For `ultisnips` user.
-            vim.fn["UltiSnips#Anon"](args.body)
+            -- vim.fn["UltiSnips#Anon"](args.body)
         end,
     },
     mapping = {
