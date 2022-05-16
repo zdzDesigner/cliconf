@@ -5,6 +5,11 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+" Plug 'williamboman/nvim-lsp-installer'
+
+
+" lsp 加载进度
+Plug 'j-hui/fidget.nvim'
 
 
 
@@ -59,7 +64,7 @@ Plug 'junegunn/fzf.vim'
 
 " ranger
 Plug 'rbgrouleff/bclose.vim'
-Plug 'francoiscabrol/ranger.vim'
+" Plug 'francoiscabrol/ranger.vim'
 " bug: exist tab no jump
 " Plug 'rafaqz/ranger.vim'
 
@@ -158,6 +163,7 @@ source $CLIENV/nvim/sources/plugins/lazygit.vim
 " source $CLIENV/nvim/sources/plugins/nerdtree.vim
 " source $CLIENV/nvim/sources/plugins/airline.vim
 source $CLIENV/nvim/sources/plugins/lightline.vim
+source $CLIENV/nvim/plugin//ranger.vim
 source $CLIENV/nvim/sources/plugins/ranger.vim
 " source $CLIENV/nvim/sources/plugins/rnvimr.vim
 source $CLIENV/nvim/sources/plugins/tcomment.vim
@@ -165,6 +171,7 @@ source $CLIENV/nvim/sources/plugins/workspace.vim
 source $CLIENV/nvim/sources/plugins/snippets.vim
 source $CLIENV/nvim/sources/plugins/fold.vim
 source $CLIENV/nvim/sources/plugins/flow.vim
+source $CLIENV/nvim/sources/plugins/auto_format.vim
 
 
 lua << EOF

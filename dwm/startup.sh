@@ -18,6 +18,7 @@ compton -b
 # 网络
 nm-applet &
 # 网络图形界面
+# nmtui-connect :: 设置链接 net manage tool ui
 # nm-connection-editor
 
 # 输入法 启动fcitx mod + shift + f
@@ -46,7 +47,7 @@ goldendict &
 exec dwm
 
 
-
+## simplescreenrecorder 录屏软件
 
 
 ##  问题
@@ -63,3 +64,9 @@ exec dwm
 
 # 设置亮度 
 # sudo ./brightness 90
+
+## 腾讯会议
+# wemeet
+
+## 截图工具
+# flameshot 
