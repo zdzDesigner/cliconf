@@ -20,6 +20,7 @@ if [[ $1 == "-inc" ]]; then
     fi
     $(setbrightness $curlight)
     echo $curlight
+    bash $CLIENV/dwm/scripts/dwm-status-refresh.sh
     exit
 fi
 
@@ -31,6 +32,7 @@ if [[ $1 == "-dec" ]]; then
     fi
     $(setbrightness $curlight)
     echo $curlight
+    bash $CLIENV/dwm/scripts/dwm-status-refresh.sh
     exit
 fi
 

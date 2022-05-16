@@ -1,4 +1,4 @@
-"
+""
 " Copyright (c) 2015 François Cabrol
 "
 " MIT License
@@ -168,4 +168,5 @@ endif
 if !exists('g:ranger_map_keys') || g:ranger_map_keys
   map <leader>f :Ranger<CR>
 endif
+
 

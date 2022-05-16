@@ -27,8 +27,8 @@ set showtabline=2
 " tab 换成空白
 set expandtab
 " set noexpandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set softtabstop=-1
 
 " 上下预留空间
@@ -50,6 +50,10 @@ set statusline +=%{resolve(expand('%:p'))}\ %*
 set clipboard=unnamedplus
 " set clipboard=unnamed
 set smartindent
+
+set autoread
+au FocusGained,BufEnter * :silent! !
+" au FocusLost,WinLeave * :silent! w
 
 
 
@@ -100,6 +104,10 @@ noremap <silent> <LEADER><CR> :nohlsearch<CR>
 vnoremap u <nop>
 " 合并一行 join
 vnoremap sj :join<CR>
+" 头部替换word
+noremap sp pldehbyp<CR>
+" 中部替换word
+noremap swp bhplde<CR>
 " 禁止快捷键数字增加
 map <C-a> <nop>
 map <C-x> <nop>

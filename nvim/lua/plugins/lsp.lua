@@ -1,14 +1,19 @@
 local lspconfig = require('lspconfig')
 
+vim.lsp.set_log_level("debug")
 
-lspconfig.tsserver.setup{}
+capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 lspconfig.bashls.setup{}
-lspconfig.html.setup{
-    filetypes = { "html" , "vue"}
-}
+-- lspconfig.html.setup{
+--     capabilities = capabilities,
+--     -- cmd = { "vscode-html-language-server", "--stdio" },
+--     filetypes = { "html" , "vue"}
+-- }
 
+-- require('plugins/v6')
+require('plugins/tsserver')
 require('plugins/go')
--- require('plugins/vue')
+require('plugins/vue')
 require('plugins/lua')
 require('plugins/ccls')
 
@@ -18,22 +23,23 @@ require('plugins/ccls')
 -- 提示
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- virtual_text = false
         underline = true,
-        -- update_in_insert = false,
+        -- 在插入模式下是否显示诊断？不要
+        update_in_insert = false,
         -- This sets the spacing and the prefix, obviously.
-        virtual_text = {
-            spacing = 4,
-            -- prefix = ''
-            prefix = '',
-            severity_limit = 'Error'
-        }
+        virtual_text = false
+        -- virtual_text = {
+        --     spacing = 4,
+        --     -- prefix = ''
+        --     prefix = '',
+        --     severity_limit = 'Error'
+        -- }
     }
 )
 
 -- 显示提示信息
 vim.api.nvim_set_keymap('n', '<C-e>', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', {noremap = true})
--- vim.lsp.buf.document_highlight()
-vim.cmd([[ autocmd ColorScheme * :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
 
 -- vim.lsp.buf.hover
 -- 'ESC' key: show 'tip window', jump 'tip window', 'q' key quit 'tip window'
@@ -45,12 +51,28 @@ vim.api.nvim_set_keymap('n', '<C-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {
 
 function format()
     -- vim.lsp.buf.formatting()
-    vim.lsp.buf.formatting_sync(nil, 100)
+    vim.lsp.buf.formatting_sync(nil, 1000)
     vim.cmd('write')
 end
 
 vim.cmd([[autocmd BufWritePre *.go noremap S :lua format()<CR>]])
 vim.cmd([[autocmd BufWritePre *.js noremap S :lua format()<CR>]])
-vim.cmd([[autocmd BufWritePre *.vue noremap S :lua format()<CR>]])
+vim.cmd([[autocmd BufWritePre *.ts noremap S :lua format()<CR>]])
 vim.cmd([[autocmd BufWritePre *.lua noremap S :lua format()<CR>]])
 vim.cmd([[autocmd BufWritePre *.sh noremap S :lua format()<CR>]])
+vim.cmd([[autocmd BufWritePre *.html noremap S :lua format()<CR>]])
+
+
+
+
+
+-- v5
+-- vim.lsp.buf.document_highlight()
+-- vim.cmd([[ autocmd ColorScheme * :lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights() ]]) 
+
+
+-- lspconfig.xxx.setup{
+--     flags = {
+--         debounce_text_changes = 150,
+--     },
+-- }

@@ -29,7 +29,29 @@
 - prev page: alt + ctrl + k
 - next page: alt + ctrl + j
 
+> 拷贝
+- alt+y 拷贝链接
+- alt+c 拷贝输出内容
+
 
 ## lazygit
 - scroll up  : shfit+k
 - scroll down: shfit+j
+
+
+## 启动
+> ./dwm/startup.sh
+
+
+## 外接显示器
+# xrandr --auto --output eDP-1 --mode 2560x1440
+# xrandr --auto --output eDP-1 --pos 0x0 --mode 1920x1080 --output HDMI-1 --same-as eDP-1
+# xrandr --auto --output eDP-1 --pos 0x0 --mode 1920x1080 --output HDMI-3 --same-as eDP-1
+
+
+
+## app
+- wemeet 腾讯会议
+
+
+
