@@ -70,3 +70,5 @@ exec dwm
 
 ## 截图工具
 # flameshot 
+
+## pulseview
