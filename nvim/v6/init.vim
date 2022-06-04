@@ -171,7 +171,7 @@ source $CLIENV/nvim/sources/plugins/workspace.vim
 source $CLIENV/nvim/sources/plugins/snippets.vim
 source $CLIENV/nvim/sources/plugins/fold.vim
 source $CLIENV/nvim/sources/plugins/flow.vim
-source $CLIENV/nvim/sources/plugins/auto_format.vim
+source $CLIENV/nvim/sources/plugins/format/auto_format.vim
 
 
 lua << EOF
