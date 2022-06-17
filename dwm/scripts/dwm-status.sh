@@ -22,7 +22,8 @@ count=0
 while true
 do
   invert
-  bash $CLIENV/dwm/scripts/dwm-status-refresh.sh $?
+  bash $CLIENV/dwm/scripts/dwm-status-refresh.sh $? > /dev/null 2>&1  # $? 获取invert执行的返回值
+  # xsetroot -name $?
   sleep 1
 
   count=$[count+1]
@@ -30,7 +31,8 @@ do
     # if [[ $[count%$[60*30]] == 0 ]]; then
     # if [[ $[count%$[10]] == 0 ]]; then
     # feh --recursive --randomize --bg-fill $HOME/.bg/green/*
-    feh --recursive --randomize --bg-fill $HOME/.bg/favorite/*
+    # feh --recursive --randomize --bg-fill $HOME/.bg/favorite/*
+    feh --recursive --randomize --bg-fill $HOME/.bg/draw/*
     count=0
   fi
 done

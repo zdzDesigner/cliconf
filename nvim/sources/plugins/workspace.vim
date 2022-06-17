@@ -16,3 +16,10 @@ nnoremap <leader>s :ToggleWorkspace<CR>
 
 
 
+
+
+
+
+
+"""""  , message = invalid params of initialize: expected array for /workspaceFolders
+" git init
