@@ -72,3 +72,6 @@ exec dwm
 # flameshot 
 
 ## pulseview
+
+## 多级弹出框
+#  st -n spterm -g 120x44 &

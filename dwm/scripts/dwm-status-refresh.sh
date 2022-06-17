@@ -39,8 +39,7 @@ function wifi() {
   #           Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
   #           Tx excessive retries:20  Invalid misc:36   Missed beacon:0
 
-WIFI=`iwconfig`
-echo $WIFI | while read LINE; do
+  echo $(iwconfig) | while read LINE; do
   if [[ "$LINE" =~ Tx-Power=off ]]; then
     echo .off
   elif [[ "$LINE" =~ ESSID:\".+\" ]]; then

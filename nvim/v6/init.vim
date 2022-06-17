@@ -142,7 +142,6 @@ Plug 'pseewald/vim-anyfold'
 " Plug 'chemzqm/vim-jsx-improve'
 
 
-
 " Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh && npm install -g flow-bin',
@@ -163,7 +162,7 @@ source $CLIENV/nvim/sources/plugins/lazygit.vim
 " source $CLIENV/nvim/sources/plugins/nerdtree.vim
 " source $CLIENV/nvim/sources/plugins/airline.vim
 source $CLIENV/nvim/sources/plugins/lightline.vim
-source $CLIENV/nvim/plugin//ranger.vim
+source $CLIENV/nvim/plugin/ranger.vim
 source $CLIENV/nvim/sources/plugins/ranger.vim
 " source $CLIENV/nvim/sources/plugins/rnvimr.vim
 source $CLIENV/nvim/sources/plugins/tcomment.vim
@@ -370,3 +369,12 @@ hi Folded term=bold cterm=NONE ctermbg=240 ctermfg=white
 "
 " set tabline=%!MyTabLine()
 "
+"
+"""""""""""""" ERROR
+"" E510: Can’t make backup file (add ! to override)
+let g:backupdir=expand(stdpath('data') . '/backup')
+if !isdirectory(g:backupdir)
+   mkdir(g:backupdir, "p")
+endif
+let &backupdir=g:backupdir
+

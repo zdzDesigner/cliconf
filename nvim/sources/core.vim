@@ -316,4 +316,4 @@ endfunction
 " lazygit
 " lazygit
 " noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
-
+"

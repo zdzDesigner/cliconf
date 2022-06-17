@@ -18,3 +18,8 @@ lspconfig.tsserver.setup{
 vim.cmd([[autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx]])
 vim.cmd([[autocmd BufNewFile,BufRead *_vsyntaxoff*.* setlocal filetype=log]]) -- 更改类型, 禁止高亮
 vim.cmd([[autocmd BufNewFile,BufRead *_vsyntaxoff*.* lua vim.diagnostic.disable(<abuf>)]]) -- 禁止诊断
+
+
+-- local tsconfig = require('plugins/tsconfig')
+-- vim.cmd([[setlocal includeexpr=tsconfig.includeexpr(v:fname)]])
+
