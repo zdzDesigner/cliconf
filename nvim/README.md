@@ -13,3 +13,8 @@
 
 # alacritty 
 > V-BLOCK: Ctrl+Alt+V
+
+
+# SirVer/ultisnips
+ln -s /home/zdz/.config/nvim/UltiSnips UltiSnips
+当我们打开 vim 的时候， UltiSnips 会搜寻 $VIM 路径下的所有名字为 UltiSnips 的文件夹

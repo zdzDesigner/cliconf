@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 
 lspconfig.tsserver.setup{
-  filetypes = {"tsx","ts","typescript","javascript","typescript.tsx"},
+  filetypes = {"tsx","ts","jsx","typescript","javascript","javascript.jsx","typescript.tsx"},
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
