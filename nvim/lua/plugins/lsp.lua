@@ -2,7 +2,7 @@ local lspconfig = require('lspconfig')
 
 vim.lsp.set_log_level("debug")
 
-capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 lspconfig.bashls.setup{}
 -- lspconfig.html.setup{
 --     capabilities = capabilities,

@@ -33,6 +33,11 @@
 - alt+y 拷贝链接
 - alt+c 拷贝输出内容
 
+  // 缩放字体大小
+	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
+	{ TERMMOD,              XK_J,           zoom,           {.f = -1} },
+	{ TERMMOD,              XK_U,           zoom,           {.f = +2} },
+	{ TERMMOD,              XK_D,           zoom,           {.f = -2} },
 
 ## lazygit
 - scroll up  : shfit+k
