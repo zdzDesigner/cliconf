@@ -155,9 +155,17 @@ noremap <silent> <C-k> :tabn<CR>
 noremap <silent> <C-x> :tabn #<CR>
 noremap <silent> <C-t> :tabnew <CR>
 
-" noremap <silent> <C-1> :tabfirst<CR>
-" map <C-9> :tablast<CR>
+
+
 noremap <silent> <LEADER>0 :tabfirst<CR>
+noremap <silent> <LEADER>1 1gt <CR>
+noremap <silent> <LEADER>2 2gt <CR>
+noremap <silent> <LEADER>3 3gt <CR>
+noremap <silent> <LEADER>4 4gt <CR>
+noremap <silent> <LEADER>5 5gt <CR>
+
+noremap <silent> <LEADER>7 :call TabJump(2)<CR>
+noremap <silent> <LEADER>8 :call TabJump(1)<CR>
 noremap <silent> <LEADER>9 :tablast<CR>
 "
 noremap <silent> <LEADER>[ :tabmove 0<CR>
@@ -175,6 +183,9 @@ noremap r <nop>
 " 寄存器复制
 nnoremap <LEADER>y :call ZReg()<CR>
 nnoremap <LEADER>p "bp
+" 删除word and paste
+nnoremap dp diw<ESC>h<ESC>"0p 
+" nnoremap dp diwhh "+p
 
 
 
@@ -189,7 +200,6 @@ autocmd filetype vue set shiftwidth=2
 autocmd filetype javascript set tabstop=2
 autocmd filetype javascript set shiftwidth=2
 " autocmd filetype javascript map S :w<CR>
-
 
 function! ZReg()
     let @b=@+
@@ -225,21 +235,13 @@ function! TabNext()
     endif
     exe 'tabm '.l:n
 endfunction
-function! TabJump()
-    :tabn #
-    " echo getcwd()
-    " let l:n = tabpagenr()
-    " echo l:n
-    " echo bufwinnr($CLIENV.'/nvim/sources/core.vim')
-    " echo bufwinnr($CLIENV.'/dwm/scripts/dwmbar-functions/dwm_battery.sh')
-
-    
-    " echo :tabs
-    " if l:n > tabpagenr('$')
-    "     exe 'tabm '.0
-"     return
-" endif
-" exe 'tabm '.l:n
+function! TabJump(n)
+    let l:n = tabpagenr('$')-a:n
+    if l:n < 1
+        exe 'tabn '.1
+        return
+    endif
+    exe 'tabn '.l:n
 endfunction
 
 

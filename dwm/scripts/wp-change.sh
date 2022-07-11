@@ -3,7 +3,8 @@
 direc=$1              # 取方向参数
 direc=${direc:-"asc"} # 默认递增
 
-PATH_BG=draw
+PATH_BG=favorite
+# PATH_BG=draw
 TEMP_PATH=$CLIENV/.temp/bg   # 缓存的图片名文件
 if [[ ! -f $TEMP_PATH ]]; then
   echo "" > $TEMP_PATH     # 没有生成个空文件

@@ -31,8 +31,8 @@ do
     # if [[ $[count%$[60*30]] == 0 ]]; then
     # if [[ $[count%$[10]] == 0 ]]; then
     # feh --recursive --randomize --bg-fill $HOME/.bg/green/*
-    # feh --recursive --randomize --bg-fill $HOME/.bg/favorite/*
-    feh --recursive --randomize --bg-fill $HOME/.bg/draw/*
+    feh --recursive --randomize --bg-fill $HOME/.bg/favorite/*
+    # feh --recursive --randomize --bg-fill $HOME/.bg/draw/*
     count=0
   fi
 done
