@@ -76,6 +76,7 @@ exec dwm
 ## 多级弹出框
 #  st -n spterm -g 120x44 &
 
+
 ## 外接显示器
 # xrandr --auto --output eDP-1 --mode 2560x1440
 # xrandr --auto --output eDP-1 --pos 0x0 --mode 1920x1080 --output HDMI-1 --same-as eDP-1
