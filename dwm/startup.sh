@@ -9,8 +9,6 @@ export GDK_SCALE=1
 export GDK_DPI_SCALE=1.5
 export WINIT_HIDPI_FACTOR=1
 export WINIT_X11_SCALE_FACTOR=1
-# 透明度 依赖了 xorg openbox
-compton -b
 
 
 /bin/bash $CLIENV/dwm/scripts/dwm-status.sh &
@@ -26,13 +24,15 @@ nm-applet &
 # 输入法图形界面
 # fcitx-configtool
 
-# 电源管理, 屏幕亮度
+# 电源管理, 屏幕亮度 (屏幕亮度写入文件了，不依赖此模块)
 xfce4-power-manager &
 
 # 禁用中建复制
 xmodmap -e "pointer = 1 25 3 4 5 6 7 8"
 #解决 键盘延迟, 长按延迟
 xset r rate 250 30
+#解决 摇杆(小红点)速度
+xinput --set-prop 'Elan TrackPoint' 'libinput Accel Speed' 1
 
 # 解除静音
 # alsamixer &
@@ -44,7 +44,11 @@ goldendict &
 # fc-cache -fv
 # =======================
 
+# 透明度 依赖了 xorg openbox
+compton -b
+
 exec dwm
+
 
 
 ## simplescreenrecorder 录屏软件
@@ -77,8 +81,15 @@ exec dwm
 #  st -n spterm -g 120x44 &
 
 
-## 外接显示器
+## 还原
 # xrandr --auto --output eDP-1 --mode 2560x1440
+
+## 外接显示器
 # xrandr --auto --output eDP-1 --pos 0x0 --mode 1920x1080 --output HDMI-1 --same-as eDP-1
 # xrandr --auto --output eDP-1 --pos 0x0 --mode 1920x1080 --output HDMI-3 --same-as eDP-1
 
+
+
+
+## 打印机
+######### system-config-printer

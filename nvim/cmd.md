@@ -1,3 +1,19 @@
+## LSP
+- LspStop 停止当前LSP服务
+
+
+
+## 粘贴模式
+:set paste
+:set nopaste
+
+
+## 16进制格式化
+:%!xxd              ——将当前文本转换为16进制格式。
+:%!xxd -r           还原
+
+
+
 ## % 所有的行 
 
 ## v global匹配内容取反

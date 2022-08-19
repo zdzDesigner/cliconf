@@ -60,3 +60,20 @@
 
 
 
+```sh
+// 多用户
+vi /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="text" // 更改
+sudo update-grub
+$ systemctl set-default multi-user.target 
+
+// 如果想改回启动图形界面执行下面
+vi /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" // 更改
+sudo update-grub
+$ systemctl set-default graphical.target
+```
+
+
+
+

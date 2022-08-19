@@ -1,10 +1,11 @@
 #!/bin/bash
 
-curbuf=$(cat $CLIENV/.temp/bg)
-# curnum=${curbuf%%@*}
-cururl=${curbuf##*@}
+BG=$(cat $CLIENV/.temp/bg)
+BG_NAME=${BG##*@}
+BG_DIR=$HOME/.bg/favorite
+
 # 壁纸
-feh --bg-fill --no-fehbg $HOME/.bg/$cururl
+feh --bg-fill --no-fehbg $BG_DIR/$BG_NAME
 
 # little battery
 flag=0
@@ -31,7 +32,7 @@ do
     # if [[ $[count%$[60*30]] == 0 ]]; then
     # if [[ $[count%$[10]] == 0 ]]; then
     # feh --recursive --randomize --bg-fill $HOME/.bg/green/*
-    feh --recursive --randomize --bg-fill $HOME/.bg/favorite/*
+    feh --recursive --randomize --bg-fill $BG_DIR/*
     # feh --recursive --randomize --bg-fill $HOME/.bg/draw/*
     count=0
   fi

@@ -6,10 +6,10 @@ lspconfig.tsserver.setup{
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
         -- Disable virtual_text
-        underline = false,
+        underline = true,
         update_in_insert = false,
         virtual_text = false,
-        -- signs = false -- 左侧图标
+        signs = false -- 左侧图标
       }
     ),
   },
