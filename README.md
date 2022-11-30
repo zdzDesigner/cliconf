@@ -76,4 +76,5 @@ $ systemctl set-default graphical.target
 
 
 
-
+## goldendict
+- ctrl+q

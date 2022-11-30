@@ -50,6 +50,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'Chiel92/vim-autoformat'
 " Plugin 'google/vim-maktaba'
 " Plugin 'google/vim-codefmt'
+Plug 'sbdchd/neoformat'
 
 
 " File navigation
