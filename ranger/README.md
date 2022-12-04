@@ -17,3 +17,7 @@
 
 ## cd dir and exit ranger 
 alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+
+## open with
+- r

@@ -69,7 +69,7 @@ if has('nvim')
       if a:code == 0
           " echo :buffers
         " silent! Bclose!
-        silent exe ":buffer #"
+        silent! exe ":buffer #"
         " silent! :buffer %
       endif
       try

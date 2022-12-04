@@ -1,0 +1,13 @@
+{
+ "content_scripts": [
+   {
+     "css": ["cover.css"],
+     "all_frames": true,
+     "matches": ["http://*/*", "https://*/*"]
+   }
+ ],
+ "description": "cover style",
+ "name": "style cover",
+ "version": "1.0",
+ "manifest_version": 2
+}

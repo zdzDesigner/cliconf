@@ -78,3 +78,11 @@ $ systemctl set-default graphical.target
 
 ## goldendict
 - ctrl+q
+
+
+
+
+
+
+### linux file manage window
+> 打开复制的目录 ctrl+v

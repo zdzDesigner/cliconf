@@ -52,7 +52,7 @@ set clipboard=unnamedplus
 set smartindent
 
 set autoread
-au FocusGained,BufEnter * :silent! !
+" au FocusGained,BufEnter * :silent! !
 " au FocusLost,WinLeave * :silent! w
 
 

@@ -3,7 +3,7 @@ local M = {}
 local neval = vim.api.nvim_eval
 local ncmd = vim.api.nvim_command
 
-M.TabCloseLeft = function()
+function M.TabCloseLeft ()
   local last_win_num = neval('winnr("$")')
   local cur_win_num = neval('winnr()')
   local last_tab_num = neval('tabpagenr("$")')
@@ -18,7 +18,7 @@ M.TabCloseLeft = function()
   end
 end
 
-M.TabJump = function(n)
+function M.TabJump(n)
   n = neval('tabpagenr("$")') - n
   if n < 1 then
     ncmd('tabn 1')

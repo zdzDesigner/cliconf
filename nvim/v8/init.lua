@@ -2,122 +2,96 @@ local function import(module)
   package.loaded[module] = nil
   return require(module)
 end
--- local fn = require('v8.function')
-local fn = import('v8.function')
+vim.o.exrc = true
+vim.o.secure = true
 
-print('hello from lua v1')
-print(vim.opt.tabstop:get())
+-- 运行路径和包路径都要设置
+vim.opt.packpath:append('/home/zdz/.config/nvim/v8')
+vim.opt.rtp:append('/home/zdz/.config/nvim/v8')
 
--- local neval = vim.api.nvim_eval
--- local ncmd = vim.api.nvim_command
-vim.g.mapleader = ' '
+-- print(vim.inspect(vim.opt.packpath:get()))
+import('vimapi')
+import('setting')
+import('keymap')
+import('test')
+import('plugins/ranger')
 
+local vimscript = vim.api.nvim_exec
 
-print(vim.inspect(vim.g.mapleader))
-print(vim.inspect(vim.fn))
-vim.api.nvim_create_user_command('Upper', 'echo toupper(<q-args>)', { nargs = 1 })
-vim.cmd('Upper hello world')
+local function filepath()
+  print('expand:%:',vim.fn.expand('%')) -- 文件名
+  print('isdirectory:',vim.fn.isdirectory(vim.fn.expand('%')))
+  print('tempname:',vim.fn.tempname())
+  vim.o.tabline = 'ccc'
+  vimscript(':tab drop /home/zdz/.zdz/nvim/v8/init.lua', true)
+  -- vim.cmd([[ :tab drop /home/zdz/.zdz/nvim/v8/init.lua ]])
 
+end
 
-
-local set = vim.opt
-
-set.tabstop = 2
-set.expandtab = true
-
-
-local keymap = vim.keymap
-
--- keymap.set({mode},{lhs},{rhs},{*opts})
-
--- nop
-keymap.set('','<C-a>','<nop>',{desc='nop 冲突@快速创建文件'})
-keymap.set('n','r','<nop>',{desc='nop'})
-keymap.set('n','s','<nop>',{desc='nop'})
-keymap.set('v','u','<nop>',{noremap = true, silent = true,desc='禁止visual 模式下转换小写，防止误碰'})
-
-keymap.set('','E',':e<CR>',{noremap = true, silent = true,desc='重置render'})
--- keymap.set('','R',':source $MYVIMRC<CR>',{noremap = true, silent = true,desc='初始配置'})
-keymap.set('','R',':source /home/zdz/.zdz/nvim/v8/init.lua<CR>',{noremap = true, silent = true,desc='初始配置'})
-
--- cursor jlkh
-keymap.set('n','H','0',{noremap = true, silent = true,desc='列首'})
-keymap.set('n','L','$',{noremap = true, silent = true,desc='列尾'})
-keymap.set('v','L','$h',{noremap = true, silent = true,desc='V模式列尾'})
-keymap.set('n','K','6k',{noremap = true, silent = true,desc='快速向下'})
-keymap.set('n','J','6j',{noremap = true, silent = true,desc='快速向上'})
-
-
-keymap.set('n','sp','pldehbyp<CR>',{noremap = true, silent = true,desc='头部替换word'})
-keymap.set('n','swp','pbhplde<CR>',{noremap = true, silent = true,desc='中部替换word'})
+vim.api.nvim_create_user_command('FF', filepath,{})
+-- :lua vim.cmd('Filepath')
 
 
 
 
 
-keymap.set('v','sj',':join<CR>',{noremap = true, silent = true,desc='合并一行'})
-keymap.set('','<C-a>',':tabnew  ~/temp/log/',{noremap = true,desc='快速创建临时文件'})
+vim.cmd([[
+  "" 配置ranger 背景
+  hi def NvimFloatingWindow  term=None guifg=white guibg=None ctermfg=white ctermbg=210
+  "" 配置ranger 边框
+  hi def NvimFloatingBorder  term=None guifg=#668a95 guibg=None ctermfg=white ctermbg=1
+  
+
+  "" source $CLIENV/nvim/v8/vim/ranger.vim
+  "" source $CLIENV/nvim/v8/vim/plugins/ranger.vim
 
 
 
+  augroup TERM_MODE
+      autocmd!
+      " autocmd TermOpen * echom "TermOpen Events"
+      " autocmd TermEnter * echom "TermEnter Events"
+      " autocmd TermLeave * echom "TermLeave Events"
+      " autocmd TermClose * echom "TermClose Events"
+      autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
+      " autocmd TermClose * bdelete!
+  augroup END
+
+  :cle
+
+]])
+-- 清除jumps ctrl-o
+vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjumps()  end })
 
 
 
+-- local compile_suffix = "/plugin/packer_compiled.lua"
+-- local install_suffix = "/site/pack/packer/%s/packer.nvim"
+-- local install_path = vim.fn.stdpath("data") .. string.format(install_suffix, "opt")
+-- local compile_path = vim.fn.stdpath("data") .. compile_suffix
+
+-- print(vim.inspect({
+--   compile_suffix = compile_suffix,
+--   install_suffix = install_suffix,
+--   install_path = install_path,
+--   compile_path = compile_path,
+-- }))
+
+-- for key,val in pairs(vim.opt.runtimepath) do
+-- print(key,val)
+-- end
+
+-- opt api 
+-- :get()
+-- :append()
+-- prepend()
+-- :remove()
+-- print(vim.inspect(vim.opt:get()))
+-- print(vim.inspect(vim.opt.runtimepath:get()))
 
 
-keymap.set('','S',':w<CR>',{silent=true,desc='保存'})
-keymap.set('','Q',':q<CR>',{desc='退出'})
-
-
--- ===========
--- tab
--- ===========
--- tab
-
-
-
-keymap.set('n','W',fn.TabCloseLeft,{ noremap = true, silent = true, desc='close cur tab'})
-
--- 移动tab
-keymap.set('','<C-j>',':tabp<CR>',{ noremap = true, silent = true, desc='tab prev'})
-keymap.set('','<C-k>',':tabn<CR>',{ noremap = true, silent = true, desc='tab next'})
-keymap.set('','<C-x>',':tabn #<CR>',{ noremap = true, silent = true, desc='切换?'})
-keymap.set('','<C-t>',':tabnew<CR>',{ noremap = true, silent = true, desc='新建tab'})
-keymap.set('','<LEADER>0',':tabfirst<CR>',{ noremap = true, silent = true, desc='跳转到第1个tab'})
-keymap.set('','<LEADER>1','1gt<CR>',{ noremap = true, silent = true, desc='第1个tab'})
-keymap.set('','<LEADER>2','2gt<CR>',{ noremap = true, silent = true, desc='第2个tab'})
-keymap.set('','<LEADER>3','3gt<CR>',{ noremap = true, silent = true, desc='第3个tab'})
-keymap.set('','<LEADER>4','4gt<CR>',{ noremap = true, silent = true, desc='第4个tab'})
-keymap.set('','<LEADER>5','5gt<CR>',{ noremap = true, silent = true, desc='第5个tab'})
-keymap.set('','<LEADER>7',function() fn.TabJump(2) end,{ noremap = true, silent = true, desc='倒数第3个tab'})
-keymap.set('','<LEADER>8',function() fn.TabJump(1) end,{ noremap = true, silent = true, desc='倒数第2个tab'})
-keymap.set('','<LEADER>9',':tablast<CR>',{ noremap = true, silent = true, desc='倒数第1个tab'})
-keymap.set('','<LEADER>[',':tabmove 0<CR>',{ noremap = true, silent = true, desc='移动到最左边'})
-keymap.set('','<LEADER>]',':tabmove<CR>',{ noremap = true, silent = true, desc='移动到最右边'})
-keymap.set('','<LEADER>h',':tabmove 0<CR>',{ noremap = true, silent = true, desc='移动到最左边'})
-keymap.set('','<LEADER>l',':tabmove<CR>',{ noremap = true, silent = true, desc='移动到最右边'})
-keymap.set('','<LEADER>j',':call TabPrev()<CR>',{ noremap = true, silent = true, desc='移动到最左边'})
-keymap.set('','<LEADER>k',':tabmove<CR>',{ noremap = true, silent = true, desc='移动到最右边'})
-
-
-
-
-
-
-
-
--- noremap <silent> <LEADER>j :call TabPrev()<CR>
--- noremap <silent> <LEADER>k :call TabNext()<CR>
-
-
-
-
-
-
-
-
-
--- vim.highlight.on_yank()
+-- util.write_file('/home/zdz/.zdz/nvim/api/api.md',vim.inspect(vim))
+-- util.write_file('/home/zdz/.zdz/nvim/api/opt.md',vim.inspect(vim))
 
 
 
