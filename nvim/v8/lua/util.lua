@@ -86,4 +86,100 @@ function M.sleep(n)-- seconds
   while clock() - t0 <= n do end
 end
 
+function _G.dump(...)
+  local objects = vim.tbl_map(vim.inspect, { ... })
+  print(unpack(objects))
+end
+
+function _G.reload(package)
+    package.loaded[package] = nil
+    return require(package)
+end
+
+_G.myluafunc = setmetatable({}, {
+  __call = function(self, idx, args, count)
+    return self[idx](args, count)
+  end,
+})
+
+local func2str = function(func, args)
+  local idx = #_G.myluafunc + 1
+  _G.myluafunc[idx] = func
+  if not args then
+    return ("lua myluafunc(%s)"):format(idx)
+  else
+    -- return ("lua myluafunc(%s, <q-args>)"):format(idx)
+    return ("lua myluafunc(%s, <q-args>, <count>)"):format(idx)
+  end
+end
+
+---API for key mapping.
+---
+---@param lhs string
+---@param modes string|table
+---@param rhs string|function
+---@param opts string|table
+--- opts.buffer: current buffer only
+--- opts.cmd: command (format to <cmd>%s<cr>)
+ function M.remap (modes, lhs, rhs, opts)
+  modes = type(modes) == "string" and { modes } or modes
+  opts = opts or {}
+  opts = type(opts) == "string" and { opts } or opts
+
+  local fallback = function()
+    return vim.api.nvim_feedkeys(M.t(lhs), "n", true)
+  end
+
+  local _rhs = (function()
+    if type(rhs) == "function" then
+      opts.noremap = true
+      opts.cmd = true
+      return func2str(function()
+        rhs(fallback)
+      end)
+    else
+      return rhs
+    end
+  end)()
+
+  for key, opt in ipairs(opts) do
+    opts[opt] = true
+    opts[key] = nil
+  end
+
+  local buffer = (function()
+    if opts.buffer then
+      opts.buffer = nil
+      return true
+    end
+  end)()
+
+  _rhs = (function()
+    if opts.cmd then
+      opts.cmd = nil
+      return ("<cmd>%s<cr>"):format(_rhs)
+    else
+      return _rhs
+    end
+  end)()
+
+  for _, mode in ipairs(modes) do
+    if buffer then
+      vim.api.nvim_buf_set_keymap(0, mode, lhs, _rhs, opts)
+    else
+      vim.api.nvim_set_keymap(mode, lhs, _rhs, opts)
+    end
+  end
+end
+
+function M.have_compiler()
+  if vim.fn.executable('cc') == 1 or
+    vim.fn.executable('gcc') == 1 or
+    vim.fn.executable('clang') == 1 or
+    vim.fn.executable('cl') == 1 then
+    return true
+  end
+  return false
+end
+
 return M

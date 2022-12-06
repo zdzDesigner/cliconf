@@ -5,13 +5,13 @@ end
 
 local util = import("util")
 local Term = import('../terminal')
-print('Termxxx:',Term)
 local vimscript = vim.api.nvim_exec
 
 vim.api.nvim_create_user_command('Range', function() Term.openFullTerminal('ranger') end,{})
 
 
 local function ranger()
+  print('-----ranger-------')
   local filepath = '/tmp/temp.plugin.ranger'
   local current_path = vim.fn.expand('%')
   local fd = assert(vim.loop.fs_open(filepath, "w", 438))
@@ -27,19 +27,19 @@ local function ranger()
       if vim.fn.filereadable(filepath) then
         for _,v in pairs(vim.fn.readfile(filepath)) do
           -- util.write_file('/tmp/xxx', v)
-          vimscript(':tab drop '..v, true)
+          -- vimscript(':tab drop '..v, true)
+          vimscript(':tabedit '..v, true)
         end
       end
 
     end
-
   })
 end
 
+return ranger
+
 -- <leader>f :lua vim.Ranger<CR>
 -- vim.keymap.set('','<LEADER>f', function() Term.openFullTerminal('ranger') end,{})
-vim.keymap.set('','<LEADER>f', ranger,{})
-vim.keymap.set('','<LEADER>;', ranger,{})
 -- vim.keymap.set('','<LEADER>f', function() Term.openFloatTerm('sh /vim/plugins/ranger.sh') end,{})
 
 -- vim.keymap.set('','<LEADER>f', function() Term.openPopupTerminal('ranger') end,{})

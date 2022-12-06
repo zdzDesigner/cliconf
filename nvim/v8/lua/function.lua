@@ -28,23 +28,23 @@ function M.TabJump(n)
 end
 
 
--- function! TabPrev()
---     let l:n = tabpagenr()-2
---     if l:n < 0
---         exe 'tabm '.tabpagenr('$')
---         return
---     endif
---     exe 'tabm '.l:n
--- endfunction
+function M.TabPrev()
+  local n = vim.fn.tabpagenr()-2
+  if n < 0 then
+    ncmd('tabm '..vim.fn.tabpagenr('$'))
+    return
+  end
+  ncmd('tabm '..n)
+end
 --
--- function! TabNext()
---     let l:n = tabpagenr()+1
---     if l:n > tabpagenr('$')
---         exe 'tabm '.0
---         return
---     endif
---     exe 'tabm '.l:n
--- endfunction
+function M.TabNext()
+  local n = vim.fn.tabpagenr()+1
+  if n > vim.fn.tabpagenr('$') then
+    ncmd('tabm 0')
+    return
+  end
+  ncmd('tabm '..n)
+end
 
 -- vim.api.nvim_create_user_command('Upper', 'echo toupper(<q-args>)', { nargs = 1 })
 -- vim.cmd('Upper hello world')

@@ -2,8 +2,8 @@ local function import(module)
   package.loaded[module] = nil
   return require(module)
 end
--- local fn = require('v8.function')
-local fn = import('v8.function')
+local fn = import('function')
+local Ranger = import('plugins/ranger')
 vim.g.mapleader = ' '
 local keymap = vim.keymap
 
@@ -43,7 +43,8 @@ keymap.set('','Q',':q<CR>',{desc='退出'})
 -- ===========
 -- tab
 
-keymap.set('n','W',fn.TabCloseLeft,{ noremap = true, silent = true, desc='close cur tab'})
+-- keymap.set('n','W',fn.TabCloseLeft,{ noremap = true, silent = true, desc='close cur tab'})
+keymap.set('n','W',':bd<CR>',{ noremap = true, silent = true, desc='close cur tab'})
 
 -- 移动tab
 keymap.set('','<C-j>',':tabp<CR>',{ noremap = true, silent = true, desc='tab prev'})
@@ -63,9 +64,12 @@ keymap.set('','<LEADER>[',':tabmove 0<CR>',{ noremap = true, silent = true, desc
 keymap.set('','<LEADER>]',':tabmove<CR>',{ noremap = true, silent = true, desc='移动到最右边'})
 keymap.set('','<LEADER>h',':tabmove 0<CR>',{ noremap = true, silent = true, desc='移动到最左边'})
 keymap.set('','<LEADER>l',':tabmove<CR>',{ noremap = true, silent = true, desc='移动到最右边'})
-keymap.set('','<LEADER>j',':call TabPrev()<CR>',{ noremap = true, silent = true, desc='移动到最左边'})
-keymap.set('','<LEADER>k',':tabmove<CR>',{ noremap = true, silent = true, desc='移动到最右边'})
+keymap.set('','<LEADER>j',fn.TabPrev,{ noremap = true, silent = true, desc='移动到最左边'})
+keymap.set('','<LEADER>k',fn.TabNext,{ noremap = true, silent = true, desc='移动到最右边'})
+keymap.set('','<LEADER><CR>',':nohlsearch<CR>',{ noremap = true, silent = true, desc='清除选中高亮'})
 
+keymap.set('','<LEADER>f', Ranger,{})
+keymap.set('','<LEADER>;', Ranger,{})
 
 
 
@@ -78,5 +82,5 @@ keymap.set('','<LEADER>k',':tabmove<CR>',{ noremap = true, silent = true, desc='
 
 
 
-print('KEYMAP')
+-- print('KEYMAP')
 

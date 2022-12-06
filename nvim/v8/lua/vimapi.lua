@@ -43,3 +43,6 @@ print('vim.fn:======end=======')
 -- util.sleep(3)
 -- local files = vim.loop.fs_read(fd,stat.size)
 -- vimscript(':tab drop '..files, true)
+-- util.write_file('/home/zdz/.zdz/nvim/api/api.md',vim.inspect(vim))
+-- util.write_file('/home/zdz/.zdz/nvim/api/opt.md',vim.inspect(vim))
+

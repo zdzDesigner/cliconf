@@ -1,5 +1,5 @@
 local res, statusline = pcall(require, "lualine")
-print('statusline::',res)
+-- print('statusline::',res)
 
 if not res then
   return
@@ -10,26 +10,26 @@ local col_from_hl = require("lualine.utils.utils").extract_color_from_hllist
 -- print('statusline:col_from_hl:',col_from_hl)
 
 local import_hls = {
-    ['String']      = 'fg',
-    ['Special']     = 'fg',
-    ['Type']        = 'fg',
-    ['Label']       = 'fg',
-    ['PreProc']     = 'fg',
-    ['Search']      = 'fg',
-    ['Identifier']  = 'fg',
-    ['Keyword']     = 'fg',
-    ['DiffAdd']     = 'bg',
-    ['DiffDelete']  = 'bg',
-    ['DiffChange']  = 'fg',
-    ['DiffText']    = 'bg',
-    ['IncSearch']   = 'fg',
-    ['ErrorMsg']    = 'fg',
-    ['WildMenu']    = 'bg',
+  ['String']      = 'fg',
+  ['Special']     = 'fg',
+  ['Type']        = 'fg',
+  ['Label']       = 'fg',
+  ['PreProc']     = 'fg',
+  ['Search']      = 'fg',
+  ['Identifier']  = 'fg',
+  ['Keyword']     = 'fg',
+  ['DiffAdd']     = 'bg',
+  ['DiffDelete']  = 'bg',
+  ['DiffChange']  = 'fg',
+  ['DiffText']    = 'bg',
+  ['IncSearch']   = 'fg',
+  ['ErrorMsg']    = 'fg',
+  ['WildMenu']    = 'bg',
 }
 
 local colors = {
-    bg = col_from_hl('bg', { 'StatusLine',  }, '#000000'),
-    fg = col_from_hl('fg', { 'Normal', 'StatusLine' }, '#000000'),
+  bg = col_from_hl('bg', { 'StatusLine',  }, '#000000'),
+  fg = col_from_hl('fg', { 'Normal', 'StatusLine' }, '#000000'),
 }
 
 for hl, col in pairs(import_hls) do
@@ -39,7 +39,8 @@ end
 local filename = {
   {
     'filetype',
-    icon_only = true,
+    -- icon_only = true,
+    icon_only = false,
   },
   {
     'filename',
@@ -79,7 +80,19 @@ local lsp_tbl = {
 }
 
 statusline.setup({
+  -- tabline = {
+  --   lualine_a = {'windows'},
+  --   -- lualine_a = {'buffers'},
+  --   -- lualine_b = {'branch'},
+  --   -- lualine_c = {'filename'},
+  --   lualine_x = {},
+  --   lualine_y = {},
+  --   lualine_z = {'tabs'}
+  -- },
   options = {
+    hide_filename_extension = false,
+    icons_enabled = false,
+    theme = 'dracula-nvim',
     component_separators = {left='', right=''},
     section_separators = {left='', right=''},
     disabled_filetypes = {
@@ -91,18 +104,20 @@ statusline.setup({
   },
   sections = {
     -- lualine_a = {{'mode'}},
-    lualine_a = {{'mode', fmt = function(str) return ' ' .. str end}},
+    lualine_a = {
+      {'mode', fmt = function(str) return ' ' .. str end}
+    },
     lualine_b = {
       -- {'branch', icon = '', color = { fg = colors.Label, gui = 'bold' }},
       {'branch', icon = ''},
-      {'diff',
-        symbols = { added = ' ', modified = '柳', removed = ' ' },
-        diff_color = {
-          added = { fg = colors.DiffAdd },
-          modified = { fg = colors.DiffChange },
-          removed = { fg = colors.DiffDelete },
-        },
-      }
+      -- {'diff',
+      -- symbols = { added = ' ', modified = '*', removed = ' ' },
+      -- diff_color = {
+      --   added = { fg = colors.DiffAdd },
+      --   modified = { fg = colors.DiffChange },
+      --   removed = { fg = colors.DiffDelete },
+      -- },
+      -- }
     },
     lualine_c = filename,
     lualine_x = {{
@@ -118,8 +133,8 @@ statusline.setup({
       -- color = { bg = colors.String },
     }, lsp_tbl},
     lualine_y = {{'fileformat'},{'encoding'},
-      -- char under cursor in hex
-      {'%B', fmt = function(str) return '0x'..str end}},
+    -- char under cursor in hex
+    {'%B', fmt = function(str) return '0x'..str end}},
     lualine_z = {{'progress'},{'location'}},
   },
   inactive_sections = {

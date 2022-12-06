@@ -54,7 +54,7 @@ end
 function M.openFloatTerm(cmd, hook)
 
   -- local ratio = 0.6
-  local ratio = 0.95
+  local ratio = 1
   local buf = vim.api.nvim_create_buf(false, true)
   local win_height = math.ceil(vim.api.nvim_get_option("lines") * ratio - 4)
   local win_width = math.ceil(vim.api.nvim_get_option("columns") * ratio)
@@ -88,7 +88,7 @@ function M.openFloatTerm(cmd, hook)
     -- util.write_file('/tmp/xxx', jobid..'-'..lastOpenedTerminalJobId)
     
     -- util.write_file('/tmp/xxx', jobid..'-'..vim.inspect(stdout_iter(data)))
-    util.write_file('/tmp/xxx', data)
+    -- util.write_file('/tmp/xxx', data)
     -- vim.o.tabline = 'stdout-'..lastOpenedTerminalJobId..'-'..jobid
   end
 
