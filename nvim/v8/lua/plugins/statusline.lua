@@ -132,17 +132,17 @@ statusline.setup({
       },
       -- color = { bg = colors.String },
     }, lsp_tbl},
-    lualine_y = {{'fileformat'},{'encoding'},
-    -- char under cursor in hex
-    {'%B', fmt = function(str) return '0x'..str end}},
-    lualine_z = {{'progress'},{'location'}},
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = filename,
-    lualine_x = {{'fileformat'},{'encoding'},{'progress'},{'location'}},
-    lualine_y = {},
-    lualine_z = {},
-  },
-})
+    lualine_y = { {'fileformat'}, {'encoding'}},
+      -- char under cursor in hex
+      -- {'%B', fmt = function(str) return '0x'..str end}},
+      lualine_z = {{'progress'},{'location'}},
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = filename,
+      lualine_x = {{'fileformat'},{'encoding'},{'progress'},{'location'}},
+      lualine_y = {},
+      lualine_z = {},
+    },
+  })

@@ -43,10 +43,11 @@ fzf_lua.setup {
     -- border = 'double',
     -- border           = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
     -- border = { {'╭', 'IncSearch'}, {'─', 'IncSearch'}, {'╮', 'IncSearch'}, '│', '╯', '─', '╰', '│' },
-    fullscreen       = true,           -- start fullscreen?
+    -- fullscreen       = true,           -- start fullscreen?
     hl = {
       normal            = 'Normal',
-      border            = 'FloatBorder',
+      border            = 'NvimFloatingBorder',
+      -- border            = 'FloatBorder',
       -- builtin preview
       cursor            = 'Cursor',
       cursorline        = 'CursorLine',
@@ -56,14 +57,14 @@ fzf_lua.setup {
     },
     preview = {
       -- default             = 'bat',
-      border              = 'border',
+      border              = 'none',
       wrap                = 'nowrap',
-      hidden              = 'nohidden',
+      hidden              = 'hidden',
       vertical            = 'down:45%',
-      horizontal          = 'right:60%',
+      horizontal          = 'right:70%',
       layout              = 'flex',
       flip_columns        = 120,
-      title               = true,
+      title               = false,
       scrollbar           = 'float',
       -- scrolloff           = '-1',
       -- scrollchars         = {'█', '░' },
@@ -138,8 +139,13 @@ fzf_lua.setup {
   },
   lines               = { prompt = 'Lines❯ ', },
   blines              = { prompt = 'BLines❯ ', },
-  buffers             = { prompt = 'Buffers❯ ', },
+  buffers             = { 
+    prompt = 'B❯ ', 
+    file_icons = false,
+  },
   files = {
+    git_icons = false,
+    file_icons = false,
     prompt            = 'F❯ ',
     actions = {
       ["ctrl-l"]      = fzf_lua.actions.arg_add,
@@ -154,19 +160,20 @@ fzf_lua.setup {
     },
   },
   git = {
-    files             = { prompt = 'GitFiles❯ ', },
-    status            = { prompt = 'GitStatus❯ ', },
-    commits           = { prompt = 'Commits❯ ', },
-    bcommits          = { prompt = 'BCommits❯ ', },
-    branches          = { prompt = 'Branches❯ ', },
-    icons = {
+    -- files             = { prompt = 'GitFiles❯ ', },
+    -- status            = { prompt = 'GitStatus❯ ', },
+    -- commits           = { prompt = 'Commits❯ ', },
+    -- bcommits          = { prompt = 'BCommits❯ ', },
+    -- branches          = { prompt = 'Branches❯ ', },
+    -- icons = {
         -- ["M"]    = { icon = "★", color = "red" },
         -- ["D"]    = { icon = "✗", color = "red" },
         -- ["A"]    = { icon = "+", color = "green" },
-    },
+    -- },
   },
   grep = {
-    prompt            = 'Rg❯ ',
+    prompt            = 'R❯ ',
+    file_icons = false,
     input_prompt      = 'Grep For❯ ',
     actions           = { ["ctrl-q"] = false },
     -- 'true' enables file and git icons in 'live_grep'
@@ -286,7 +293,8 @@ function M.workdirs(opts)
   local iconify = function(path, color, icon)
     icon = fzf_lua.utils.ansi_codes[color](icon)
     path = fzf_lua.path.relative(path, vim.fn.expand('$HOME'))
-    return ("%s  %s"):format(icon, path)
+    -- return ("%s  %s"):format(icon, path)
+    return path
   end
 
   local dedup = {}
