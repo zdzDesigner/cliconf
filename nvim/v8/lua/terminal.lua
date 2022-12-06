@@ -54,15 +54,19 @@ end
 function M.openFloatTerm(cmd, hook)
 
   -- local ratio = 0.6
-  local ratio = 1
+  local ratio = 0.8
   local buf = vim.api.nvim_create_buf(false, true)
-  local win_height = math.ceil(vim.api.nvim_get_option("lines") * ratio - 4)
-  local win_width = math.ceil(vim.api.nvim_get_option("columns") * ratio)
+  local win_height = math.ceil(vim.api.nvim_get_option("lines") * 0.8)
+  local win_width = math.ceil(vim.api.nvim_get_option("columns") * 0.9)
+  -- local col = math.ceil((vim.api.nvim_get_option("columns") - win_width) * 0.5)
+  -- local row = math.ceil((vim.api.nvim_get_option("lines") - win_height) * 0.5-2)
   local col = math.ceil((vim.api.nvim_get_option("columns") - win_width) * 0.5)
-  local row = math.ceil((vim.api.nvim_get_option("lines") - win_height) * 0.5 - 1)
+  local row = math.ceil((vim.api.nvim_get_option("lines") - win_height) * 0.3)
+
   local opts = {
     style = "minimal",
-    relative = "editor",
+    relative = "win",
+    -- relative = "editor",
     -- border = "rounded",
     -- border = "none",
     border = "single",
@@ -82,23 +86,22 @@ function M.openFloatTerm(cmd, hook)
     vim.api.nvim_buf_delete(buf, { force = true })
   end
 
-  local on_stdout = function(jobid,data)
-    -- print(data)
-    if jobid~=lastOpenedTerminalJobId then return end
+  -- local on_stdout = function(jobid,data)
+    -- if jobid~=lastOpenedTerminalJobId then return end
     -- util.write_file('/tmp/xxx', jobid..'-'..lastOpenedTerminalJobId)
-    
+
     -- util.write_file('/tmp/xxx', jobid..'-'..vim.inspect(stdout_iter(data)))
     -- util.write_file('/tmp/xxx', data)
     -- vim.o.tabline = 'stdout-'..lastOpenedTerminalJobId..'-'..jobid
+    -- end
+
+    vim.api.nvim_command("startinsert")
+    lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
+      on_exit = on_exit,
+      -- on_stdout = on_stdout,
+    })
+
   end
 
-  vim.api.nvim_command("startinsert")
-  lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
-    on_exit = on_exit,
-    -- on_stdout = on_stdout,
-  })
 
-end
-
-
-return M
+  return M

@@ -35,6 +35,7 @@ keymap.set('','<C-a>',':tabnew  ~/temp/log/',{noremap = true,desc='快速创建�
 
 
 keymap.set('','S',':w<CR>',{silent=true,desc='保存'})
+keymap.set('','F',':Prettier<CR>',{noremap=true,desc='格式化'})
 keymap.set('','Q',':q<CR>',{desc='退出'})
 
 

@@ -81,6 +81,9 @@ $ systemctl set-default graphical.target
 
 
 
+## proxy  (proxychains4)
+- proxychains ./vn -u /home/zdz/.zdz/nvim/v8/init.lua
+- proxychains curl 'https://github.com/hrsh7th/cmp-nvim-lua'
 
 
 

@@ -1,5 +1,7 @@
 local set = vim.opt
 
+set.wrap = false -- 不换行
+set.swapfile = false -- 无bak
 set.tabstop = 2
 set.expandtab = true
 set.shiftwidth = 2

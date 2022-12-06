@@ -1,11 +1,11 @@
 local res = pcall(require, "nvim-treesitter")
 -- print('loaded treesitter:',res)
 if not res then
--- print('loaded treesitter xxx!!!')
     return
 end
 
-require('nvim-treesitter.configs').setup {
+-- print('----- loaded treesitter ------')
+require('nvim-treesitter.configs').setup({
   ensure_installed = {
       "bash",
       "c",
@@ -99,7 +99,7 @@ require('nvim-treesitter.configs').setup {
       show_help = '?',
     },
   },
-}
+})
 
 --[[
   https://github.com/nvim-treesitter/nvim-treesitter/issues/1168

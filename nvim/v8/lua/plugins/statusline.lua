@@ -22,7 +22,7 @@ local import_hls = {
   ['DiffDelete']  = 'bg',
   ['DiffChange']  = 'fg',
   ['DiffText']    = 'bg',
-  ['IncSearch']   = 'fg',
+  ['IncSearch']   = 'bg',
   ['ErrorMsg']    = 'fg',
   ['WildMenu']    = 'bg',
 }
@@ -32,18 +32,23 @@ local colors = {
   fg = col_from_hl('fg', { 'Normal', 'StatusLine' }, '#000000'),
 }
 
+
 for hl, col in pairs(import_hls) do
   colors[hl] = col_from_hl(col, { hl,  }, '#000000')
 end
 
+local style = {bg='#444444',fg='#aaaaaa'}
+
 local filename = {
   {
     'filetype',
+    color = style,
     -- icon_only = true,
     icon_only = false,
   },
   {
     'filename',
+    color = style,
     path = 1,             -- relative path
     shorting_target = 80, -- shorten long paths
     file_status = true,   -- show modified/readonly
@@ -76,73 +81,78 @@ local lsp_tbl = {
   end,
   -- icon = ' ',
   icon = '慎',
-  color = { fg = colors.bg, bg = colors.IncSearch },
+  color = { fg = colors.fg, bg = colors.IncSearch },
 }
 
 statusline.setup({
   -- tabline = {
-  --   lualine_a = {'windows'},
-  --   -- lualine_a = {'buffers'},
-  --   -- lualine_b = {'branch'},
-  --   -- lualine_c = {'filename'},
-  --   lualine_x = {},
-  --   lualine_y = {},
-  --   lualine_z = {'tabs'}
-  -- },
-  options = {
-    hide_filename_extension = false,
-    icons_enabled = false,
-    theme = 'dracula-nvim',
-    component_separators = {left='', right=''},
-    section_separators = {left='', right=''},
-    disabled_filetypes = {
-      'packer',
-      'NvimTree',
-      'fugitive',
-      'fugitiveblame',
-    }
-  },
-  sections = {
-    -- lualine_a = {{'mode'}},
-    lualine_a = {
-      {'mode', fmt = function(str) return ' ' .. str end}
+    --   lualine_a = {'windows'},
+    --   -- lualine_a = {'buffers'},
+    --   -- lualine_b = {'branch'},
+    --   -- lualine_c = {'filename'},
+    --   lualine_x = {},
+    --   lualine_y = {},
+    --   lualine_z = {'tabs'}
+    -- },
+    options = {
+      -- hide_filename_extension = false,
+      icons_enabled = false,
+      theme = 'dracula-nvim',
+      component_separators = {left='', right=''},
+      section_separators = {left='', right=''},
+      disabled_filetypes = {
+        'packer',
+        'NvimTree',
+        'fugitive',
+        'fugitiveblame',
+      }
     },
-    lualine_b = {
-      -- {'branch', icon = '', color = { fg = colors.Label, gui = 'bold' }},
-      {'branch', icon = ''},
-      -- {'diff',
-      -- symbols = { added = ' ', modified = '*', removed = ' ' },
-      -- diff_color = {
-      --   added = { fg = colors.DiffAdd },
-      --   modified = { fg = colors.DiffChange },
-      --   removed = { fg = colors.DiffDelete },
-      -- },
-      -- }
-    },
-    lualine_c = filename,
-    lualine_x = {{
-      'diagnostics',
-      sources = { 'nvim_lsp' },
-      symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-      diagnostics_color = {
-        error = { fg = colors.ErrorMsg },
-        warn  = { fg = colors.DiffChange },
-        info  = { fg = colors.WildMenu },
-        hint  = { fg = colors.Identifier },
+    sections = {
+      -- lualine_a = {{'mode'}},
+      lualine_a = {
+        {
+          'mode',
+          color = style,
+          fmt = function(str) return ' ' .. str end
+        }
       },
-      -- color = { bg = colors.String },
-    }, lsp_tbl},
-    lualine_y = { {'fileformat'}, {'encoding'}},
-      -- char under cursor in hex
-      -- {'%B', fmt = function(str) return '0x'..str end}},
-      lualine_z = {{'progress'},{'location'}},
-    },
-    inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = filename,
-      lualine_x = {{'fileformat'},{'encoding'},{'progress'},{'location'}},
-      lualine_y = {},
-      lualine_z = {},
-    },
-  })
+      lualine_b = {
+
+        -- {'branch', icon = '', color = { fg = colors.Label, gui = 'bold' }},
+        {'branch', icon = '',color = style},
+        -- {'diff',
+        -- symbols = { added = ' ', modified = '*', removed = ' ' },
+        -- diff_color = {
+          --   added = { fg = colors.DiffAdd },
+          --   modified = { fg = colors.DiffChange },
+          --   removed = { fg = colors.DiffDelete },
+          -- },
+          -- }
+        },
+        lualine_c = filename,
+        lualine_x = {{
+          'diagnostics',
+          color = style,
+          sources = { 'nvim_lsp' },
+          symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+          diagnostics_color = {
+            error = { fg = colors.ErrorMsg },
+            warn  = { fg = colors.DiffChange },
+            info  = { fg = colors.WildMenu },
+            hint  = { fg = colors.Identifier },
+          },
+        }, lsp_tbl},
+        lualine_y = { {'fileformat', color = style}, {'encoding',color = style}},
+        -- char under cursor in hex
+        -- {'%B', fmt = function(str) return '0x'..str end}},
+        lualine_z = {{'progress',color = style},{'location',color = style}},
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = filename,
+        lualine_x = {{'fileformat'},{'encoding'},{'progress'},{'location'}},
+        lualine_y = {},
+        lualine_z = {},
+      },
+    })

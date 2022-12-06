@@ -36,10 +36,12 @@ fzf_lua.setup {
   winopts = {
     -- split            = "belowright new",
     -- split            = "aboveleft vnew",
-    height           = 0.85,            -- window height
-    width            = 0.80,            -- window width
-    row              = 0.35,            -- window row position (0=top, 1=bottom)
-    col              = 0.55,            -- window col position (0=left, 1=right)
+    height           = 0.80,            -- window height
+    width            = 0.90,            -- window width
+    -- row              = 0.35,            -- window row position (0=top, 1=bottom)
+    -- col              = 0.55,            -- window col position (0=left, 1=right)
+    row              = 0.3,            -- window row position (0=top, 1=bottom)
+    col              = 0.5,            -- window col position (0=left, 1=right)
     -- border = 'double',
     -- border           = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
     -- border = { {'╭', 'IncSearch'}, {'─', 'IncSearch'}, {'╮', 'IncSearch'}, '│', '╯', '─', '╰', '│' },
