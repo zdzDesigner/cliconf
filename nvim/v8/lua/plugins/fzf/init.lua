@@ -4,8 +4,9 @@ local res, fzf_lua = pcall(require, "fzf-lua")
 if not res then
   return
 end
+local util = require('util')
 
-local fzf_bin = 'sk'
+local fzf_bin = 'fzf'
 
 local function fzf_colors(binary)
   binary = binary or fzf_bin
@@ -336,7 +337,7 @@ function M.workdirs(opts)
     local newcwd = selected[1]:match("[^ ]*$")
     newcwd = fzf_lua.path.starts_with_separator(newcwd) and newcwd
       or fzf_lua.path.join({ vim.fn.expand('$HOME'), newcwd })
-    require'utils'.set_cwd(newcwd)
+    util.set_cwd(newcwd)
   end)()
 end
 

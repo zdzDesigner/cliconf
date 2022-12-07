@@ -35,7 +35,7 @@ keymap.set('','<C-a>',':tabnew  ~/temp/log/',{noremap = true,desc='快速创建�
 
 
 keymap.set('','S',':w<CR>',{silent=true,desc='保存'})
-keymap.set('','F',':Prettier<CR>',{noremap=true,desc='格式化'})
+keymap.set('','<LEADER>f',':Prettier<CR>',{noremap=true,desc='格式化'})
 keymap.set('','Q',':q<CR>',{desc='退出'})
 
 
@@ -46,6 +46,7 @@ keymap.set('','Q',':q<CR>',{desc='退出'})
 
 -- keymap.set('n','W',fn.TabCloseLeft,{ noremap = true, silent = true, desc='close cur tab'})
 keymap.set('n','W',':bd<CR>',{ noremap = true, silent = true, desc='close cur tab'})
+keymap.set('n','<C-d>',':bd<CR>',{ noremap = true, silent = true, desc='close cur tab'})
 
 -- 移动tab
 keymap.set('','<C-j>',':tabp<CR>',{ noremap = true, silent = true, desc='tab prev'})
@@ -69,7 +70,7 @@ keymap.set('','<LEADER>j',fn.TabPrev,{ noremap = true, silent = true, desc='移�
 keymap.set('','<LEADER>k',fn.TabNext,{ noremap = true, silent = true, desc='移动到最右边'})
 keymap.set('','<LEADER><CR>',':nohlsearch<CR>',{ noremap = true, silent = true, desc='清除选中高亮'})
 
-keymap.set('','<LEADER>f', Ranger,{})
+-- keymap.set('','<LEADER>f', Ranger,{})
 keymap.set('','<LEADER>;', Ranger,{})
 
 

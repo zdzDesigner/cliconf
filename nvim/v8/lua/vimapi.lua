@@ -92,4 +92,4 @@ vim.api.nvim_create_user_command('FF', filepath,{})
 --
 -- ]])
 
-
+-- hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15

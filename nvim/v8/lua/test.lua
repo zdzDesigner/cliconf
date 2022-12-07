@@ -12,14 +12,24 @@ local test_dir = '/home/zdz/.config/nvim/v8'
 local function plugin(use)
 
   use('wbthomason/packer.nvim')
-  -- optional for fzf-lua, telescope, nvim-tree, feline
+  
+  use('jiangmiao/auto-pairs') -- 成对符号
+  -- use({ -- 快速删除或替换对称符号
+  --   "kylechui/nvim-surround",
+  --   tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+  --   config = function()
+  --       require("nvim-surround").setup({
+  --           -- Configuration here, or leave empty to use defaults
+  --       })
+  --   end
+  -- })
+
   use({
     'kyazdani42/nvim-web-devicons',
     config = "require('plugins/devicons')",
     event = 'VimEnter'
   })
 
-  -- fancy statusline
   use({
     'nvim-lualine/lualine.nvim',
     -- requires = { 'kyazdani42/nvim-web-devicons' },
@@ -54,10 +64,17 @@ local function plugin(use)
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim') -- 格式化
 
-  use({
+  use({ -- Theme
     'Mofiqul/dracula.nvim',
     config = "require('plugins/dracula')",
   })
+
+  use({  -- Snip
+    'L3MON4D3/LuaSnip',
+    config = 'require("plugins/luasnip")',
+    event = 'InsertEnter' 
+  }) 
+
   -- LSP
   use({
     'hrsh7th/nvim-cmp',
@@ -68,11 +85,10 @@ local function plugin(use)
       { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
     },
-    -- config = "require('plugins.cmp')",
+    config = "require('plugins/cmp')",
     -- event = "InsertEnter", }
-    -- after = 'LuaSnip',
-  })
-
+    after = 'LuaSnip' }
+  )
   use({ 'neovim/nvim-lspconfig',    event = 'BufRead' })
   use({
     'williamboman/nvim-lsp-installer',

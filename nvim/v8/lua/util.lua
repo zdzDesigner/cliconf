@@ -98,6 +98,9 @@ end
 
 _G.myluafunc = setmetatable({}, {
   __call = function(self, idx, args, count)
+    if self[idx] ==nil then
+      return ''
+    end
     return self[idx](args, count)
   end,
 })
@@ -106,6 +109,7 @@ local func2str = function(func, args)
   local idx = #_G.myluafunc + 1
   _G.myluafunc[idx] = func
   if not args then
+    -- print('idx:',idx)
     return ("lua myluafunc(%s)"):format(idx)
   else
     -- return ("lua myluafunc(%s, <q-args>)"):format(idx)

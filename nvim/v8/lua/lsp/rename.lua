@@ -1,5 +1,8 @@
+local util = require('util')
+
 local api = vim.api
 local lsp = vim.lsp
+
 
 local _winnr
 local _prompt_str = "New Name❯ "
@@ -62,10 +65,10 @@ local function handler(...)
     return
   end
   -- echo the resulting changes
-  local utils = require'utils'
+  
   if result and result.changes then
     for f, c in pairs(result.changes) do
-      utils.info(('"%s", %d change(s)'):format(f, utils.tablelength(c)))
+      util.info(('"%s", %d change(s)'):format(f, util.tablelength(c)))
     end
   end
   vim.lsp.handlers[method](...)

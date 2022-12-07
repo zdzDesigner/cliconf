@@ -5,154 +5,124 @@ if not res then
   return
 end
 
-local col_from_hl = require("lualine.utils.utils").extract_color_from_hllist
 
--- print('statusline:col_from_hl:',col_from_hl)
-
-local import_hls = {
-  ['String']      = 'fg',
-  ['Special']     = 'fg',
-  ['Type']        = 'fg',
-  ['Label']       = 'fg',
-  ['PreProc']     = 'fg',
-  ['Search']      = 'fg',
-  ['Identifier']  = 'fg',
-  ['Keyword']     = 'fg',
-  ['DiffAdd']     = 'bg',
-  ['DiffDelete']  = 'bg',
-  ['DiffChange']  = 'fg',
-  ['DiffText']    = 'bg',
-  ['IncSearch']   = 'bg',
-  ['ErrorMsg']    = 'fg',
-  ['WildMenu']    = 'bg',
-}
-
-local colors = {
-  bg = col_from_hl('bg', { 'StatusLine',  }, '#000000'),
-  fg = col_from_hl('fg', { 'Normal', 'StatusLine' }, '#000000'),
+local style = {
+  bg='#44475a',fg='#aaaaaa',warn='#a07fae', 
+  mode={bg='#5a4444',fg="#bbbbbb"}, 
+  branch={bg='#44525a',fg='#aaaaaa'},
+  lsp = {bg='#56445a',fg='#aaaaaa'},
+  modify={bg='#000000',fg='#ffffff'}
+  -- readonly={bg='#000000',fg='#ffffff'}
 }
 
 
-for hl, col in pairs(import_hls) do
-  colors[hl] = col_from_hl(col, { hl,  }, '#000000')
-end
 
-local style = {bg='#444444',fg='#aaaaaa'}
-
-local filename = {
-  {
-    'filetype',
-    color = style,
-    -- icon_only = true,
-    icon_only = false,
-  },
-  {
-    'filename',
-    color = style,
+local lualine_c = {{function()
+      local bg = style.bg -- not modified
+      local fg = style.fg -- not modified
+      if vim.bo.modified then 
+        bg = style.modify.bg -- unsaved
+        fg = style.modify.fg -- unsaved
+      elseif not 
+        vim.bo.modifiable 
+      then 
+        -- bg = '#a70089' 
+      end -- readonly
+      vim.cmd('hi! lualine_filename_status guibg='..bg..' guifg='..fg)
+      return '%t %m'
+    end,
     path = 1,             -- relative path
     shorting_target = 80, -- shorten long paths
     file_status = true,   -- show modified/readonly
-    symbols = { modified = '[+]', readonly = '[-]' },
-    -- symbols = { modified = ' ', readonly = ' ' },
-  },
-}
+    symbols = { 
+      modified = '[+]', readonly = '[-]' 
+    },
+    color = 'lualine_filename_status',
+  }}
 
-local function lsp_name()
-  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-  local clients = vim.lsp.get_active_clients()
-  if next(clients) == nil then
+  local function lsp_name()
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return nil
+    end
+    for _, client in ipairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        return client.name
+      end
+    end
     return nil
   end
-  for _, client in ipairs(clients) do
-    local filetypes = client.config.filetypes
-    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      return client.name
-    end
-  end
-  return nil
-end
 
-local lsp_tbl = {
-  function()
-    return lsp_name()
-  end,
-  cond = function()
-    return lsp_name() ~= nil
-  end,
-  -- icon = ' ',
-  icon = '慎',
-  color = { fg = colors.fg, bg = colors.IncSearch },
-}
+  local lsp_tbl = {
+    function()
+      return lsp_name()
+    end,
+    cond = function()
+      return lsp_name() ~= nil
+    end,
+    -- icon = ' ',
+    -- icon = '慎',
+    
+    color = style.lsp,
+    -- color = { fg = colors.fg, bg = colors.IncSearch },
+  }
 
-statusline.setup({
-  -- tabline = {
-    --   lualine_a = {'windows'},
-    --   -- lualine_a = {'buffers'},
-    --   -- lualine_b = {'branch'},
-    --   -- lualine_c = {'filename'},
-    --   lualine_x = {},
-    --   lualine_y = {},
-    --   lualine_z = {'tabs'}
-    -- },
-    options = {
-      -- hide_filename_extension = false,
-      icons_enabled = false,
-      theme = 'dracula-nvim',
-      component_separators = {left='', right=''},
-      section_separators = {left='', right=''},
-      disabled_filetypes = {
-        'packer',
-        'NvimTree',
-        'fugitive',
-        'fugitiveblame',
-      }
-    },
-    sections = {
-      -- lualine_a = {{'mode'}},
-      lualine_a = {
-        {
-          'mode',
-          color = style,
-          fmt = function(str) return ' ' .. str end
+  statusline.setup({
+    -- tabline = {
+      --   lualine_a = {'windows'},
+      --   -- lualine_a = {'buffers'},
+      --   -- lualine_b = {'branch'},
+      --   -- lualine_c = {'filename'},
+      --   lualine_x = {},
+      --   lualine_y = {},
+      --   lualine_z = {'tabs'}
+      -- },
+      options = {
+        -- hide_filename_extension = false,
+        icons_enabled = false,
+        -- theme = 'dracula-nvim',
+        component_separators = {left='', right=''},
+        section_separators = {left='', right=''},
+        disabled_filetypes = {
+          'packer',
+          'NvimTree',
+          'fugitive',
+          'fugitiveblame',
         }
       },
-      lualine_b = {
-
-        -- {'branch', icon = '', color = { fg = colors.Label, gui = 'bold' }},
-        {'branch', icon = '',color = style},
-        -- {'diff',
-        -- symbols = { added = ' ', modified = '*', removed = ' ' },
-        -- diff_color = {
-          --   added = { fg = colors.DiffAdd },
-          --   modified = { fg = colors.DiffChange },
-          --   removed = { fg = colors.DiffDelete },
-          -- },
-          -- }
+      sections = {
+        lualine_a = {
+          {
+            'mode',
+            color = style.mode,
+            fmt = function(str) return ' ' .. str end
+          }
         },
-        lualine_c = filename,
+        lualine_b = {
+          {
+            'branch',
+            color = style.branch,
+            fmt = function(str) return ' ' .. str end,
+          },
+        },
+        lualine_c = lualine_c,
         lualine_x = {{
           'diagnostics',
           color = style,
           sources = { 'nvim_lsp' },
-          symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+          -- symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+          symbols = { error = 'E', warn = 'R', info = 'I', hint = 'H' },
           diagnostics_color = {
-            error = { fg = colors.ErrorMsg },
-            warn  = { fg = colors.DiffChange },
-            info  = { fg = colors.WildMenu },
-            hint  = { fg = colors.Identifier },
+            color = style,
+            error = { fg = style.warn},
+            warn  = { fg = style.warn},
+            info  = { fg = style.warn},
+            hint  = { fg = style.warn},
           },
         }, lsp_tbl},
         lualine_y = { {'fileformat', color = style}, {'encoding',color = style}},
-        -- char under cursor in hex
-        -- {'%B', fmt = function(str) return '0x'..str end}},
         lualine_z = {{'progress',color = style},{'location',color = style}},
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = filename,
-        lualine_x = {{'fileformat'},{'encoding'},{'progress'},{'location'}},
-        lualine_y = {},
-        lualine_z = {},
       },
     })

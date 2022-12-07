@@ -5,8 +5,8 @@ dracula.setup({
   colors = {
     bg = "#282A36",
     fg = "#F8F8F2",
-    -- selection = "#44475A",
-    selection = "#cccccc",
+    selection = "#44475A",
+    -- selection = "#cccccc",
     comment = "#6272A4",
     -- comment = "#cccccc",
     red = "#FF5555",

@@ -3,6 +3,7 @@ local function import(module)
   return require(module)
 end
 
+
 vim.o.exrc = true
 vim.o.secure = true
 
@@ -26,28 +27,28 @@ import('keymap')
 
 
 
-
-
 vim.cmd([[
+  " 注释
   source $CLIENV/nvim/v8/vim/comment.vim
   noremap <silent> <C-_><C-_> :Commentary<CR>
 
-  "" 设置颜色
+  " 设置颜色
   colorscheme dracula
-  "" 透明背景
+  " 透明背景
   hi Normal guibg=NONE
 
 
-  "" 配置ranger 背景
+  " 配置ranger 背景
   hi def NvimFloatingWindow  term=None guifg=white guibg=None ctermfg=white ctermbg=210
-  "" 配置ranger 边框
+  " 配置ranger 边框
   hi def NvimFloatingBorder  term=None guifg=#668a95 guibg=None ctermfg=white ctermbg=1
 
-  "" 隐藏tab
+  " 隐藏tab
   :set showtabline=0
 
-  "" 日志
+  " 日志
   set verbosefile=$HOME/.local/state/nvim/test.log
+
 ]])
 
 

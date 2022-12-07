@@ -36,10 +36,10 @@ local lua_settings = {
     },
     workspace = {
       -- Make the server aware of Neovim runtime files
-      library = {
-        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-      },
+      -- library = {
+      --   [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+      --   [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+      -- },
     },
   }
 }
@@ -90,5 +90,5 @@ lsp_installer.on_server_ready(function(server)
   -- This setup() function is exactly the same as
   -- lspconfig's setup function (:help lspconfig-quickstart)
   server:setup(opts)
-  vim.cmd [[ do User LspAttachBuffers ]]
+  -- vim.cmd [[ do User LspAttachBuffers ]]
 end)
