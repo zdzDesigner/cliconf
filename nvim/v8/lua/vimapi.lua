@@ -11,7 +11,7 @@ local util = import('util')
 print('util:',util)
 -- print('util.write_file:',util.write_file)
 -- util.write_file('/tmp/ccc', 'ccccc')
-
+print('stdpath:',vim.fn.stdpath("data"))
 -- vim.o.tabline = 'ranger'
 print('expand:%:',vim.fn.expand('%')) -- 文件名
 print('expand:(%:p):',vim.fn.expand('%:p'))-- 路径+文件名
@@ -91,5 +91,6 @@ vim.api.nvim_create_user_command('FF', filepath,{})
 --   :set showtabline=0
 --
 -- ]])
-
+--
+-- statusline=%#lualine_a_mode#  CM %#lualine_b_branch#  master %<%#lualine_c_3# %t %m %#lualine_c_command#%=%#lualine_y_fileformat# unix %#lualine_z_progress# Top %#lualine_z_location#   1:1
 -- hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15

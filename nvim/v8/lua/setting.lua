@@ -32,14 +32,13 @@ set.autoread =true
 
 vim.cmd([[
 " syntax on
-set statusline +=%{resolve(expand('%:p'))}\ %*
+"" set statusline +=%{resolve(expand('%:p'))}\ %*
 exec "nohlsearch"
 au FocusGained,BufEnter * :silent! !
 
 noremap <silent> <C-g> :call AbsolutePath()<CR>
 function! AbsolutePath()
     let @+=expand("%:p")
-    " let @+=expand("%:h")
 endfunction
 
 ]])

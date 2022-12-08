@@ -23,8 +23,8 @@ keymap.set('','R',':source /home/zdz/.zdz/nvim/v8/init.lua<CR>',{noremap = true,
 keymap.set('n','H','0',{noremap = true, silent = true,desc='列首'})
 keymap.set('n','L','$',{noremap = true, silent = true,desc='列尾'})
 keymap.set('v','L','$h',{noremap = true, silent = true,desc='V模式列尾'})
-keymap.set('n','K','6k',{noremap = true, silent = true,desc='快速向下'})
-keymap.set('n','J','6j',{noremap = true, silent = true,desc='快速向上'})
+keymap.set('','K','6k',{noremap = true, silent = true,desc='快速向下'})
+keymap.set('','J','6j',{noremap = true, silent = true,desc='快速向上'})
 
 
 keymap.set('n','sp','pldehbyp<CR>',{noremap = true, silent = true,desc='头部替换word'})
@@ -49,8 +49,10 @@ keymap.set('n','W',':bd<CR>',{ noremap = true, silent = true, desc='close cur ta
 keymap.set('n','<C-d>',':bd<CR>',{ noremap = true, silent = true, desc='close cur tab'})
 
 -- 移动tab
-keymap.set('','<C-j>',':tabp<CR>',{ noremap = true, silent = true, desc='tab prev'})
-keymap.set('','<C-k>',':tabn<CR>',{ noremap = true, silent = true, desc='tab next'})
+-- keymap.set('','<C-j>',':tabp<CR>',{ noremap = true, silent = true, desc='tab prev'})
+-- keymap.set('','<C-k>',':tabn<CR>',{ noremap = true, silent = true, desc='tab next'})
+keymap.set('','<C-j>',':bp<CR>',{ noremap = true, silent = true, desc='buffer prev'})
+keymap.set('','<C-k>',':bn<CR>',{ noremap = true, silent = true, desc='buffer next'})
 keymap.set('','<C-x>',':tabn #<CR>',{ noremap = true, silent = true, desc='切换?'})
 keymap.set('','<C-t>',':tabnew<CR>',{ noremap = true, silent = true, desc='新建tab'})
 keymap.set('','<LEADER>0',':tabfirst<CR>',{ noremap = true, silent = true, desc='跳转到第1个tab'})
@@ -70,6 +72,21 @@ keymap.set('','<LEADER>j',fn.TabPrev,{ noremap = true, silent = true, desc='移�
 keymap.set('','<LEADER>k',fn.TabNext,{ noremap = true, silent = true, desc='移动到最右边'})
 keymap.set('','<LEADER><CR>',':nohlsearch<CR>',{ noremap = true, silent = true, desc='清除选中高亮'})
 
+keymap.set('','<LEADER>jk',':set splitright<CR>:vsplit<CR>',{ noremap = true, silent = true, desc='水平分屏'})
+keymap.set('','<LEADER>kj',':set splitright<CR>:vsplit<CR>',{ noremap = true, silent = true, desc='水平分屏'})
+keymap.set('','<LEADER><CR>',':nohlsearch<CR>',{ noremap = true, silent = true, desc='清除选中高亮'})
+
+-- ====== 分栏跳转默认=======
+-- <C-w>l
+-- <C-w>h
+-- <C-w>j
+-- <C-w>k
+
+-- ====== 缩进 =======
+-- :1,10>   第1行至第10行右移动
+-- :2,80<   第2行至第80行左移动
+
+-- 调起 Ranger 
 -- keymap.set('','<LEADER>f', Ranger,{})
 keymap.set('','<LEADER>;', Ranger,{})
 

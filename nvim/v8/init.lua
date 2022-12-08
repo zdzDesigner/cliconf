@@ -19,11 +19,14 @@ vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjum
 -- require('plugins/fzf/mappings')
 -- require('plugins/fzf/init')
 -- import('vimapi')
-import('setting')
+
+-- import('plugins/colors/init').set('embark')
+-- import('plugins/colors/init').set('onedark')
 import('test')
 import('plugins/ranger')
 import('keymap')
-
+import('setting')
+-- import('vimapi')
 
 
 
@@ -32,8 +35,9 @@ vim.cmd([[
   source $CLIENV/nvim/v8/vim/comment.vim
   noremap <silent> <C-_><C-_> :Commentary<CR>
 
-  " 设置颜色
-  colorscheme dracula
+  " markdown
+  source $CLIENV/nvim/v8/vim/markdown.vim
+
   " 透明背景
   hi Normal guibg=NONE
 
@@ -44,11 +48,12 @@ vim.cmd([[
   hi def NvimFloatingBorder  term=None guifg=#668a95 guibg=None ctermfg=white ctermbg=1
 
   " 隐藏tab
-  :set showtabline=0
+  set showtabline=0
 
   " 日志
   set verbosefile=$HOME/.local/state/nvim/test.log
 
+ 
 ]])
 
 

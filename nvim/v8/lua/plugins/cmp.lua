@@ -1,8 +1,5 @@
 local res, cmp = pcall(require, "cmp")
-
-if not res then
-  return
-end
+if not res then return end
 
 
 local luasnip = require("luasnip")
@@ -71,18 +68,20 @@ cmp.setup {
     ['<S-down>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = function(fallback)
-      if (vim.fn.pumvisible() == 1 and not
-          vim.tbl_isempty(vim.v.completed_item)) or
-         (cmp.visible() and cmp.core.view:get_selected_entry()) then
-        cmp.confirm({
-              behavior = cmp.ConfirmBehavior.Replace,
-              select = true,
-            })
-      else
-        fallback()
-      end
-    end,
+    -- 直接选中
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<CR>'] = function(fallback)
+      -- if (vim.fn.pumvisible() == 1 and not
+      --     vim.tbl_isempty(vim.v.completed_item)) or
+      --    (cmp.visible() and cmp.core.view:get_selected_entry()) then
+      --   cmp.confirm({
+      --         behavior = cmp.ConfirmBehavior.Replace,
+      --         select = true,
+      --       })
+      -- else
+      --   fallback()
+      -- end
+    -- end,
   },
 
 
@@ -143,9 +142,9 @@ local function abort_logic(key, fn)
   end
 end
 
-remap({ "i", "s" }, "<Esc>", function()
-  abort_logic('<Esc>')
-end)
+-- remap({ "i", "s" }, "<Esc>", function()
+--   abort_logic('<Esc>')
+-- end)
 
 --[[ remap({ "i", "s" }, "<C-c>", function()
   -- NOTE: <C-c> clears 'cmp.core.view:get_selected_entry()'

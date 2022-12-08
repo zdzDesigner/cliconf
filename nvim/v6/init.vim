@@ -179,7 +179,6 @@ lua << EOF
     require('plugins/treesitter')
     require('plugins/lsp')
     require('plugins/cmp')
-    require('keymaps')
 EOF
 " :lua require('plugins/lsp')
 " :lua require('plugins/cmp')

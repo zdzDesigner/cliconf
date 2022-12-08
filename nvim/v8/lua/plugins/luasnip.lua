@@ -1,7 +1,5 @@
 local res, luasnip = pcall(require, "luasnip")
-if not res then
-  return
-end
+if not res then return end
 
 local remap = require('util').remap
 

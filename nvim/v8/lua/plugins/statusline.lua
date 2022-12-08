@@ -1,18 +1,42 @@
 local res, statusline = pcall(require, "lualine")
 -- print('statusline::',res)
-
-if not res then
-  return
-end
+if not res then return end
 
 
 local style = {
-  bg='#44475a',fg='#aaaaaa',warn='#a07fae', 
-  mode={bg='#5a4444',fg="#bbbbbb"}, 
-  branch={bg='#44525a',fg='#aaaaaa'},
-  lsp = {bg='#56445a',fg='#aaaaaa'},
-  modify={bg='#000000',fg='#ffffff'}
-  -- readonly={bg='#000000',fg='#ffffff'}
+  bg='None',fg='#aaaaaa',warn='#bbbbbb', 
+  mode={bg='None',fg="#bbbbbb"}, 
+  branch={bg='None',fg='#aaaaaa'},
+  lsp = {bg='None',fg='#aaaaaa'},
+  modify={bg='None',fg='#ffffff'}
+  -- readonly={bg='None',fg='#ffffff'}
+}
+-- local style = {
+--   bg='#44475a',fg='#aaaaaa',warn='#000000', 
+--   mode={bg='#5a4444',fg="#bbbbbb"}, 
+--   branch={bg='#44525a',fg='#aaaaaa'},
+--   lsp = {bg='#56445a',fg='#aaaaaa'},
+--   modify={bg='#000000',fg='#ffffff'}
+--   -- readonly={bg='#000000',fg='#ffffff'}
+-- }
+
+local modes = {
+  ['NORMAL'] = 'NO',
+  ['VISUAL'] = 'VI',
+  ['V-BLOCK'] = 'VB',
+  ['V-LINE'] = 'VL',
+  ['SELECT'] = 'SE',
+  ['S-LINE'] = 'SL',
+  ['S-BLOCK'] = 'SB',
+  ['REPLACE'] = 'RE',
+  ['V-REPLACE'] = 'VR',
+  ['INSERT'] = 'IN',
+  ['COMMAND'] = 'CM',
+  ['EX'] = 'EX',
+  ['MORE'] = 'MO',
+  ['CONFIRM'] = 'CF',
+  ['TERMINAL'] = 'TM',
+  ['O-PENDING'] = 'PD',
 }
 
 
@@ -82,7 +106,10 @@ local lualine_c = {{function()
       options = {
         -- hide_filename_extension = false,
         icons_enabled = false,
-        -- theme = 'dracula-nvim',
+        refresh = {
+          statusline = 2000,
+        },
+        theme = 'dracula-nvim',
         component_separators = {left='', right=''},
         section_separators = {left='', right=''},
         disabled_filetypes = {
@@ -97,7 +124,12 @@ local lualine_c = {{function()
           {
             'mode',
             color = style.mode,
-            fmt = function(str) return ' ' .. str end
+            fmt = function(str) 
+              if modes[str]~=nil then
+                return ' ' .. modes[str]
+              end
+              return  ' ' .. str
+            end
           }
         },
         lualine_b = {
@@ -113,7 +145,7 @@ local lualine_c = {{function()
           color = style,
           sources = { 'nvim_lsp' },
           -- symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-          symbols = { error = 'E', warn = 'R', info = 'I', hint = 'H' },
+          symbols = { error = 'e.', warn = 'r.', info = 'r.', hint = 'h.' },
           diagnostics_color = {
             color = style,
             error = { fg = style.warn},
@@ -126,3 +158,8 @@ local lualine_c = {{function()
         lualine_z = {{'progress',color = style},{'location',color = style}},
       },
     })
+    require('lualine').hide({
+      place = {'tabline', 'winbar'}, -- The segment this change applies to.
+      unhide = false,  -- whether to reenable lualine again/
+    })
+

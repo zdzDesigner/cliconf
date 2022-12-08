@@ -30,6 +30,7 @@ local function plugin(use)
     event = 'VimEnter'
   })
 
+  -- use('itchyny/lightline.vim')
   use({
     'nvim-lualine/lualine.nvim',
     -- requires = { 'kyazdani42/nvim-web-devicons' },
@@ -98,6 +99,25 @@ local function plugin(use)
       -- require'lspconfig'._root.commands.LspStart[1]()
     end,
     after  = { 'nvim-lspconfig' },
+  })
+
+  use({
+    'dhruvasagar/vim-table-mode',
+    opt = true,
+    cmd = {'TableModeToggle'},
+  })
+
+  use({
+     'natecraddock/sessions.nvim', 
+     config = "require('plugins/sessions')",
+  })
+  use({
+    'natecraddock/workspaces.nvim',
+    requires = {
+      { 'natecraddock/sessions.nvim', after='workspaces.nvim' },
+    },
+     -- opt = true,
+     config = "require('plugins/workspaces')",
   })
 
 

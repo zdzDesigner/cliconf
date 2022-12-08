@@ -151,6 +151,7 @@ fzf_lua.setup {
     file_icons = false,
     prompt            = 'F❯ ',
     actions = {
+      ["default"]     = require("fzf-lua.actions").file_edit,
       ["ctrl-l"]      = fzf_lua.actions.arg_add,
       ["ctrl-y"]      = function(selected) print(selected[1]) end,
     },

@@ -1,8 +1,9 @@
 local M = {}
 
 M.set = function(theme)
+  -- print('theme:', theme,string.format("./%s", theme))
   -- search for the theme colors
-  local success, colors = pcall(require, string.format("colors.%s", theme))
+  local success, colors = pcall(require, string.format("plugins/colors/%s", theme))
   if success then
     M.set_colorscheme(colors, theme)
   end

@@ -1,8 +1,5 @@
 local res = pcall(require, "nvim-treesitter")
--- print('loaded treesitter:',res)
-if not res then
-    return
-end
+if not res then return end
 
 -- print('----- loaded treesitter ------')
 require('nvim-treesitter.configs').setup({
