@@ -30,7 +30,7 @@ require('workspaces').setup({
           -- require('plugins/sessions/lua/sessions').load(nil, { silent = true })
         end,
         add = {
-          print('workspace add hook')
+          -- print('workspace add hook')
           -- sessions.save(nil, { silent = true })
         },
         -- remove = {},

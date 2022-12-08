@@ -1,8 +1,11 @@
-local M = {}
-
 local neval = vim.api.nvim_eval
 local ncmd = vim.api.nvim_command
 
+local Prettier = require('plugins/prettier')
+
+
+
+local M = {}
 function M.TabCloseLeft ()
   local last_win_num = neval('winnr("$")')
   local cur_win_num = neval('winnr()')
@@ -44,6 +47,17 @@ function M.TabNext()
     return
   end
   ncmd('tabm '..n)
+end
+
+function M.ZReg()
+    vim.cmd([[@b=@+]])
+end
+
+function M.Format()
+  if Prettier.ismatch(vim.fn.expand('%:e')) then
+    return vim.cmd([[:Prettier]])
+  end
+  vim.lsp.buf.format()
 end
 
 -- vim.api.nvim_create_user_command('Upper', 'echo toupper(<q-args>)', { nargs = 1 })

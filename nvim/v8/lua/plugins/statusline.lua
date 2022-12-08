@@ -107,7 +107,7 @@ local lualine_c = {{function()
         -- hide_filename_extension = false,
         icons_enabled = false,
         refresh = {
-          statusline = 2000,
+          -- statusline = 2000,
         },
         theme = 'dracula-nvim',
         component_separators = {left='', right=''},

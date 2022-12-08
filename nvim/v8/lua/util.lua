@@ -1,13 +1,18 @@
 local M = {}
 
+function M.isstr(v) return type(v) == "string" end
+
+function M.isfunc(v) return type(v) == "function" end
+
 function M.write_file(path, contents)
   local fd = assert(vim.loop.fs_open(path, "w", 438))
   vim.loop.fs_write(fd, contents, -1)
   assert(vim.loop.fs_close(fd))
 end
+
 ---@param filepath string
 ---@return string?
- function M.read_file(filepath)
+function M.read_file(filepath)
   if not M.exists(filepath) then
     return nil
   end
@@ -40,24 +45,24 @@ function M.bufExists(buf)
   return false
 end
 
-
 ---Removes some ansi escape codes from a string
 ---@param str string
 ---@return string
-function M.remove_ansi (str)
+function M.remove_ansi(str)
   local ret = str
-  :gsub("\x1b%[[%d;]*m", "") -- Strip color codes
-  :gsub("\x1b%[%d*K", "") -- Strip the "erase in line" codes
+      :gsub("\x1b%[[%d;]*m", "")-- Strip color codes
+      :gsub("\x1b%[%d*K", "") -- Strip the "erase in line" codes
   return ret
 end
 
 ---Removes carriage returns and some ansi escape codes from a string
 ---@param str string
 ---@return string
-function M.clean_job_line (str)
+function M.clean_job_line(str)
   return M.remove_ansi(str:gsub("\r$", ""))
 end
-function M.get_stdout_line_iter ()
+
+function M.get_stdout_line_iter()
   local pending = ""
   return function(data)
     local ret = {}
@@ -80,7 +85,7 @@ function M.get_stdout_line_iter ()
   end
 end
 
-function M.sleep(n)-- seconds
+function M.sleep(n) -- seconds
   local clock = os.clock
   local t0 = clock()
   while clock() - t0 <= n do end
@@ -92,13 +97,13 @@ function _G.dump(...)
 end
 
 function _G.reload(package)
-    package.loaded[package] = nil
-    return require(package)
+  package.loaded[package] = nil
+  return require(package)
 end
 
 _G.myluafunc = setmetatable({}, {
   __call = function(self, idx, args, count)
-    if self[idx] ==nil then
+    if self[idx] == nil then
       return ''
     end
     return self[idx](args, count)
@@ -117,6 +122,10 @@ local func2str = function(func, args)
   end
 end
 
+
+M.t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 ---API for key mapping.
 ---
 ---@param lhs string
@@ -125,25 +134,22 @@ end
 ---@param opts string|table
 --- opts.buffer: current buffer only
 --- opts.cmd: command (format to <cmd>%s<cr>)
- function M.remap (modes, lhs, rhs, opts)
-  modes = type(modes) == "string" and { modes } or modes
-  opts = opts or {}
-  opts = type(opts) == "string" and { opts } or opts
+function M.remap(modes, lhs, rhs, opts)
+  modes = M.isstr(modes) and { modes } or modes
+  opts = M.isstr(opts) and { opts } or (opts or {})
 
+  -- plan B
   local fallback = function()
     return vim.api.nvim_feedkeys(M.t(lhs), "n", true)
   end
 
   local _rhs = (function()
-    if type(rhs) == "function" then
+    if M.isfunc(rhs) then
       opts.noremap = true
       opts.cmd = true
-      return func2str(function()
-        rhs(fallback)
-      end)
-    else
-      return rhs
+      return func2str(function() rhs(fallback) end)
     end
+    return rhs
   end)()
 
   for key, opt in ipairs(opts) do
@@ -178,9 +184,9 @@ end
 
 function M.have_compiler()
   if vim.fn.executable('cc') == 1 or
-    vim.fn.executable('gcc') == 1 or
-    vim.fn.executable('clang') == 1 or
-    vim.fn.executable('cl') == 1 then
+      vim.fn.executable('gcc') == 1 or
+      vim.fn.executable('clang') == 1 or
+      vim.fn.executable('cl') == 1 then
     return true
   end
   return false
