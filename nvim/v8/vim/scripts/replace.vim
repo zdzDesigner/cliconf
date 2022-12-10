@@ -26,7 +26,7 @@ endfunction
 " :begin,end,syntax/old/new/g
 " :429,431,s/},/},\r/g
 
-# console.log  =>  // console.log
+" console.log  =>  // console.log
 " :%s /^\s*console.log/\/\/console.log/g
 
 
@@ -42,3 +42,13 @@ endfunction
 "
 " ========== 非贪婪\{-} ===========
 ":'<,'>s /bg='.\{-}'/bg='None'/
+
+" ========== 替换组\(\) \n===========
+" ========== 双引号-> 单引号 ===========
+":%s /"\(.*\)"/'\1'/g
+
+
+
+
+
+

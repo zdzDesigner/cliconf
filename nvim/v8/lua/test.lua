@@ -1,18 +1,16 @@
--- vim.opt.runtimepath:remove(vim.fn.expand("~/.config/nvim"))
--- vim.opt.packpath:remove(vim.fn.expand("~/.local/share/nvim/site"))
+-- 更改packer配置需要compile
+-- 更改packer配置需要compile
+-- 更改packer配置需要compile
+
+
 vim.opt.termguicolors = true
 
 -- append test directory
 local test_dir = '/home/zdz/.config/nvim/v8'
--- vim.opt.runtimepath:append(vim.fn.expand(test_dir))
--- vim.opt.packpath:append(vim.fn.expand(test_dir))
--- print('test_dir::',test_dir)
-
 
 local function plugin(use)
 
   use('wbthomason/packer.nvim')
-  
   use('jiangmiao/auto-pairs') -- 成对符号
   -- use({ -- 快速删除或替换对称符号
   --   "kylechui/nvim-surround",
@@ -30,7 +28,6 @@ local function plugin(use)
     event = 'VimEnter'
   })
 
-  -- use('itchyny/lightline.vim')
   use({
     'nvim-lualine/lualine.nvim',
     -- requires = { 'kyazdani42/nvim-web-devicons' },
@@ -63,18 +60,21 @@ local function plugin(use)
 
   use('nvim-lua/plenary.nvim')
   use('jose-elias-alvarez/null-ls.nvim')
-  use('MunifTanjim/prettier.nvim') -- 格式化
+  use({
+    'MunifTanjim/prettier.nvim',
+    config = 'require("lsp/prettier")',
+  }) -- 格式化
 
   use({ -- Theme
     'Mofiqul/dracula.nvim',
     config = "require('plugins/dracula')",
   })
 
-  use({  -- Snip
+  use({ -- Snip
     'L3MON4D3/LuaSnip',
-    config = 'require("plugins/luasnip")',
-    event = 'InsertEnter' 
-  }) 
+    config = 'require("plugins/luasnips/init")',
+    event = 'InsertEnter'
+  })
 
   -- LSP
   use({
@@ -88,15 +88,19 @@ local function plugin(use)
     },
     config = "require('plugins/cmp')",
     -- event = "InsertEnter", }
-    after = 'LuaSnip' }
+    after = 'LuaSnip'
+  }
   )
-  use({ 'neovim/nvim-lspconfig',    event = 'BufRead' })
+  use({
+    'neovim/nvim-lspconfig',
+    event = 'BufRead'
+  })
+
   use({
     'williamboman/nvim-lsp-installer',
     config = function()
       require('lsp')
       -- ':command LspStart'
-      -- require'lspconfig'._root.commands.LspStart[1]()
     end,
     after  = { 'nvim-lspconfig' },
   })
@@ -104,20 +108,20 @@ local function plugin(use)
   use({
     'dhruvasagar/vim-table-mode',
     opt = true,
-    cmd = {'TableModeToggle'},
+    cmd = { 'TableModeToggle' },
   })
 
   use({
-     'natecraddock/sessions.nvim', 
-     config = "require('plugins/sessions')",
+    'natecraddock/sessions.nvim',
+    config = "require('plugins/sessions')",
   })
   use({
     'natecraddock/workspaces.nvim',
     requires = {
-      { 'natecraddock/sessions.nvim', after='workspaces.nvim' },
+      { 'natecraddock/sessions.nvim', after = 'workspaces.nvim' },
     },
-     -- opt = true,
-     config = "require('plugins/workspaces')",
+    -- opt = true,
+    config = "require('plugins/workspaces')",
   })
 
 
@@ -140,28 +144,28 @@ local function plugin(use)
   -- use({ 'dracula/vim',as='dracula' })
 
   -- use({
-    -- 'VonHeikemen/little-wonder',
-    -- setup = function()print('xxx')end,
-    -- })
+  -- 'VonHeikemen/little-wonder',
+  -- setup = function()print('xxx')end,
+  -- })
 
-  end
+end
 
-  local packer = require("packer")
+local packer = require("packer")
 
-  local config = {
-    package_root = test_dir .. "/pack", -- 包路径
-    compile_path = test_dir .. "/plugin/packer_compiled.lua", -- 编译结果
-  }
-  packer.init(config)
-  packer.startup(plugin)
-  -- print(config.compile_path,vim.inspect(vim.loop.fs_stat(config.compile_path)))
-  if not vim.loop.fs_stat(config.compile_path) then
-    packer.sync()
-  end
+local config = {
+  package_root = test_dir .. "/pack", -- 包路径
+  compile_path = test_dir .. "/plugin/packer_compiled.lua", -- 编译结果
+}
+packer.init(config)
+packer.startup(plugin)
+-- print(config.compile_path,vim.inspect(vim.loop.fs_stat(config.compile_path)))
+if not vim.loop.fs_stat(config.compile_path) then
+  packer.sync()
+end
 
 
-  -- use({
-    --   'plugins.vv',
-    --   config = function()print('config')end,
-    --   setup = function()print('setup')end,
-    -- })
+-- use({
+--   'plugins.vv',
+--   config = function()print('config')end,
+--   setup = function()print('setup')end,
+-- })

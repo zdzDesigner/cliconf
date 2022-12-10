@@ -1,6 +1,4 @@
-if not pcall(require, "lspconfig") then  -- 保护调用加载模块
-  return
-end
+if not pcall(require, 'lspconfig') then return end -- 保护调用加载模块
 
 local M = {}
 
@@ -24,10 +22,10 @@ function M.preview_location(loc, _, _)
     false)
   -- empty lines at the start don't count
   for _, l in ipairs(lines) do
-    if #l>0 then break end
-    before = before-1
+    if #l > 0 then break end
+    before = before - 1
   end
-  local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+  local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
   local buf, win = vim.lsp.util.open_floating_preview(lines, ft)
   vim.api.nvim_win_set_config(win, _winopts)
   vim.api.nvim_buf_set_option(buf, 'bufhidden', 'wipe')
@@ -37,23 +35,23 @@ function M.preview_location(loc, _, _)
   vim.api.nvim_win_set_option(win, 'cursorline', true)
   -- partial data, numbers make no sense
   vim.api.nvim_win_set_option(win, 'number', false)
-  vim.api.nvim_win_set_cursor(win, {before+1,1})
-  local pos = range.start.line == range["end"].line and
-    { before+1, range.start.character+1, range["end"].character-range.start.character } or
-    { before+1 }
+  vim.api.nvim_win_set_cursor(win, { before + 1, 1 })
+  local pos = range.start.line == range['end'].line and
+      { before + 1, range.start.character + 1, range['end'].character - range.start.character } or
+      { before + 1 }
   vim.api.nvim_win_call(win, function()
-    vim.fn.matchaddpos('Cursor', {pos})
+    vim.fn.matchaddpos('Cursor', { pos })
   end)
   return buf, win
 end
 
 function M.preview_location_callback(err, res, ctx, cfg)
   if err then
-    vim.notify(("Error running LSP query '%s'"):format(cfg.method), vim.log.levels.ERROR)
+    vim.notify(('Error running LSP query '%s''):format(cfg.method), vim.log.levels.ERROR)
     return nil
   end
   if res == nil or vim.tbl_isempty(res) then
-    vim.notify("Unable to find code location.", vim.log.levels.WARN)
+    vim.notify('Unable to find code location.', vim.log.levels.WARN)
     return nil
   end
   if vim.tbl_islist(res) then
@@ -93,7 +91,7 @@ function M.peek_definition()
     vim.api.nvim_set_current_win(_float_win)
   else
     local params = vim.lsp.util.make_position_params()
-    return vim.lsp.buf_request(0, "textDocument/definition", params,
+    return vim.lsp.buf_request(0, 'textDocument/definition', params,
       M.mk_handler(M.preview_location_callback))
   end
 end

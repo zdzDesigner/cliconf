@@ -1,5 +1,6 @@
 local set = vim.opt
 
+set.mouse = ''
 set.wrap = false -- 不换行
 set.swapfile = false -- 无bak
 set.tabstop = 2

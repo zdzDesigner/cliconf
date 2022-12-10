@@ -23,9 +23,9 @@ vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjum
 -- import('plugins/colors/init').set('onedark')
 import('test')
 import('plugins/ranger')
+import('lsp/prettier')
 import('keymap')
 import('setting')
--- import('vimapi')
 
 
 vim.cmd([[
@@ -49,6 +49,7 @@ vim.cmd([[
   set showtabline=0
 
   " 日志
+  set verbose=20
   set verbosefile=$HOME/.local/state/nvim/test.log
 
  

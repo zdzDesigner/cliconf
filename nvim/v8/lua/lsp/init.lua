@@ -1,5 +1,4 @@
-
-if not pcall(require, "lspconfig") or not pcall(require, "nvim-lsp-installer") then return end
+if not pcall(require, 'lspconfig') or not pcall(require, 'nvim-lsp-installer') then return end
 
 -- print('----lsp start----')
 -- Setup icons & handler helper functions
@@ -26,12 +25,12 @@ local lua_settings = {
       -- Get the language server to recognize the `vim` global
       globals = {
         'vim',
-        'root',         -- awesomeWM
-        'awesome',      -- awesomeWM
-        'screen',       -- awesomeWM
-        'client',       -- awesomeWM
-        'clientkeys',   -- awesomeWM
-        'clientbuttons',-- awesomeWM
+        'root', -- awesomeWM
+        'awesome', -- awesomeWM
+        'screen', -- awesomeWM
+        'client', -- awesomeWM
+        'clientkeys', -- awesomeWM
+        'clientbuttons', -- awesomeWM
       },
     },
     workspace = {
@@ -59,12 +58,12 @@ local function make_config()
 end
 
 -- manually installed LSP servers
-local servers = { 'tsserver','ccls', 'rust_analyzer' }
+local servers = { 'rust_analyzer', 'bashls', 'sumneko_lua', 'tsserver', 'ccls' }
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup(make_config())
 end
 
-local lsp_installer = require("nvim-lsp-installer")
+local lsp_installer = require('nvim-lsp-installer')
 
 lsp_installer.settings {
   ui = {
@@ -79,12 +78,12 @@ lsp_installer.settings {
 lsp_installer.on_server_ready(function(server)
   local opts = make_config()
 
-  if server.name == "sumneko_lua" then
+  if server.name == 'sumneko_lua' then
     opts.settings = lua_settings
   end
-  if server.name == "tsserver" then
+  -- if server.name == "tsserver" then
     -- print('-----open tsserver')
-  end
+  -- end
 
 
   -- This setup() function is exactly the same as
