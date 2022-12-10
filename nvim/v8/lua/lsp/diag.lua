@@ -5,10 +5,10 @@ local M = {}
 -- local _is_legacy = not vim.tbl_isempty(vim.fn.sign_getdefined('LspDiagnosticsSignInformation'))
 
 local signs = {
-  ["Hint"]   = { icon = '', hl = 'Identifier' },
-  ["Info"]   = { icon = '', hl = 'Special' },
-  ["Warn"]   = { icon = '', hl = 'DiffChange' },
-  ["Error"]  = { icon = '', hl = 'ErrorMsg' },
+  ["Hint"]  = { icon = '', hl = 'Identifier' },
+  ["Info"]  = { icon = '', hl = 'Special' },
+  ["Warn"]  = { icon = '', hl = 'DiffChange' },
+  ["Error"] = { icon = '', hl = 'ErrorMsg' },
 }
 
 local sign_prefix = 'DiagnosticSign'
@@ -21,6 +21,7 @@ if not vim.diagnostic then
     t[new] = t[old]
     t[old] = nil
   end
+
   tbl_swap(signs, "Warn", "Warning")
   tbl_swap(signs, "Info", "Information")
 else
@@ -87,7 +88,7 @@ end
 -- https://github.com/neovim/neovim/issues/14825
 function M.virtual_text_none()
   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+    vim.lsp.diagnostic.on_publish_diagnostics, {
     signs = false,
     underline = false,
     update_in_insert = false,
@@ -110,7 +111,7 @@ function M.virtual_text_redraw()
     }
     if pr_15504 then
       vim.lsp.handlers[method](
-      nil, params, { method = method, client_id = lsp_client_id })
+        nil, params, { method = method, client_id = lsp_client_id })
     else
       vim.lsp.handlers[method](nil, method, params, lsp_client_id)
     end
@@ -119,7 +120,7 @@ end
 
 function M.virtual_text_set()
   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+    vim.lsp.diagnostic.on_publish_diagnostics, {
     severity_sort = true,
     signs = function()
       if vim.b.lsp_virtual_text_mode == 'Signs' or vim.b.lsp_virtual_text_mode == 'SignsVirtualText' then
@@ -150,7 +151,6 @@ function M.virtual_text_disable()
   vim.b.lsp_virtual_text_enabled = false
   M.virtual_text_none()
   M.virtual_text_clear()
-  return
 end
 
 function M.virtual_text_enable()
@@ -158,7 +158,6 @@ function M.virtual_text_enable()
   vim.b.lsp_virtual_text_enabled = true
   M.virtual_text_set()
   M.virtual_text_redraw()
-  return
 end
 
 function M.virtual_text_only_text()
@@ -166,7 +165,6 @@ function M.virtual_text_only_text()
   vim.b.lsp_virtual_text_enabled = true
   M.virtual_text_set()
   M.virtual_text_redraw()
-  return
 end
 
 function M.virtual_text_only_signs()
@@ -174,7 +172,6 @@ function M.virtual_text_only_signs()
   vim.b.lsp_virtual_text_enabled = true
   M.virtual_text_set()
   M.virtual_text_redraw()
-  return
 end
 
 function M.virtual_text_toggle()

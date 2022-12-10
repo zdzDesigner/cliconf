@@ -23,7 +23,6 @@ vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjum
 -- import('plugins/colors/init').set('onedark')
 import('test')
 import('plugins/ranger')
-import('lsp/prettier')
 import('keymap')
 import('setting')
 

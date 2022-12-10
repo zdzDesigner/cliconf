@@ -63,7 +63,7 @@ end
 
 -- see neovim #15504
 -- https://github.com/neovim/neovim/pull/15504#discussion_r698424017
-M.mk_handler = function(fn)
+function M.mk_handler(fn)
   return function(...)
     local is_new = not select(4, ...) or type(select(4, ...)) ~= 'number'
     if is_new then
@@ -95,5 +95,21 @@ function M.peek_definition()
       M.mk_handler(M.preview_location_callback))
   end
 end
+
+-- enables snippet support
+function M.make_config()
+  local on_attach = require('lsp.on_attach').on_attach
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  if pcall(require, 'cmp_nvim_lsp') then
+    -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+  end
+  return {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
+
 
 return M
