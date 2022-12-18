@@ -2,7 +2,8 @@
 
 BG=$(cat $CLIENV/.temp/bg)
 BG_NAME=${BG##*@}
-BG_DIR=$HOME/.bg/favorite
+# BG_DIR=$HOME/.bg/favorite
+BG_DIR=$HOME/.bg/jz
 
 # 壁纸
 feh --bg-fill --no-fehbg $BG_DIR/$BG_NAME

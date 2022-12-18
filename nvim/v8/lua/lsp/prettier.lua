@@ -8,7 +8,6 @@
 --   cmd = {'vscode-html-language-server'},
 --   root_dir = vim.fs.dirname(vim.fs.find({'package.json'}, { upward = true })[1]),
 -- })
-print('prettier pre:')
 if not pcall(require, "lspconfig") then return end -- 保护调用加载模块
 
 local prettier = require("prettier")

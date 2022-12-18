@@ -4,6 +4,7 @@ local function import(module)
 end
 
 local fn = import('function')
+-- local buf = import('buffer')
 local Ranger = import('plugins/ranger')
 vim.g.mapleader = ' '
 local keymap = vim.keymap
@@ -47,14 +48,15 @@ keymap.set('', 'Q', ':q<CR>', { desc = '退出' })
 
 -- keymap.set('n','W',fn.TabCloseLeft,{ noremap = true, silent = true, desc='close cur tab'})
 keymap.set('n', 'W', ':bd<CR>', { noremap = true, silent = true, desc = 'close cur tab' })
-keymap.set('n', '<C-d>', ':bd<CR>', { noremap = true, silent = true, desc = 'close cur tab' })
+keymap.set('n', '<C-x>', ':bd<CR>', { noremap = true, silent = true, desc = 'close cur tab' })
 
 -- 移动tab
 -- keymap.set('','<C-j>',':tabp<CR>',{ noremap = true, silent = true, desc='tab prev'})
 -- keymap.set('','<C-k>',':tabn<CR>',{ noremap = true, silent = true, desc='tab next'})
-keymap.set('', '<C-j>', ':bp<CR>', { noremap = true, silent = true, desc = 'buffer prev' })
-keymap.set('', '<C-k>', ':bn<CR>', { noremap = true, silent = true, desc = 'buffer next' })
-keymap.set('', '<C-x>', ':tabn #<CR>', { noremap = true, silent = true, desc = '切换?' })
+-- keymap.set('', '<C-j>', ':bp<CR>', { noremap = true, silent = true, desc = 'buffer prev' })
+-- keymap.set('', '<C-k>', buf.BufNNext, { noremap = true,  desc = 'buffer nnext' })
+-- keymap.set('', '<C-k>', ':bn<CR>', { noremap = true, silent = true, desc = 'buffer nnext' })
+keymap.set('', '<C-d>', ':b #<CR>', { noremap = true, silent = true, desc = '切换?' })
 keymap.set('', '<C-t>', ':tabnew<CR>', { noremap = true, silent = true, desc = '新建tab' })
 keymap.set('', '<LEADER>0', ':tabfirst<CR>', { noremap = true, silent = true, desc = '跳转到第1个tab' })
 keymap.set('', '<LEADER>1', '1gt<CR>', { noremap = true, silent = true, desc = '第1个tab' })
@@ -76,6 +78,8 @@ keymap.set('', '<LEADER><CR>', ':nohlsearch<CR>', { noremap = true, silent = tru
 keymap.set('', '<LEADER>jk', ':set splitright<CR>:vsplit<CR>', { noremap = true, silent = true, desc = '水平分屏' })
 keymap.set('', '<LEADER>kj', ':set splitright<CR>:vsplit<CR>', { noremap = true, silent = true, desc = '水平分屏' })
 keymap.set('', '<LEADER><CR>', ':nohlsearch<CR>', { noremap = true, silent = true, desc = '清除选中高亮' })
+
+keymap.set('', '<LEADER>m', ':messages<CR>', { noremap = true, silent = true, desc = '查看日志' })
 
 
 

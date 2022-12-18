@@ -11,11 +11,6 @@ require('lsp/icons')
 -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'none' })
 -- vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
-
-
 -- servers
-local handlers =require('lsp/handlers')
-local servers = require('lsp/installer')
-for _, lsp in ipairs(servers) do
-  require("lspconfig")[lsp].setup(handlers.make_config())
-end
+-- local handlers =require('lsp/handlers')
+require('lsp/installer')

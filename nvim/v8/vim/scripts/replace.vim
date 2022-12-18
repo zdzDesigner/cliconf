@@ -50,6 +50,8 @@ endfunction
 
 
 
+" ========== 替换import ===========
+" :'<,'>s / = require(\(.*\))/ from \1
 
 
 

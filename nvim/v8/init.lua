@@ -21,11 +21,10 @@ vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjum
 
 -- import('plugins/colors/init').set('embark')
 -- import('plugins/colors/init').set('onedark')
-import('test')
+import('plugins/init')
 import('plugins/ranger')
 import('keymap')
 import('setting')
-
 
 vim.cmd([[
   " 注释
@@ -48,8 +47,9 @@ vim.cmd([[
   set showtabline=0
 
   " 日志
-  set verbose=20
+  set verbose=1
   set verbosefile=$HOME/.local/state/nvim/test.log
+  " :messages 查看当前窗口print日志
 
  
 ]])

@@ -47,7 +47,7 @@ end
 
 function M.preview_location_callback(err, res, ctx, cfg)
   if err then
-    vim.notify(('Error running LSP query '%s''):format(cfg.method), vim.log.levels.ERROR)
+    vim.notify(("Error running LSP query '%s'"):format(cfg.method), vim.log.levels.ERROR)
     return nil
   end
   if res == nil or vim.tbl_isempty(res) then
