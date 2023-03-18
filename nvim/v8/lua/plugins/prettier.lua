@@ -4,6 +4,7 @@ M.filetypes = {
   graphql = "graphql",
   gql = "graphql",
   html = "html",
+  vue = "html",
   js = "javascript",
   jsm = "javascript",
   jsx = "javascriptreact",

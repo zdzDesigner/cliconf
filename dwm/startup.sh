@@ -5,7 +5,9 @@
 
 # 缩放
 export QT_AUTO_SCREEN_SCALE_FACTOR=0.5
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GDK_SCALE=1
+# export GDK_DPI_SCALE=1
 export GDK_DPI_SCALE=1.5
 export WINIT_HIDPI_FACTOR=1
 export WINIT_X11_SCALE_FACTOR=1
@@ -23,8 +25,11 @@ nm-applet &
 # fcitx &
 # 输入法图形界面
 # fcitx-configtool
+## 输入法
+# fcitx-autostart &
 
 # 电源管理, 屏幕亮度 (屏幕亮度写入文件了，不依赖此模块)
+# xfce4-power-manager-settings 配置电源模块行为(合上盖子)
 xfce4-power-manager &
 
 # 禁用中建复制
@@ -33,6 +38,8 @@ xmodmap -e "pointer = 1 25 3 4 5 6 7 8"
 xset r rate 250 30
 #解决 摇杆(小红点)速度
 xinput --set-prop 'Elan TrackPoint' 'libinput Accel Speed' 1
+
+bluetooth off &
 
 # 解除静音
 # alsamixer &
@@ -45,7 +52,8 @@ goldendict &
 # =======================
 
 # 透明度 依赖了 xorg openbox
-compton -b
+# compton -b
+picom --config /home/zdz/.config/picom.conf &
 
 exec dwm
 
@@ -62,7 +70,8 @@ exec dwm
 
 # urxvt  ranger 可以显示图片terminal 
 
-
+# 改建
+# /usr/share/X11/xkb/keycodes/evdev
 # key map
 # > /usr/include/X11/keysymdef.h
 
@@ -80,6 +89,19 @@ exec dwm
 ## 多级弹出框
 #  st -n spterm -g 120x44 &
 
+
+
+############ 
+### xrandr
+############ 
+
+## 检测 connected
+# xrandr
+# DP-1 disconnected (normal left inverted right x axis y axis)
+# HDMI-1 disconnected (normal left inverted right x axis y axis)
+# DP-2 disconnected (normal left inverted right x axis y axis)
+# HDMI-2 connected 1920x1080+0+0 (normal left inverted right x axis y axis) 521mm x 293mm
+#   1920x1080     60.00*+  50.00    59.94
 
 ## 还原
 # xrandr --auto --output eDP-1 --mode 2560x1440

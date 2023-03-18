@@ -1,5 +1,5 @@
 -- ccls settings
-local ccls_settings = {
+return {
   lsp = {
     lspconfig = {
       -- root_dir 默认.git , 这里只设置Makefile无效
@@ -7,5 +7,3 @@ local ccls_settings = {
     }
   }
 }
-
-return ccls_settings

@@ -7,7 +7,10 @@ local server_settings = {
   ['rust_analyzer'] = 0,
   ['bashls'] = 0,
   ['sumneko_lua'] = require('lsp/lua'),
+  -- ['tsserver'] = require('lsp/tsserver'),
   ['tsserver'] = 0,
+  -- ['rome'] = require('lsp/rome'),
+  -- ['go'] = require('lsp/go'),
   ['ccls'] = require('lsp/ccls')
 }
 
