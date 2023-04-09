@@ -11,7 +11,7 @@
 if not pcall(require, "lspconfig") then return end -- 保护调用加载模块
 
 local prettier = require("prettier")
-print('prettier:',prettier)
+-- print('prettier:',prettier)
 
 prettier.setup({
   bin = 'prettier', -- or `'prettierd'` (v0.22+)

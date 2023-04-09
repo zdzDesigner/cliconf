@@ -4,7 +4,7 @@
 rval=$1
 rval=${rval:-0}
 
-TEMP_STATUS=$CLIENV/.temp/dwmbar
+TEMP_STATUS=$CLIENV/.tmp/dwmbar
 if [[ ! -f $TEMP_STATUS ]]; then
   echo "" > $TEMP_STATUS
 fi
@@ -12,8 +12,8 @@ fi
 
 function getbrightness() {
   # .
-  echo "☀$(($(cat /sys/class/backlight/intel_backlight/brightness)/15))%"
-  # echo ".$(($(cat /sys/class/backlight/intel_backlight/brightness)/15))%"
+  # echo "☀$(($(cat /sys/class/backlight/intel_backlight/brightness)/150))%"
+  echo ".$(($(cat /sys/class/backlight/intel_backlight/brightness)/150))%"
   # echo "$(($(cat /sys/class/backlight/intel_backlight/brightness)/15))%"
 }
 
@@ -122,8 +122,26 @@ get_time_until_charged() {
 
 get_battery_combined_percent() {
 
+  # ➜  Application acpi -b | awk '{print $0}'
+  # Battery 0: Discharging, 98%, 06:12:36 remaining
+  # ➜  Application acpi -b | awk '{print $1}'
+  # Battery
+  # ➜  Application acpi -b | awk '{print $2}'
+  # 0:
+  # ➜  Application acpi -b | awk '{print $3}'
+  # Discharging,
+  # ➜  Application acpi -b | awk '{print $4}'
+  # 98%,
+
   # get charge of all batteries, combine them
-  total_charge=$(expr $(acpi -b | awk '{print $4}' | grep -Eo "[0-9]+" | paste -sd+ | bc));
+  # total_charge=$(expr $(acpi -b | awk '{print $4}' | grep -Eo "[0-9]+" | paste -sd+ | bc));
+  
+  if $(acpi -b | grep --quiet Discharging) 
+  then
+    total_charge=$(acpi -b|  awk '{print $4}' | grep -Eo "[0-9]+")
+  else
+    total_charge=$(acpi -b|  awk '{print $5}' | grep -Eo "[0-9]+")
+  fi
 
   # get amount of batteries in the device
   battery_number=$(acpi -b | wc -l);
@@ -145,33 +163,36 @@ get_battery_charging_status() {
 
     if [ $(get_battery_combined_percent) -lt 10 ]; then
       if [ $rval = 0 ]; then
-        echo " ";
+        echo ".";
       else
-        echo " ";
+        echo ".";
       fi
     elif [ $(get_battery_combined_percent) -lt 20 ]; then
       if [ $rval = 0 ]; then
-        echo " ";
+        echo ".";
       else
-        echo " ";
+        echo ".";
       fi
       # echo " ";
     elif [ $(get_battery_combined_percent) -lt 30 ]; then
-      echo " ";
+      echo ".";
     elif [ $(get_battery_combined_percent) -lt 50 ]; then
-      echo " ";
+      echo ".";
     elif [ $(get_battery_combined_percent) -lt 60 ]; then
-      echo " ";
+      echo ".";
     elif [ $(get_battery_combined_percent) -lt 90 ]; then
-      echo " ";
+      echo ".";
     elif [ $(get_battery_combined_percent) -lt 100 ]; then
-      echo " ";
+      echo ".";
     else
       # echo "🔋";
-      echo " ";
+      echo ".";
     fi
   else # acpi can give Unknown or Charging if charging, https://unix.stackexchange.com/questions/203741/lenovo-t440s-battery-status-unknown-but-charging
-    echo "🔌";
+    echo ".";
+    # echo "";
+      # echo ".";
+      
   fi
 }
 
@@ -244,7 +265,8 @@ if [ $rval = 0 ]; then
     vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
     vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-    STATUS_BAR_NEW="  ⬇️$vel_recv ⬆️$vel_trans  .$(print_mem)  $(dwm_alsa) $(getbrightness) $(wifi) $(print_date) [$(print_bat)]$(show_record) "
+    STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  .$(print_mem)  $(dwm_alsa) $(getbrightness) $(wifi) $(print_date) [$(print_bat)]$(show_record) "
+    # STATUS_BAR_NEW="   .$(print_mem)  $(dwm_alsa)  $(getbrightness)  $(print_date) [$(print_bat)]$(show_record) "
     # 💿
     # STATUS_BAR_NEW="  $(print_date) ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) $(getbrightness) $(wifi) [$(print_bat)]$(show_record) "
     echo "$STATUS_BAR_NEW" > $TEMP_STATUS

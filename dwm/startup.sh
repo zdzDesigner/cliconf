@@ -88,8 +88,17 @@ exec dwm
 # xrandr --auto --output eDP-1 --pos 0x0 --mode 1920x1080 --output HDMI-1 --same-as eDP-1
 # xrandr --auto --output eDP-1 --pos 0x0 --mode 1920x1080 --output HDMI-3 --same-as eDP-1
 
+#### 监控cpu频率
+# watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
 
+#### nvidia-smi
+# watch nvidia-smi
 
+#### cpu 温度
+# watch sensors
+
+### 输入法
+#fcitx5-config-qt
 
 ## 打印机
 ######### system-config-printer

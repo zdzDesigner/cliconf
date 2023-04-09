@@ -1,8 +1,9 @@
-if not pcall(require, 'lspconfig') or not pcall(require, 'nvim-lsp-installer') then return end
+-- if not pcall(require, 'lspconfig') or not pcall(require, 'nvim-lsp-installer') then return end
+-- if not pcall(require, 'lspconfig')  then return end
 
 -- 载入模块
-require('lsp/diag')
-require('lsp/icons')
+-- require('lsp/diag')
+-- require('lsp/icons')
 
 
 -- default 'on_attach' function
@@ -14,3 +15,4 @@ require('lsp/icons')
 -- servers
 -- local handlers =require('lsp/handlers')
 require('lsp/installer')
+-- require('lsp/installer_old')

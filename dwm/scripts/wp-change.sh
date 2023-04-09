@@ -5,7 +5,7 @@ direc=${direc:-"asc"} # 默认递增
 
 PATH_BG=jz
 # PATH_BG=draw
-TEMP_PATH=$CLIENV/.temp/bg   # 缓存的图片名文件
+TEMP_PATH=$HOME/.bg/tmp   # 缓存的图片名文件
 if [[ ! -f $TEMP_PATH ]]; then
   echo "" > $TEMP_PATH     # 没有生成个空文件
 fi

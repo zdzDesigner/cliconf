@@ -1,49 +1,36 @@
-local set = vim.opt
+local G = require('G')
 
-set.mouse = ''
-set.wrap = false -- 不换行
-set.swapfile = false -- 无bak
-set.tabstop = 2
-set.expandtab = true
-set.shiftwidth = 2
-set.softtabstop = -1
+G.set({
+  mouse = '',
+  wrap = false,-- 不换行
+  swapfile = false, -- 无bak
+  tabstop = 2,
+  expandtab = true,
+  shiftwidth = 2,
+  softtabstop = -1,
 
-set.number = true
-set.relativenumber = true -- 相对行号
-set.cursorline = true
-set.wildmenu = true
-set.showcmd = true
-set.hlsearch = true -- 设置搜索高亮
+  number = true,
+  relativenumber = true, -- 相对行号
+  cursorline = true,
+  wildmenu = true,
+  showcmd = true,
+  hlsearch = true, -- 设置搜索高亮
 
-set.incsearch = true
-set.ignorecase = true -- 设置默认进行大小写不敏感查找
-set.smartcase = true -- 如果有一个大写字母，则切换到大小写敏感查找
-set.showtabline = 2
-set.scrolloff=10 -- 上下预留空间
-set.foldmethod='indent' -- 折叠方式
+  incsearch = true,
+  ignorecase = true, -- 设置默认进行大小写不敏感查找
+  smartcase = true ,-- 如果有一个大写字母，则切换到大小写敏感查找
+  showtabline = 2,
+  scrolloff=10, -- 上下预留空间
+  foldmethod='indent', -- 折叠方式
 
-set.foldlevel=15 -- 设置折叠层数
+  foldlevel=15, -- 设置折叠层数
 
-set.encoding='utf-8'
-set.clipboard='unnamedplus' -- 剪切板
+  encoding='utf-8',
+  clipboard='unnamedplus', -- 剪切板
 
-set.smartindent = true
-set.autoread =true
-
-
-vim.cmd([[
-" syntax on
-"" set statusline +=%{resolve(expand('%:p'))}\ %*
-exec "nohlsearch"
-au FocusGained,BufEnter * :silent! !
-
-noremap <silent> <C-g> :call AbsolutePath()<CR>
-function! AbsolutePath()
-    let @+=expand("%:p")
-endfunction
-
-]])
-
-
+  smartindent = true,
+  autoread =true,
+  fileencodings='utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1'
+})
 
 

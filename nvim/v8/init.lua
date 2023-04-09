@@ -1,18 +1,5 @@
-local function import(module)
-  package.loaded[module] = nil
-  return require(module)
-end
-
-vim.o.exrc = true
-vim.o.secure = true
-
--- 运行路径和包路径都要设置
-vim.opt.packpath:prepend('/home/zdz/.config/nvim/v8') -- 插件模块
-vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v8') -- 自定义配置模块
-vim.opt.rtp:prepend('/home/zdz/.config/nvim/v8')
-vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v8')
--- 清除jumps ctrl-o
-vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjumps() end })
+local G = require('G')
+G.setup()
 -- print(vim.inspect(vim.opt.packpath:get()))
 -- print('vim.lsp::',vim.lsp.start)
 -- require('plugins/fzf/mappings')
@@ -21,22 +8,23 @@ vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjum
 
 -- import('plugins/colors/init').set('embark')
 -- import('plugins/colors/init').set('onedark')
-import('plugins/init')
-import('plugins/ranger')
-import('keymap')
-import('setting')
+G.import('plugins/init')
+G.import('lsp/init')
+G.import('plugins/ranger')
+G.import('keymap')
+G.import('setting')
+
 
 vim.cmd([[
   " 注释
-  source $CLIENV/nvim/v8/vim/comment.vim
-  noremap <silent> <C-_><C-_> :Commentary<CR>
+  " source $CLIENV/nvim/v8/vim/comment.vim
+  " noremap <silent> <C-_><C-_> :Commentary<CR>
 
   " markdown
   source $CLIENV/nvim/v8/vim/markdown.vim
 
   " 透明背景
   hi Normal guibg=NONE
-
 
   " 配置ranger 背景
   hi def NvimFloatingWindow  term=None guifg=white guibg=None ctermfg=white ctermbg=210
@@ -51,5 +39,4 @@ vim.cmd([[
   set verbosefile=$HOME/.local/state/nvim/test.log
   " :messages 查看当前窗口print日志
 
- 
 ]])

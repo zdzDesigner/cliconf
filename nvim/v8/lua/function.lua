@@ -61,6 +61,33 @@ function M.Format()
   vim.lsp.buf.format()
 end
 
+function M.SetUTF8()
+  vim.cmd([[set fileencoding=utf-8]])
+end
+
+
+function M.LF()
+    local temp = vim.fn.tempname()
+    ncmd('exec "silent !lf -selection-path="'.. vim.fn.shellescape(temp)) 
+    print(vim.fn.filereadable(temp))
+    if vim.fn.filereadable(temp)~=nil then
+        vim.cmd([[redraw!]])
+        return
+    end
+    local names = vim.fn.readfile(temp)
+    if vim.fn.empty(names) then
+      vim.cmd([[redraw!]])
+        return
+    end
+    nvim('edit ' .. vim.fn.fnameescape(names[1])) 
+    for i,name in pairs(names)  do
+      if i==1 then return end
+    nvim('argadd ' .. vim.fn.fnameescape(name))
+    end
+    vim.cmd([[redraw!]])
+
+end
+
 -- vim.api.nvim_create_user_command('Upper', 'echo toupper(<q-args>)', { nargs = 1 })
 -- vim.cmd('Upper hello world')
 

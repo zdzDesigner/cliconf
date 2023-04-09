@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BG=$(cat $CLIENV/.temp/bg)
+BG=$(cat $HOME/.bg/tmp)
 BG_NAME=${BG##*@}
 # BG_DIR=$HOME/.bg/favorite
 BG_DIR=$HOME/.bg/jz

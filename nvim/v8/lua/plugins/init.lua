@@ -1,6 +1,13 @@
--- 更改packer配置需要compile
--- 更改packer配置需要compile
--- 更改packer配置需要compile
+-- 更改packer配置需要PackerSync compile
+-- 更改packer配置需要PackerSync compile
+-- 更改packer配置需要PackerSync compile
+-- 更改packer配置需要PackerSync compile
+
+
+-- setup : 加载前载入 , setup 是程序安装的过程中进行，中文翻译为「建立」，是包含安装和初始化配置的
+-- config : 加载后载入, config 是软件安装好了，后面还可以多次修改的配置
+-- event : 加载条件
+-- ft : 什么格式文件使用
 
 
 vim.opt.termguicolors = true
@@ -9,7 +16,6 @@ vim.opt.termguicolors = true
 local test_dir = '/home/zdz/.config/nvim/v8'
 
 local function plugin(use)
-
   use('wbthomason/packer.nvim')
   use('jiangmiao/auto-pairs') -- 成对符号
   -- use({ -- 快速删除或替换对称符号
@@ -25,6 +31,7 @@ local function plugin(use)
   use({
     'kyazdani42/nvim-web-devicons',
     config = "require('plugins/devicons')",
+    -- 加载条件
     event = 'VimEnter'
   })
 
@@ -63,14 +70,16 @@ local function plugin(use)
   use({
     'MunifTanjim/prettier.nvim',
     config = 'require("lsp/prettier")',
-  }) -- 格式化
+  })    -- 格式化
 
-  use({ -- Theme
+  use({
+        -- Theme
     'Mofiqul/dracula.nvim',
     config = "require('plugins/dracula')",
   })
 
-  use({ -- Snip
+  use({
+        -- Snip
     'L3MON4D3/LuaSnip',
     config = 'require("plugins/luasnips/init")',
     event = 'InsertEnter'
@@ -80,10 +89,10 @@ local function plugin(use)
   use({
     'hrsh7th/nvim-cmp',
     requires = {
-      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-path',         after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp',     after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lua',     after = 'nvim-cmp' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
     },
     config = "require('plugins/cmp')",
@@ -91,19 +100,27 @@ local function plugin(use)
     after = 'LuaSnip'
   }
   )
-  use({
-    'neovim/nvim-lspconfig',
-    event = 'BufRead'
-  })
 
   use({
-    'williamboman/nvim-lsp-installer',
-    config = function()
-      require('lsp')
-      -- ':command LspStart'
-    end,
-    after  = { 'nvim-lspconfig' },
+    'williamboman/mason.nvim',
+    run = ":MasonUpdate"
   })
+  use({ 'williamboman/mason-lspconfig.nvim' })
+  use({ 'neovim/nvim-lspconfig' })
+
+
+  -- use({
+  --   'williamboman/nvim-lsp-installer',
+  --   config   = function()
+  --     require('lsp')
+  --     -- ':command LspStart'
+  --   end,
+  --   after    = { 'nvim-lspconfig' },
+  -- })
+  -- use({
+  --   'neovim/nvim-lspconfig',
+  --   event = 'BufRead'
+  -- })
 
   use({
     'dhruvasagar/vim-table-mode',
@@ -124,7 +141,14 @@ local function plugin(use)
     config = "require('plugins/workspaces')",
   })
 
-
+  use({
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup({
+        toggler = { line = '<C-_><C-_>', block = 'gbc' },
+      })
+    end
+  })
   -- ssh 远程编辑
   -- use {
   --   'chipsenkbeil/distant.nvim',
@@ -147,13 +171,12 @@ local function plugin(use)
   -- 'VonHeikemen/little-wonder',
   -- setup = function()print('xxx')end,
   -- })
-
 end
 
 local packer = require("packer")
 
 local config = {
-  package_root = test_dir .. "/pack", -- 包路径
+  package_root = test_dir .. "/pack",                       -- 包路径
   compile_path = test_dir .. "/plugin/packer_compiled.lua", -- 编译结果
 }
 packer.init(config)
