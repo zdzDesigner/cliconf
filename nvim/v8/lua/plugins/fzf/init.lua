@@ -32,6 +32,9 @@ local function fzf_colors(binary)
   return colors
 end
 
+--------------
+-- ctrl-i mark 标记
+--------------
 fzf_lua.setup {
   -- lua_io             = true,            -- perf improvement, experimental
   winopts          = {

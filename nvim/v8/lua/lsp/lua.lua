@@ -1,6 +1,5 @@
-
 -- Lua settings
-local lua_settings = {
+return {
   Lua = {
     runtime = {
       -- LuaJIT in the case of Neovim
@@ -28,5 +27,3 @@ local lua_settings = {
     },
   }
 }
-
-return lua_settings
