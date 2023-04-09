@@ -45,7 +45,7 @@ G.map({
 -- {'n','W',fn.TabCloseLeft,{ noremap = true, silent = true, desc='close cur tab'}},
 {'n', 'W', ':bd<CR>', { noremap = true, silent = true, desc = 'close cur tab' }},
 {'n', '<C-x>', ':bd<CR>', { noremap = true, silent = true, desc = 'close cur tab' }},
--- {'', '<C-_><C-_>', 'gcc', { noremap = true, silent = true, desc = '注释' }},
+{'', '<C-_><C-_>', 'gc', { noremap = true, silent = true, desc = '注释' }},
 
 -- 移动tab
 -- {'','<C-j>',':tabp<CR>',{ noremap = true, silent = true, desc='tab prev'}},

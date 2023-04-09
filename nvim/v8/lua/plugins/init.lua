@@ -145,7 +145,7 @@ local function plugin(use)
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup({
-        toggler = { line = '<C-_><C-_>', block = 'gbc' },
+        -- toggler = { line = '<C-_><C-_>', block = 'gbc' },
       })
     end
   })
