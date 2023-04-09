@@ -2,6 +2,5 @@
 api/
 tags
 
-.temp
-.temp/
+.tmp/
 .cache
