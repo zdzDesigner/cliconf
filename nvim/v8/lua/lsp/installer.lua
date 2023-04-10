@@ -1,4 +1,5 @@
 if not pcall(require, "lspconfig") then return end -- 保护调用加载模块
+local lspconfig = require("lspconfig")
 local mason = require("mason")
 local masonlsp = require("mason-lspconfig")
 
@@ -16,16 +17,14 @@ mason.setup({
 })
 
 masonlsp.setup()
--- require("mason-lspconfig").setup({
---    ensure_installed = { "tsserver" },
--- })
 
 local server_settings = {
   ['rust_analyzer'] = 0,
   ['bashls'] = 0,
   ['lua_ls'] = require('lsp/lua'),
-  ['tsserver'] = 0,
+  ['tsserver'] = require('lsp/tsserver'),
   ['zls'] = 0,
+  ['gopls'] = 0,
   ['clangd'] = 0,
   -- ['ccls'] = require('lsp/ccls')
 }
@@ -35,6 +34,7 @@ local function server_opts(name)
   if server_settings[name] ~= 0 then
     opts.settings = server_settings[name]
   end
+  -- print(name, vim.inspect(opts.settings))
   return opts
 end
 
@@ -42,7 +42,7 @@ for name, _ in pairs(server_settings) do
   -- if name == 'ccls' then
   -- print('lsp_server_name:',vim.inspect(server_opts(name)))
   -- end
-  require("lspconfig")[name].setup(server_opts(name))
+  lspconfig[name].setup(server_opts(name))
 end
 -- local mason = require('mason')
 -- local mason_lspconfig = require('mason-lspconfig')

@@ -2,8 +2,8 @@
 -- if not pcall(require, 'lspconfig')  then return end
 
 -- 载入模块
--- require('lsp/diag')
--- require('lsp/icons')
+require('lsp/diag')
+require('lsp/icons')
 
 
 -- default 'on_attach' function
