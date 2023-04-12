@@ -69,7 +69,7 @@ local function plugin(use)
   use('jose-elias-alvarez/null-ls.nvim')
   use({
     'MunifTanjim/prettier.nvim',
-    config = 'require("lsp/prettier")',
+    config = 'require("plugins/prettier")',
   })    -- 格式化
 
   use({

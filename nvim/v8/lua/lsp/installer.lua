@@ -26,13 +26,14 @@ local server_settings = {
   ['zls'] = 0,
   ['gopls'] = 0,
   ['clangd'] = 0,
+  ['sqlls'] = require('lsp/sqlls'),
   -- ['ccls'] = require('lsp/ccls')
 }
 
 local function server_opts(name)
   local opts = handlers.make_config()
   if server_settings[name] ~= 0 then
-    opts.settings = server_settings[name]
+    opts = handlers.merge(opts, server_settings[name])
   end
   -- print(name, vim.inspect(opts.settings))
   return opts

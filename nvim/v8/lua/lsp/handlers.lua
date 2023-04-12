@@ -111,5 +111,9 @@ function M.make_config()
   }
 end
 
+function M.merge(def_conf, user_conf)
+  for k, v in pairs(def_conf) do user_conf[k] = v end
+  return user_conf
+end
 
 return M
