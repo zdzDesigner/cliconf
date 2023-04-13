@@ -21,12 +21,12 @@ masonlsp.setup()
 local server_settings = {
   ['rust_analyzer'] = 0,
   ['bashls'] = 0,
-  ['lua_ls'] = require('lsp/lua'),
-  ['tsserver'] = require('lsp/tsserver'),
+  ['lua_ls'] = require('lsp/lang/lua'),
+  ['tsserver'] = require('lsp/lang/tsserver'),
   ['zls'] = 0,
   ['gopls'] = 0,
   ['clangd'] = 0,
-  ['sqlls'] = require('lsp/sqlls'),
+  ['sqlls'] = require('lsp/lang/sqlls'),
   -- ['ccls'] = require('lsp/ccls')
 }
 
