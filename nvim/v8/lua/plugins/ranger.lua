@@ -11,23 +11,23 @@ vim.api.nvim_create_user_command('Range', function() Term.openFullTerminal('rang
 
 
 local function ranger()
-  local filepath = '/tmp/temp.plugin.ranger'
-  local current_path = vim.fn.expand('%')
-  local fd = assert(vim.loop.fs_open(filepath, "w", 438))
+  local targetpath = '/tmp/temp.plugin.ranger'
+  local currentpath = vim.fn.expand('%')
+  local fd = assert(vim.loop.fs_open(targetpath, "w", 438))
   -- local stat = vim.loop.fs_fstat(fd)
 
-  print('filepath:', filepath, current_path)
-  -- local cmd = 'ranger ' .. '--choosefiles=' .. filepath .. ' --selectfile=' .. current_path
+  -- print('targetpath:', targetpath, current_path)
+  -- local cmd = 'ranger ' .. '--choosefiles=' .. targetpath .. ' --selectfile=' .. current_path
   -- lf  /tmp/temp.plugin.ranger ~/.ssh/known_hosts
-  local cmd = 'lf ' .. '-selection-path ' .. filepath .. ' ' .. current_path
+  local cmd = 'lf ' .. '-selection-path ' .. targetpath .. ' ' .. currentpath
 
   -- util.write_file('/tmp/xxx', 'aaa')
   Term.openFloatTerm(cmd, {
     exit = function()
       assert(vim.loop.fs_close(fd))
 
-      if vim.fn.filereadable(filepath) then
-        for _, v in pairs(vim.fn.readfile(filepath)) do
+      if vim.fn.filereadable(targetpath) then
+        for _, v in pairs(vim.fn.readfile(targetpath)) do
           -- util.write_file('/tmp/xxx', v)
           -- vimscript(':tab drop '..v, true)
           vimscript(':tabedit ' .. v, true)
