@@ -146,8 +146,8 @@ G.map({
   { '',  '<LEADER>;',  Ranger,                                  {} },
   -- {'', '<LEADER>;', fn.LF, {}},
 
-  { 'x', '<C-_><C-_>', '<Plug>(comment_toggle_linewise_visual)' },
-  { 'n', '<C-_><C-_>', function()
+  { 'x', '<C-_>', '<Plug>(comment_toggle_linewise_visual)' },
+  { 'n', '<C-_>', function()
     return vim.v.count == 0
         and '<Plug>(comment_toggle_linewise_current)'
         or '<Plug>(comment_toggle_linewise_count)'
