@@ -11,7 +11,8 @@ vim.api.nvim_create_user_command('Range', function() Term.openFullTerminal('rang
 
 
 local function ranger()
-  local targetpath = '/tmp/temp.plugin.ranger'
+  -- local targetpath = '/tmp/temp.plugin.ranger'
+  local targetpath = vim.fn.tempname()
   local currentpath = vim.fn.expand('%')
   local fd = assert(vim.loop.fs_open(targetpath, "w", 438))
   -- local stat = vim.loop.fs_fstat(fd)
