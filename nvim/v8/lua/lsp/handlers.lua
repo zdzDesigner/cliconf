@@ -1,5 +1,12 @@
 if not pcall(require, 'lspconfig') then return end -- 保护调用加载模块
 
+
+-- 开启hover和help
+-- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'none' })
+-- vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+
+
+
 local M = {}
 
 local _winopts = { border = 'rounded' }

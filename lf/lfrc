@@ -1,3 +1,7 @@
+# ~/.config/lf/lfrc
+# ➜ echo $PAGER
+# less
+
 # interpreter for shell commands
 set shell sh
 
@@ -20,8 +24,6 @@ set ifs "\n"
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
-# use enter for shell commands
-map <enter> shell
 
 # execute current file (must be executable)
 map x $$f
@@ -98,10 +100,38 @@ cmd zip ${{
     rm -rf $1
 }}
 
-# map \ set hidden!
-map O set hidden!
+map <backspace> set hidden!
+map <backspace2> set hidden!
 
-autoquit true
+
 
 #map S cd ./
-map S echo 'xxx'
+# map S echo 'xxx'
+
+
+# quit
+map <esc> quit
+
+# use enter for shell commands
+# map <enter> shell
+map <enter> open
+
+## 查询
+# set incsearch true
+set incfilter true
+map / filter
+map f filter
+# map / find
+# map / search
+map D delete
+
+map a rename
+
+# map : shell
+cmd touch ${{
+  touch $1
+}}
+cmd mkdir ${{
+  mkdir $1
+}}
+
