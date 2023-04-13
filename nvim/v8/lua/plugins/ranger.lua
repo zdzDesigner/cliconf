@@ -11,13 +11,13 @@ vim.api.nvim_create_user_command('Range', function() Term.openFullTerminal('rang
 
 
 local function ranger()
-  -- local targetpath = '/tmp/temp.plugin.ranger'
-  local targetpath = vim.fn.tempname()
+  local targetpath = '/tmp/temp.plugin.ranger'
+  -- local targetpath = vim.fn.tempname()
   local currentpath = vim.fn.expand('%')
   local fd = assert(vim.loop.fs_open(targetpath, "w", 438))
   -- local stat = vim.loop.fs_fstat(fd)
 
-  -- print('targetpath:', targetpath, current_path)
+  -- print('targetpath:', targetpath, 'currentpath:', currentpath)
   -- local cmd = 'ranger ' .. '--choosefiles=' .. targetpath .. ' --selectfile=' .. current_path
   -- lf  /tmp/temp.plugin.ranger ~/.ssh/known_hosts
   local cmd = 'lf ' .. '-selection-path ' .. targetpath .. ' ' .. currentpath
