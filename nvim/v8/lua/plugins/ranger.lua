@@ -3,7 +3,7 @@ local function import(module)
   return require(module)
 end
 
-local util = import("util")
+-- local util = import("util")
 local Term = import('../terminal')
 local vimscript = vim.api.nvim_exec
 
@@ -14,10 +14,12 @@ local function ranger()
   local filepath = '/tmp/temp.plugin.ranger'
   local current_path = vim.fn.expand('%')
   local fd = assert(vim.loop.fs_open(filepath, "w", 438))
-  local stat = vim.loop.fs_fstat(fd)
+  -- local stat = vim.loop.fs_fstat(fd)
 
-  local cmd = 'ranger ' .. '--choosefiles=' .. filepath .. ' --selectfile=' .. current_path
-  -- local cmd = 'lf '..'--choosefiles='..filepath..' --selectfile='..current_path
+  print('filepath:', filepath, current_path)
+  -- local cmd = 'ranger ' .. '--choosefiles=' .. filepath .. ' --selectfile=' .. current_path
+  -- lf  /tmp/temp.plugin.ranger ~/.ssh/known_hosts
+  local cmd = 'lf ' .. '-selection-path ' .. filepath .. ' ' .. current_path
 
   -- util.write_file('/tmp/xxx', 'aaa')
   Term.openFloatTerm(cmd, {
@@ -31,7 +33,6 @@ local function ranger()
           vimscript(':tabedit ' .. v, true)
         end
       end
-
     end
   })
 end

@@ -1,3 +1,4 @@
+# ~/.config/lf/lfrc
 # interpreter for shell commands
 set shell sh
 
@@ -101,7 +102,11 @@ cmd zip ${{
 # map \ set hidden!
 map O set hidden!
 
-autoquit true
 
 #map S cd ./
 map S echo 'xxx'
+
+
+# quit
+map <esc> quit
+
