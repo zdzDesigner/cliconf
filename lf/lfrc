@@ -1,6 +1,7 @@
 # ~/.config/lf/lfrc
 # ➜ echo $PAGER
 # less
+# c clear color maker(yy ...)
 
 # interpreter for shell commands
 set shell sh
