@@ -8,6 +8,7 @@ local server_settings = {
   ['bashls'] = 0,
   ['lua_ls'] = require('lsp/lua'),
   ['tsserver'] = 0,
+  ['vuels'] = 0,
   -- ['ccls'] = require('lsp/ccls')
 }
 
