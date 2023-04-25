@@ -107,7 +107,7 @@ G.map({
   { '',  '<LEADER>jk',   ':set splitright<CR>:vsplit<CR>', { noremap = true, silent = true, desc = '水平分屏' } },
   { '',  '<LEADER>kj',   ':set splitright<CR>:vsplit<CR>', { noremap = true, silent = true, desc = '水平分屏' } },
   { '',  '<LEADER><CR>', ':nohlsearch<CR>',                { noremap = true, silent = true, desc = '清除选中高亮' } },
-  { '',  '<LEADER>m',    ':messages<CR>',                  { noremap = true, silent = true, desc = '查看日志' } },
+  -- { '',  '<LEADER>m',    ':messages<CR>',                  { noremap = true, silent = true, desc = '查看日志' } },
 
 
 

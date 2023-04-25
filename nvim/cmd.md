@@ -1,3 +1,7 @@
+## Debug
+- :messages 查看消息
+
+
 ## LSP
 - LspStop 停止当前LSP服务
 
