@@ -3,11 +3,10 @@ local masondap = require("mason-nvim-dap")
 local G = require('G')
 
 
-
 local function adapter(config)
   return function(defconfig)
     defconfig.adapters = config
-    print(vim.inspect(config))
+    -- print(vim.inspect(config))
     require('mason-nvim-dap').default_setup(defconfig) -- don't forget this!
   end
 end
