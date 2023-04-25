@@ -24,6 +24,8 @@ local colors = {
   visual = "#3E4452",
   gutter_fg = "#4B5263",
   nontext = "#3B4048",
+  deep = "#1f1f28",
+  -- #482b3f
 }
 dracula.setup({
   -- customize dracula color palette
@@ -31,14 +33,17 @@ dracula.setup({
   -- show the '~' characters after the end of buffers
   show_end_of_buffer = true, -- default false
   -- use transparent background
-  transparent_bg = true, -- default false
+  transparent_bg = true,     -- default false
   -- set custom lualine background color
   -- lualine_bg_color = "#222222", -- default nil
   lualine_bg_color = "None", -- default nil
   -- set italic comment
-  italic_comment = true, -- default false
-  -- overrides the default highlights see `:h synIDattr`
+  italic_comment = true,     -- default false
+
+  -- reset color https://github.com/Mofiqul/dracula.nvim/issues/90
   overrides = {
+    -- 高亮行
+    CursorLine = { bg = colors.deep, },
     -- Normal = { bg='NONE' }
     -- Examples
     -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
@@ -47,5 +52,4 @@ dracula.setup({
   },
 })
 -- 设置颜色
-vim.cmd[[colorscheme dracula]]
-
+vim.cmd [[colorscheme dracula]]

@@ -31,6 +31,7 @@ vim.cmd([[
   " 配置ranger 边框
   hi def NvimFloatingBorder  term=None guifg=#668a95 guibg=None ctermfg=white ctermbg=1
 
+
   " 隐藏tab
   set showtabline=0
 
