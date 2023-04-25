@@ -70,16 +70,16 @@ local function plugin(use)
   use({
     'MunifTanjim/prettier.nvim',
     config = 'require("plugins/prettier")',
-  })    -- 格式化
+  }) -- 格式化
 
   use({
-        -- Theme
+    -- Theme
     'Mofiqul/dracula.nvim',
     config = "require('plugins/dracula')",
   })
 
   use({
-        -- Snip
+    -- Snip
     'L3MON4D3/LuaSnip',
     config = 'require("plugins/luasnips/init")',
     event = 'InsertEnter'
@@ -95,7 +95,7 @@ local function plugin(use)
       { 'hrsh7th/cmp-nvim-lua',     after = 'nvim-cmp' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
     },
-    config = "require('plugins/cmp')",
+    config = 'require("plugins/cmp")',
     -- event = "InsertEnter", }
     after = 'LuaSnip'
   }
@@ -107,6 +107,14 @@ local function plugin(use)
   })
   use({ 'williamboman/mason-lspconfig.nvim' })
   use({ 'neovim/nvim-lspconfig' })
+  use({ 'mfussenegger/nvim-dap' })
+  use({ 'jay-babu/mason-nvim-dap.nvim' })
+  use({ 'rcarriga/nvim-dap-ui' })
+  use({
+    'folke/neodev.nvim',
+    config = 'require("plugins/neodev")'
+  })
+
 
 
   -- use({

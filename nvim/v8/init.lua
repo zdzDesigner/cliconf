@@ -10,10 +10,10 @@ G.setup()
 -- import('plugins/colors/init').set('onedark')
 G.import('plugins/init')
 G.import('lsp/init')
+G.import('dap/dap')
 G.import('plugins/ranger')
 G.import('keymap')
 G.import('setting')
-
 
 vim.cmd([[
   " 注释
