@@ -10,10 +10,10 @@ G.setup()
 -- import('plugins/colors/init').set('onedark')
 G.import('plugins/init')
 G.import('lsp/init')
+G.import('dap/dap')
 G.import('plugins/ranger')
 G.import('keymap')
 G.import('setting')
-
 
 vim.cmd([[
   " 注释
@@ -30,6 +30,7 @@ vim.cmd([[
   hi def NvimFloatingWindow  term=None guifg=white guibg=None ctermfg=white ctermbg=210
   " 配置ranger 边框
   hi def NvimFloatingBorder  term=None guifg=#668a95 guibg=None ctermfg=white ctermbg=1
+
 
   " 隐藏tab
   set showtabline=0

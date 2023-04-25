@@ -24,43 +24,27 @@ ln -s /home/zdz/.config/nvim/UltiSnips UltiSnips
 
 
 ## nvim-treesitter
->> default         highlight  incremental_selection  indent  
-bash               ✓          ✗                      ✗       
-c                  ✓          ✗                      ✗       
-cpp                ✓          ✗                      ✗       
-css                ✓          ✗                      ✗       
-go                 ✓          ✗                      ✗       
-html               ✓          ✗                      ✗       
-javascript         ✓          ✗                      ✗       
-jsdoc              ✓          ✗                      ✗       
-json               ✓          ✗                      ✗       
-jsonc              ✓          ✗                      ✗       
-lua                ✓          ✗                      ✗       
-python             ✓          ✗                      ✗       
-rust               ✓          ✗                      ✗       
-toml               ✓          ✗                      ✗       
-tsx                ✓          ✗                      ✗       
-typescript         ✓          ✗                      ✗       
-vim                ✓          ✗                      ✗       
-vue                ✓          ✗                      ✗       
-zig                ✓          ✗                      ✗       
+bash               
+c                  
+cpp                
+css                
+go                 
+html               
+javascript         
+jsdoc              
+json               
+jsonc              
+lua                
+python             
+rust               
+toml               
+tsx                
+typescript         
+vim                
+vue                
+zig                
+scss
+dockerfile
 
->> textobjects     lsp_interop  move  select  swap  
-bash               ✗            ✓     ✓       ✗     
-c                  ✗            ✓     ✓       ✗     
-cpp                ✗            ✓     ✓       ✗     
-css                ✗            ✓     ✓       ✗     
-go                 ✗            ✓     ✓       ✗     
-html               ✗            ✓     ✓       ✗     
-javascript         ✗            ✓     ✓       ✗     
-jsdoc              ✗            ✓     ✓       ✗     
-json               ✗            ✓     ✓       ✗     
-jsonc              ✗            ✓     ✓       ✗     
-lua                ✗            ✓     ✓       ✗     
-python             ✗            ✓     ✓       ✗     
-rust               ✗            ✓     ✓       ✗     
-toml               ✗            ✓     ✓       ✗     
-tsx                ✗            ✓     ✓       ✗     
-zig                ✗            ✓     ✓       ✗     
 
 

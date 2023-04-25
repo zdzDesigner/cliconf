@@ -26,6 +26,8 @@ local server_settings = {
   ['zls'] = 0,
   ['gopls'] = 0,
   ['clangd'] = 0,
+  ['dockerls'] = 0,
+  -- ['vuels'] = 0,
   ['sqlls'] = require('lsp/lang/sqlls'),
   -- ['ccls'] = require('lsp/ccls')
 }
