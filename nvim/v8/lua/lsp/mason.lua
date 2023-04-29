@@ -47,49 +47,20 @@ for name, _ in pairs(server_settings) do
   -- end
   lspconfig[name].setup(server_opts(name))
 end
--- local mason = require('mason')
--- local mason_lspconfig = require('mason-lspconfig')
-
--- local handlers = require('lsp/handlers')
-
-
--- local server_settings = {
---   ['rust_analyzer'] = 0,
---   ['bashls'] = 0,
---   ['lua_ls'] = require('lsp/lua'),
---   ['tsserver'] = 0,
---   ['ccls'] = require('lsp/ccls')
--- }
-
--- local function server_opts(name)
---   local opts = handlers.make_config()
---   if server_settings[name] ~= 0 then
---     opts.settings = server_settings[name]
---   end
---   return opts
--- end
-
--- for name, _ in pairs(server_settings) do
--- if name == 'ccls' then
--- print('lsp_server_name:',vim.inspect(server_opts(name)))
--- end
--- lspconfig.setup(server_opts(name))
--- end
 
 
 
--- mason_lspconfig.setup({
---   ensure_installed = {
---     "lua_ls",
---     "cssls",
---     "clangd"
+-- mason template
+-- {
+--   "name": "codelldb",
+--   "primary_source": {
+--     "release": "1.9.0",
+--     "file": "https://github.com/vadimcn/codelldb/releases/download/v1.9.0/codelldb-x86_64-linux.vsix",
+--     "repo": "vadimcn/codelldb",
+--     "type": "github_release_file"
 --   },
--- })
-
-
--- lsp_installer.on_server_ready(function(server)
---   -- This setup() function is exactly the same as
---   -- lspconfig's setup function (:help lspconfig-quickstart)
---   server:setup(server_opts(server.name))
---   -- vim.cmd [[ do User LspAttachBuffers ]]
--- end)
+--   "links": { "share": {}, "bin": { "codelldb": "codelldb/extension/lldb/bin/lldb" } },
+--   "schema_version": "1.1",
+--   "secondary_sources": [],
+--   "metrics": { "completion_time": 1677192334680, "start_time": 1677192310148 }
+-- }
