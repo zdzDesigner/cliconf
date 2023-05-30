@@ -11,15 +11,18 @@ return {
         -- Get the language server to recognize the `vim` global
         globals = {
           'vim',
-          'root',        -- awesomeWM
-          'awesome',     -- awesomeWM
-          'screen',      -- awesomeWM
-          'client',      -- awesomeWM
-          'clientkeys',  -- awesomeWM
+          'root',          -- awesomeWM
+          'awesome',       -- awesomeWM
+          'screen',        -- awesomeWM
+          'client',        -- awesomeWM
+          'clientkeys',    -- awesomeWM
           'clientbuttons', -- awesomeWM
         },
       },
       workspace = {
+        -- library = {
+        --   '/home/zdz/.local/share/xmake'
+        -- }
         -- Make the server aware of Neovim runtime files
         -- library = {
         --   [vim.fn.expand('$VIMRUNTIME/lua')] = true,
