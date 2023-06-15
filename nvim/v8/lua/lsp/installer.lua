@@ -9,6 +9,7 @@ local server_settings = {
   ['lua_ls'] = require('lsp/lua'),
   ['tsserver'] = 0,
   ['vuels'] = 0,
+  ['dockerls'] = 0,
   -- ['ccls'] = require('lsp/ccls')
 }
 
@@ -43,5 +44,3 @@ lsp_installer.on_server_ready(function(server)
   server:setup(server_opts(server.name))
   -- vim.cmd [[ do User LspAttachBuffers ]]
 end)
-
-

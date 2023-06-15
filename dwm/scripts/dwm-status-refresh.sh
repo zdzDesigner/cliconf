@@ -13,7 +13,7 @@ fi
 function getbrightness() {
   # .
   # echo "☀$(($(cat /sys/class/backlight/intel_backlight/brightness)/150))%"
-  echo ".$(($(bash brightness.sh)/15))%"
+  echo ".$(($(bash brightness.sh)/150))%"
   # echo "$(($(cat /sys/class/backlight/intel_backlight/brightness)/15))%"
 }
 

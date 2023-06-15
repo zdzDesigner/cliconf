@@ -22,7 +22,7 @@ return {
   port = "${port}",
   executable = {
     -- CHANGE THIS to your path!
-    command = '/home/zdz/.local/share/nvim/mason/packages/codelldb/codelldb',
+    command = '/home/zdz/.local/share/nvim/mason/packages/codelldb/codelldb/extension/adapter/codelldb',
     args = { "--port", "${port}" },
     -- On windows you may have to uncomment this:
     -- detached = false,
@@ -43,3 +43,8 @@ return {
 
 
 -- dap.configurations.rust = dap.configurations.cpp
+--
+
+
+-- https://github.com/mfussenegger/nvim-dap/discussions/434
+-- https://github.com/jedrzejboczar/nvim-dap-cortex-debug
