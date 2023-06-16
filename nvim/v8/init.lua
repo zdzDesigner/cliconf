@@ -40,4 +40,7 @@ vim.cmd([[
   set verbosefile=$HOME/.local/state/nvim/test.log
   " :messages 查看当前窗口print日志
 
+  " 更改解析文件类型
+  autocmd BufNewFile,BufRead *.wxml set filetype=html
+
 ]])

@@ -121,7 +121,7 @@ G.map({
     desc = '从寄存器里取值->粘贴'
   } },
   -- 删除word and paste
-  { 'n', 'dp',         'diw<ESC>h<ESC>"0p',                     { noremap = true, silent = true, desc = '直接粘贴' } },
+  { 'n', 'dp',        'diw<ESC>h<ESC>"0p',                     { noremap = true, silent = true, desc = '直接粘贴' } },
   { 'n', '<LEADER>8', fn.SetUTF8, {
     noremap = true,
     silent = true,
@@ -140,18 +140,46 @@ G.map({
   -- :2,80<   第2行至第80行左移动
 
   -- {'','<LEADER>f',':Prettier<CR>',{noremap=true,desc='格式化'}},
-  { '',  '<LEADER>f',  fn.Format,                               { noremap = true, desc = '格式化' } },
+  { '',  '<LEADER>f', fn.Format,                               { noremap = true, desc = '格式化' } },
   -- 调起 Ranger
   -- {'','<LEADER>f', Ranger,{}},
-  { '',  '<LEADER>;',  Ranger,                                  {} },
+  { '',  '<LEADER>;', Ranger,                                  {} },
   -- {'', '<LEADER>;', fn.LF, {}},
 
-  { 'x', '<C-_>', '<Plug>(comment_toggle_linewise_visual)' },
+  { 'x', '<C-_>',     '<Plug>(comment_toggle_linewise_visual)' },
   { 'n', '<C-_>', function()
     return vim.v.count == 0
         and '<Plug>(comment_toggle_linewise_current)'
         or '<Plug>(comment_toggle_linewise_count)'
   end, { noremap = true, silent = true, expr = true } },
+
+
+
+  -- 开始
+  { "n", "<leader>dd", ":<CR>",                        { noremap = true, silent = true } },
+  -- 结束
+  {
+    "n",
+    "<leader>de",
+    ":lua require'dap'.close()<CR>"
+    .. ":lua require'dap'.terminate()<CR>"
+    .. ":lua require'dap.repl'.close()<CR>"
+    .. ":lua require'dapui'.close()<CR>"
+    .. ":lua require('dap').clear_breakpoints()<CR>"
+    .. "<C-w>o<CR>",
+    { noremap = true, silent = true } },
+  -- 继续
+  { "n", "<leader>dc", ":lua require'dap'.continue()<CR>",            { noremap = true, silent = true } },
+  -- 设置断点
+  { "n", "<leader>dt", ":lua require('dap').toggle_breakpoint()<CR>", { noremap = true, silent = true } },
+  { "n", "<leader>dT", ":lua require('dap').clear_breakpoints()<CR>", { noremap = true, silent = true } },
+  --  stepOver, stepOut, stepInto
+  { "n", "<leader>dj", ":lua require'dap'.step_over()<CR>",           { noremap = true, silent = true } },
+  { "n", "<leader>dk", ":lua require'dap'.step_out()<CR>",            { noremap = true, silent = true } },
+  { "n", "<leader>dl", ":lua require'dap'.step_into()<CR>",           { noremap = true, silent = true } },
+  -- 弹窗
+  { "n", "<leader>dh", ":lua require'dapui'.eval()<CR>",              { noremap = true, silent = true } },
+
 })
 
 
@@ -167,10 +195,3 @@ function! AbsolutePath()
     let @+=expand("%:p")
 endfunction
 ]])
-
-
-
-
-
-
-
