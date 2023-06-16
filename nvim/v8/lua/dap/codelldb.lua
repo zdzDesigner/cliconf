@@ -4,7 +4,7 @@ local dap = require('dap')
 
 dap.configurations.cpp = {
   {
-    name = "Launch file",
+    name = "load debug file:",
     type = "codelldb",
     request = "launch",
     program = function()
