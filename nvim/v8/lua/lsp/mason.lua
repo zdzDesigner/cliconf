@@ -27,6 +27,7 @@ local server_settings = {
   ['gopls'] = 0,
   ['clangd'] = 0,
   ['dockerls'] = 0,
+  ['neocmake'] = 0,
   -- ['yamlls'] = 0,
   ['sqlls'] = require('lsp/lang/sqlls'),
   -- ['ccls'] = require('lsp/ccls')

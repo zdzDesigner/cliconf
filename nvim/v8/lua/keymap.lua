@@ -13,12 +13,12 @@ G.map({
   { '',  '<C-a>', '<nop>', { desc = 'nop 冲突@快速创建文件' } },
   { 'n', 'r',     '<nop>', { desc = 'nop' } },
   { 'n', 's',     '<nop>', { desc = 'nop' } },
-  { 'v', 'u', '<nop>', {
-    noremap = true,
-    silent = true,
-    desc = '禁止visual 模式下转换小写，防止误碰'
-  } },
-  { '',  'E', ':e<CR>',                                      { noremap = true, silent = true, desc = '重置render' } },
+  { 'v', 'u', '<nop>',
+    { noremap = true, silent = true, desc = '禁止visual 模式下转换小写，防止误碰' }
+  },
+  { '', 'E', ':e<CR>',
+    { noremap = true, silent = true, desc = '重置render' }
+  },
   -- {'','R',':source $MYVIMRC<CR>',{noremap = true, silent = true,desc='初始配置'}},
   { '',  'R', ':source /home/zdz/.zdz/nvim/v8/init.lua<CR>', { noremap = true, silent = true, desc = '初始配置' } },
 
@@ -146,6 +146,7 @@ G.map({
   { '',  '<LEADER>;', Ranger,                                  {} },
   -- {'', '<LEADER>;', fn.LF, {}},
 
+  -- comment ------------------------------------------------------------
   { 'x', '<C-_>',     '<Plug>(comment_toggle_linewise_visual)' },
   { 'n', '<C-_>', function()
     return vim.v.count == 0
@@ -153,10 +154,9 @@ G.map({
         or '<Plug>(comment_toggle_linewise_count)'
   end, { noremap = true, silent = true, expr = true } },
 
-
-
+  -- dap ------------------------------------------------------------
   -- 开始
-  { "n", "<leader>dd", ":<CR>",                        { noremap = true, silent = true } },
+  { "n", "<leader>dd", ":<CR>",                                       { noremap = true, silent = true } },
   -- 结束
   {
     "n",

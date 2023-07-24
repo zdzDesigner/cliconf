@@ -65,6 +65,12 @@ function M.Format()
   vim.lsp.buf.format()
 end
 
+-- TODO: has gd
+function M.ClangToggle()
+  local active_lsp = vim.lsp.get_active_clients()
+  print(vim.inspect(active_lsp))
+end
+
 -- function M.LF()
 --   local temp = vim.fn.tempname()
 --   ncmd('exec "lf -selection-path="' .. vim.fn.shellescape(temp))

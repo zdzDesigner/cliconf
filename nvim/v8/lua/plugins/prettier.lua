@@ -39,6 +39,7 @@ M.filetypes = {
   vue = "html",
   js = "javascript",
   jsm = "javascript",
+  mjs = "javascript",
   jsx = "javascriptreact",
   json = "json",
   less = "less",
