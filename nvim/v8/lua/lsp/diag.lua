@@ -192,4 +192,8 @@ function M.virtual_text_toggle()
   end
 end
 
+function M.enable_underline()
+  vim.diagnostic.config({ underline = false })
+end
+
 return M

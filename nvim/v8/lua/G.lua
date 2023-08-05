@@ -9,44 +9,45 @@ G.api = vim.api
 G.opt = vim.opt
 
 function G.import(module)
-    package.loaded[module] = nil
-    return require(module)
+  package.loaded[module] = nil
+  return require(module)
 end
 
 function G.map(maps)
-    for _,map in pairs(maps) do
-        vim.keymap.set(map[1], map[2], map[3], map[4])
-    end
+  for _, map in pairs(maps) do
+    vim.keymap.set(map[1], map[2], map[3], map[4])
+  end
 end
+
 function G.set(maps)
-    for k,v in pairs(maps) do
-      vim.opt[k] = v
-    end
+  for k, v in pairs(maps) do
+    vim.opt[k] = v
+  end
 end
 
 function G.hi(hls)
-    local colormode = G.o.termguicolors and '' or 'cterm'
-    for group,color in pairs(hls) do
-        local opt = {}
-        if color.fg then opt[colormode .. 'fg'] = color.fg end
-        if color.bg then opt[colormode .. 'bg'] = color.bg end
-        if color.italic then opt.italic = true end
-        if color.bold then opt.bold = true end
-        if color.underline then opt.underline = true end
-        G.api.nvim_set_hl(0, group, opt)
-    end
+  local colormode = G.o.termguicolors and '' or 'cterm'
+  for group, color in pairs(hls) do
+    local opt = {}
+    if color.fg then opt[colormode .. 'fg'] = color.fg end
+    if color.bg then opt[colormode .. 'bg'] = color.bg end
+    if color.italic then opt.italic = true end
+    if color.bold then opt.bold = true end
+    if color.underline then opt.underline = true end
+    G.api.nvim_set_hl(0, group, opt)
+  end
 end
 
 function G.cmd(cmd)
-    G.api.nvim_command(cmd)
+  G.api.nvim_command(cmd)
 end
 
 function G.exec(c)
-    G.api.nvim_exec(c)
+  G.api.nvim_exec(c)
 end
 
 function G.eval(c)
-    return G.api.nvim_eval(c)
+  return G.api.nvim_eval(c)
 end
 
 function G.setup()
@@ -55,7 +56,7 @@ function G.setup()
 
   -- 运行路径和包路径都要设置
   vim.opt.packpath:prepend('/home/zdz/.config/nvim/v8') -- 插件模块
-  vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v8') -- 自定义配置模块
+  vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v8')    -- 自定义配置模块
   vim.opt.rtp:prepend('/home/zdz/.config/nvim/v8')
   vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v8')
   -- 清除jumps ctrl-o
