@@ -68,7 +68,7 @@ if vim.diagnostic then
     update_in_insert = false,
     -- This sets the spacing and the prefix, obviously.
     virtual_text = false
-
+    -- virtual_text = true
   })
   ---reference to the original handler
   local ns = vim.api.nvim_create_namespace('zdz-diagnostics')
@@ -81,7 +81,6 @@ if vim.diagnostic then
       orig_signs_handler.hide(ns, bufnr)
     end,
   }
-
 end
 
 -- Taken from and modified:
@@ -89,11 +88,11 @@ end
 function M.virtual_text_none()
   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-    signs = false,
-    underline = false,
-    update_in_insert = false,
-    virtual_text = false
-  }
+      signs = false,
+      underline = false,
+      update_in_insert = false,
+      virtual_text = false
+    }
   )
 end
 
@@ -121,25 +120,25 @@ end
 function M.virtual_text_set()
   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-    severity_sort = true,
-    signs = function()
-      if vim.b.lsp_virtual_text_mode == 'Signs' or vim.b.lsp_virtual_text_mode == 'SignsVirtualText' then
-        return true
-      else
-        return false
-      end
-    end,
-    underline = false,
-    update_in_insert = false,
-    virtual_text = function()
-      if vim.b.lsp_virtual_text_mode == 'VirtualText' or vim.b.lsp_virtual_text_mode == 'SignsVirtualText' then
-        return { severity_limit = 'Hint', spacing = 10 }
-        -- return "{ severity_limit = 'Hint', spacing = 10 }"
-      else
-        return false
-      end
-    end,
-  }
+      severity_sort = true,
+      signs = function()
+        if vim.b.lsp_virtual_text_mode == 'Signs' or vim.b.lsp_virtual_text_mode == 'SignsVirtualText' then
+          return true
+        else
+          return false
+        end
+      end,
+      underline = false,
+      update_in_insert = false,
+      virtual_text = function()
+        if vim.b.lsp_virtual_text_mode == 'VirtualText' or vim.b.lsp_virtual_text_mode == 'SignsVirtualText' then
+          return { severity_limit = 'Hint', spacing = 10 }
+          -- return "{ severity_limit = 'Hint', spacing = 10 }"
+        else
+          return false
+        end
+      end,
+    }
   )
 end
 
@@ -191,6 +190,27 @@ function M.virtual_text_toggle()
       M.virtual_text_enable()
     end
   end
+end
+
+function M.enable_underline()
+  vim.diagnostic.config({ underline = true })
+end
+
+function M.unenable_underline()
+  vim.diagnostic.config({ underline = false })
+end
+
+function M.underline()
+  -- 获取当前缓冲区的文件名
+  local filename = vim.fn.expand('%:t')
+
+  -- 检查文件名是否为 xmake.lua
+  if filename == 'xmake.lua' then
+    -- 如果是 xmake.lua 文件，则不执行特定操作
+    M.unenable_underline()
+    return
+  end
+  M.enable_underline()
 end
 
 return M

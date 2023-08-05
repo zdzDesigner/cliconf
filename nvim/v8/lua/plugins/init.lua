@@ -115,6 +115,8 @@ local function plugin(use)
     config = 'require("plugins/neodev")'
   })
 
+  -- 代码片段
+  use('SirVer/ultisnips')
 
 
   -- use({

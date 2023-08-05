@@ -15,6 +15,7 @@ G.import('plugins/ranger')
 G.import('keymap')
 G.import('setting')
 
+
 vim.cmd([[
   " 注释
   " source $CLIENV/nvim/v8/vim/comment.vim
@@ -42,5 +43,15 @@ vim.cmd([[
 
   " 更改解析文件类型
   autocmd BufNewFile,BufRead *.wxml set filetype=html
+
+  " 设置c缩进
+  autocmd FileType c setlocal shiftwidth=8
+
+
+  " 配置xmake.lua文件不提示
+  augroup LspDiagnosticConfig
+    autocmd!
+    autocmd BufEnter * lua require('lsp/diag').underline()
+  augroup END
 
 ]])

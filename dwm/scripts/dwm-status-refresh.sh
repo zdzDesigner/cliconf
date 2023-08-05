@@ -13,8 +13,19 @@ fi
 function getbrightness() {
   # .
   # echo "☀$(($(cat /sys/class/backlight/intel_backlight/brightness)/150))%"
-  echo ".$(($(bash brightness.sh)/150))%"
+  # echo ".$(($(bash brightness.sh)/150))%"
+  echo ".$(($(bash brightness.sh)/15))%"
   # echo "$(($(cat /sys/class/backlight/intel_backlight/brightness)/15))%"
+}
+
+
+function enp() {
+  enpinfo=$(ip link show enp0s31f6)
+  if [[ "$enpinfo" =~ "state UP" ]]; then
+    echo ".enp0s31f6"
+    exit
+  fi
+  echo ""
 }
 
 function wifi() {
@@ -39,6 +50,7 @@ function wifi() {
   #           Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
   #           Tx excessive retries:20  Invalid misc:36   Missed beacon:0
 
+
   echo $(iwconfig) | while read LINE; do
   if [[ "$LINE" =~ Tx-Power=off ]]; then
     echo .off
@@ -47,10 +59,24 @@ function wifi() {
     CWIFI=${CWIFI:0:5}
     echo ".${CWIFI^^}"
   elif [[ "$LINE" =~ Tx-Power=.+ ]]; then
-    echo ".(nmtui-connect)"
+    echo ""
   fi
 done
 
+}
+
+function network(){
+  wifiname=$(wifi)
+  if [ ! -z "$wifiname" ]; then
+       echo "$wifiname"
+       exit
+  fi
+  enpname=$(enp)
+  if [ ! -z "$enpname" ]; then
+       echo "$enpname"
+       exit
+  fi
+  echo ".(nmtui-connect)"
 }
 # This function parses /proc/net/dev file searching for a line containing $interface data.
 # Within that line, the first and ninth numbers after ':' are respectively the received and transmited bytes.
@@ -265,10 +291,10 @@ if [ $rval = 0 ]; then
     vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
     vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-    STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  .$(print_mem)  $(dwm_alsa) $(getbrightness) $(wifi) $(print_date) [$(print_bat)]$(show_record) "
+    STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  .$(print_mem)  $(dwm_alsa) $(getbrightness) $(network) $(print_date) [$(print_bat)]$(show_record) "
     # STATUS_BAR_NEW="   .$(print_mem)  $(dwm_alsa)  $(getbrightness)  $(print_date) [$(print_bat)]$(show_record) "
     # 💿
-    # STATUS_BAR_NEW="  $(print_date) ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) $(getbrightness) $(wifi) [$(print_bat)]$(show_record) "
+    # STATUS_BAR_NEW="  $(print_date) ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) $(getbrightness) $(network) [$(print_bat)]$(show_record) "
     echo "$STATUS_BAR_NEW" > $TEMP_STATUS
     # STATUS_BAR_NEW="echo -e \033[34;41mColor Text\033[0m"
     xsetroot -name "$STATUS_BAR_NEW"

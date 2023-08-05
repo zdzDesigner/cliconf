@@ -4,57 +4,57 @@ if not res then return end
 -- print('----- loaded treesitter ------')
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
-      "bash",
-      "c",
-      "cpp",
-      "go",
-      "javascript",
-      "typescript",
-      "json",
-      "jsonc",
-      "jsdoc",
-      "lua",
-      "python",
-      "rust",
-      "html",
-      "css",
-      "toml",
-      "vue", 
-      "tsx",
-      -- for `nvim-treesitter/playground`
-      -- "query",
+    "bash",
+    "c",
+    "cpp",
+    "go",
+    "javascript",
+    "typescript",
+    "json",
+    "jsonc",
+    "jsdoc",
+    "lua",
+    "python",
+    "rust",
+    "html",
+    "css",
+    "toml",
+    "vue",
+    "tsx",
+    -- for `nvim-treesitter/playground`
+    -- "query",
   },
-  highlight   = {
+  highlight        = {
     enable = true,
     -- slow on big files
     -- disable = { "c", "cpp", }
   },
-  textobjects = {
+  textobjects      = {
     select = {
       enable  = true,
       keymaps = {
-        ["ac"] = "@comment.outer"    ,
-        ["ao"] = "@class.outer"      ,
-        ["io"] = "@class.inner"      ,
-        ["af"] = "@function.outer"   ,
-        ["if"] = "@function.inner"   ,
+        ["ac"] = "@comment.outer",
+        ["ao"] = "@class.outer",
+        ["io"] = "@class.inner",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
         -- Leader mappings, dups for whichkey
-        ["<Leader><Leader>ab"] = "@block.outer"      ,
-        ["<Leader><Leader>ib"] = "@block.inner"      ,
-        ["<Leader><Leader>af"] = "@function.outer"   ,
-        ["<Leader><Leader>if"] = "@function.inner"   ,
-        ["<Leader><Leader>ao"] = "@class.outer"      ,
-        ["<Leader><Leader>io"] = "@class.inner"      ,
-        ["<Leader><Leader>aC"] = "@call.outer"       ,
-        ["<Leader><Leader>iC"] = "@call.inner"       ,
+        ["<Leader><Leader>ab"] = "@block.outer",
+        ["<Leader><Leader>ib"] = "@block.inner",
+        ["<Leader><Leader>af"] = "@function.outer",
+        ["<Leader><Leader>if"] = "@function.inner",
+        ["<Leader><Leader>ao"] = "@class.outer",
+        ["<Leader><Leader>io"] = "@class.inner",
+        ["<Leader><Leader>aC"] = "@call.outer",
+        ["<Leader><Leader>iC"] = "@call.inner",
         ["<Leader><Leader>ac"] = "@conditional.outer",
         ["<Leader><Leader>ic"] = "@conditional.inner",
-        ["<Leader><Leader>al"] = "@loop.outer"       ,
-        ["<Leader><Leader>il"] = "@loop.inner"       ,
-        ["<Leader><Leader>ap"] = "@parameter.outer"  ,
-        ["<Leader><Leader>ip"] = "@parameter.inner"  ,
-        ["<Leader><Leader>is"] = "@scopename.inner"  ,
-        ["<Leader><Leader>as"] = "@statement.outer"  ,
+        ["<Leader><Leader>al"] = "@loop.outer",
+        ["<Leader><Leader>il"] = "@loop.inner",
+        ["<Leader><Leader>ap"] = "@parameter.outer",
+        ["<Leader><Leader>ip"] = "@parameter.inner",
+        ["<Leader><Leader>is"] = "@scopename.inner",
+        ["<Leader><Leader>as"] = "@statement.outer",
       },
     },
     move = {
@@ -78,10 +78,10 @@ require('nvim-treesitter.configs').setup({
       },
     },
   },
-  playground = {
+  playground       = {
     enable = true,
     disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false, -- Whether the query persists across vim sessions
     keybindings = {
       toggle_query_editor = 'o',
@@ -98,39 +98,24 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
---[[
-  https://github.com/nvim-treesitter/nvim-treesitter/issues/1168
-  ** use lowercase 'solidity':
-  ```
-    ❯ nm -gD .local/share/nvim/site/pack/packer/start/nvim-treesitter/parser/Solidity.so
-                       w _ITM_deregisterTMCloneTable
-                       w _ITM_registerTMCloneTable
-                       w __cxa_finalize@@GLIBC_2.2.5
-                       w __gmon_start__
-      00000000000232e0 T tree_sitter_solidity
-  ```
-  To install:
-  ```
-    ❯ mkdir ~/.local/share/nvim/site/pack/packer/opt/nvim-treesitter/queries/solidity/
-    ❯ curl -L https://raw.githubusercontent.com/JoranHonig/tree-sitter-solidity/master/queries/highlights.scm -o ~/.local/share/nvim/site/pack/packer/opt/nvim-treesitter/queries/solidity/highlights.scm
-    ❯ vi ~/.local/share/nvim/site/pack/packer/opt/nvim-treesitter/queries/solidity/highlights.scm
-  ```
-  ** comment out lines 68-69
-]]
-if pcall(require, "nvim-treesitter.parsers") then
-  require "nvim-treesitter.parsers".get_parser_configs().solidity = {
-    install_info = {
-      url = "https://github.com/JoranHonig/tree-sitter-solidity",
-      files = {"src/parser.c"},
-      requires_generate_from_grammar = true,
-    },
-    filetype = 'solidity'
+
+
+
+
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+parser_config.solidity = {
+  install_info = {
+    url = "https://github.com/JoranHonig/tree-sitter-solidity",
+    files = { "src/parser.c" },
+    requires_generate_from_grammar = true,
+  },
+  filetype = 'solidity'
+}
+-- install with ':TSInstallSync markdown'
+parser_config.markdown = {
+  install_info = {
+    url = "https://github.com/ikatyang/tree-sitter-markdown",
+    files = { "src/parser.c", "src/scanner.cc" },
   }
-  -- install with ':TSInstallSync markdown'
-  require "nvim-treesitter.parsers".get_parser_configs().markdown = {
-    install_info = {
-      url = "https://github.com/ikatyang/tree-sitter-markdown",
-      files = { "src/parser.c", "src/scanner.cc" },
-    }
-  }
-end
+}
