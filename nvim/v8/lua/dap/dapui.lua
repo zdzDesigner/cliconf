@@ -23,8 +23,26 @@ dapui.setup {
       terminate = '⏹',
     },
   },
+  highlights = {
+    -- 执行行的高亮样式
+    line_highlight = 'DapUIExecution',
+    -- 断点的高亮样式
+    breakpoints = 'DapUIBreakpoints',
+    -- 变量的高亮样式
+    variables = 'DapUIVariables',
+    -- 堆栈的高亮样式
+    frames = 'DapUIFrames',
+    -- 表达式的高亮样式
+    watches = 'DapUIWatches',
+    -- 日志的高亮样式
+    logs = 'DapUILogs',
+    -- REPL 的高亮样式
+    repl = 'DapUIRepl',
+  }
 }
 
 dap.listeners.after.event_initialized['dapui_config'] = dapui.open
 dap.listeners.before.event_terminated['dapui_config'] = dapui.close
 dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+require('dap/highlight').setup()
