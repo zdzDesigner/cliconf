@@ -140,7 +140,7 @@ G.map({
   -- :2,80<   第2行至第80行左移动
 
   -- {'','<LEADER>f',':Prettier<CR>',{noremap=true,desc='格式化'}},
-  { '',  '<LEADER>f', fn.Format,                               { noremap = true, desc = '格式化' } },
+  { 'n',  '<LEADER>f', fn.Format,                               { noremap = true, desc = '格式化' } },
   -- 调起 Ranger
   -- {'','<LEADER>f', Ranger,{}},
   { '',  '<LEADER>;', Ranger,                                  {} },

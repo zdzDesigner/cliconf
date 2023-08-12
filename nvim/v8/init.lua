@@ -45,7 +45,7 @@ vim.cmd([[
   autocmd BufNewFile,BufRead *.wxml set filetype=html
 
   " 设置c缩进
-  autocmd FileType c setlocal shiftwidth=8
+  autocmd FileType c setlocal shiftwidth=4
 
 
   " 配置xmake.lua文件不提示
