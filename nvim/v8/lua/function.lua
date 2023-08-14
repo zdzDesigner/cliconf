@@ -57,10 +57,14 @@ function M.ZReg()
 end
 
 function M.Format()
+  -- print(vim.fn.expand('%:e'))
   -- Prettier.config_exists()
   if Prettier.ismatch(vim.fn.expand('%:e')) then
     -- return vim.cmd([[:Prettier]])
     return ncmd(':Prettier')
+  end
+  if vim.fn.expand('%:e') == 'md' then
+    return
   end
   vim.lsp.buf.format()
 end
