@@ -149,7 +149,7 @@ fzf_lua.setup {
     prompt = 'B❯ ',
     file_icons = false,
     actions = {
-      ["ctrl-l"] = fzf_lua.actions.buf_edit,
+      ["ctrl-l"] = fzf_lua.actions.buf_edit, -- switch
       ["ctrl-x"] = fzf_lua.actions.buf_del,
       ['ctrl-d'] = function(selecteds)
         print(selecteds)
