@@ -72,6 +72,7 @@ exec dwm
 
 # 改建
 # /usr/share/X11/xkb/keycodes/evdev
+
 # key map
 # > /usr/include/X11/keysymdef.h
 
