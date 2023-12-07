@@ -1,11 +1,13 @@
 -- Lua settings
+local paths = vim.split(package.path, ';')
+table.insert(paths, '/home/zdz/Application/xmake/xmake/xmake/**/*.lua')
 return {
   settings = {
     Lua = {
       runtime = {
         -- LuaJIT in the case of Neovim
         version = 'LuaJIT',
-        path = vim.split(package.path, ';'),
+        path = paths,
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
