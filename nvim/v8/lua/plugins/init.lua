@@ -159,6 +159,15 @@ local function plugin(use)
       })
     end
   })
+
+  -- use {
+  --   'huggingface/llm.nvim',
+  --   config = function()
+  --     require('llm').setup({
+  --       -- cf Setup
+  --     })
+  --   end
+  -- }
   -- ssh 远程编辑
   -- use {
   --   'chipsenkbeil/distant.nvim',

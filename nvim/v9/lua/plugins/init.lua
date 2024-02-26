@@ -13,7 +13,7 @@
 vim.opt.termguicolors = true
 
 -- append test directory
-local test_dir = '/home/zdz/.config/nvim/v8'
+local test_dir = '/home/zdz/.config/nvim/v9'
 
 local function plugin(use)
   use('wbthomason/packer.nvim')
@@ -159,6 +159,18 @@ local function plugin(use)
       })
     end
   })
+  use {
+    'huggingface/llm.nvim',
+    config = "require('plugins/llm')",
+  }
+  -- use {
+  --   'huggingface/llm.nvim',
+  --   config = function()
+  --     require('llm').setup({
+  --       -- cf Setup
+  --     })
+  --   end
+  -- }
   -- ssh 远程编辑
   -- use {
   --   'chipsenkbeil/distant.nvim',
