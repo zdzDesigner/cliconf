@@ -1,10 +1,9 @@
-local G = require('G')
+-- local G = require('G')
 
 local neval = vim.api.nvim_eval
 local ncmd = vim.api.nvim_command
 
--- local Prettier = require('plugins/prettier')
-local Prettier = G.import('plugins/prettier')
+-- local Prettier = G.import('plugins/prettier')
 -- local comment = require('Comment/')
 -- print(vim.inspect(comment))
 
@@ -62,14 +61,14 @@ end
 function M.Format()
   -- print(vim.fn.expand('%:e'))
   -- Prettier.config_exists()
-  if Prettier.ismatch(vim.fn.expand('%:e')) then
-    -- return vim.cmd([[:Prettier]])
-    return ncmd(':Prettier')
-  end
-  if vim.fn.expand('%:e') == 'md' then
-    return
-  end
-  vim.lsp.buf.format()
+  -- if Prettier.ismatch(vim.fn.expand('%:e')) then
+  --   -- return vim.cmd([[:Prettier]])
+  --   return ncmd(':Prettier')
+  -- end
+  -- if vim.fn.expand('%:e') == 'md' then
+  --   return
+  -- end
+  -- vim.lsp.buf.format()
 end
 
 -- TODO: has gd

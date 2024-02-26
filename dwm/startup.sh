@@ -21,7 +21,7 @@ nm-applet &
 # nmtui-connect :: 设置链接 net manage tool ui
 # nm-connection-editor
 
-# 输入法 启动fcitx mod + shift + f
+# 输入法 启动fcitx: mod + shift + f
 # fcitx &
 # 输入法图形界面
 # fcitx-configtool

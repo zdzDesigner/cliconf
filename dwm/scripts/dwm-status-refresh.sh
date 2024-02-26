@@ -298,10 +298,12 @@ if [ $rval = 0 ]; then
     echo "$STATUS_BAR_NEW" > $TEMP_STATUS
     # STATUS_BAR_NEW="echo -e \033[34;41mColor Text\033[0m"
     xsetroot -name "$STATUS_BAR_NEW"
+    # xsetroot -name "xxxxx"
     # xsetroot  -bitmap grey_9_9.xbm  -name "aaa     $STATUS_BAR_NEW"
   else
     STATUS_BAR=$(sed -e "s/\[.*\]/[$(print_bat)]/g" "$TEMP_STATUS")
     xsetroot -name "$STATUS_BAR"
+    # xsetroot -name "xxx"
 fi
 
 # Update old values to perform new calculations
