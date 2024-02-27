@@ -31,6 +31,7 @@ local server_settings = {
   ['neocmake'] = 0,
   -- ['yamlls'] = 0,
   ['sqlls'] = require('lsp/lang/sqlls'),
+  -- python3 -m pip install --user --upgrade pynvim
   ['pylsp'] = 0,
   -- ['ccls'] = require('lsp/ccls')
 }
