@@ -43,7 +43,6 @@ vim.cmd([[
 
   " 更改解析文件类型
   autocmd BufNewFile,BufRead *.wxml set filetype=html
-  autocmd BufNewFile,BufRead *.vue set filetype=html
   autocmd BufNewFile,BufRead *zig.zon set filetype=zig
 
   " 设置c缩进
