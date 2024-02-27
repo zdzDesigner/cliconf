@@ -17,6 +17,7 @@ G.import('setting')
 
 
 vim.cmd([[
+
   " 注释
   " source $CLIENV/nvim/v8/vim/comment.vim
   " noremap <silent> <C-_><C-_> :Commentary<CR>
@@ -43,6 +44,7 @@ vim.cmd([[
 
   " 更改解析文件类型
   autocmd BufNewFile,BufRead *.wxml set filetype=html
+  " autocmd BufNewFile,BufRead *.vue set filetype=html
 
   " 设置c缩进
   autocmd FileType c setlocal shiftwidth=4

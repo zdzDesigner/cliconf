@@ -189,30 +189,35 @@ get_battery_charging_status() {
 
     if [ $(get_battery_combined_percent) -lt 10 ]; then
       if [ $rval = 0 ]; then
-        echo ".";
+        # echo ".";
+        echo "🪫.";
       else
-        echo ".";
+        # echo ".";
+        echo "🔋.";
       fi
+      # echo "🪫.";
     elif [ $(get_battery_combined_percent) -lt 20 ]; then
       if [ $rval = 0 ]; then
-        echo ".";
+        # echo ".";
+        echo "🪫.";
       else
-        echo ".";
+        # echo ".";
+        echo "🔋.";
       fi
-      # echo " ";
-    elif [ $(get_battery_combined_percent) -lt 30 ]; then
-      echo ".";
-    elif [ $(get_battery_combined_percent) -lt 50 ]; then
-      echo ".";
-    elif [ $(get_battery_combined_percent) -lt 60 ]; then
-      echo ".";
-    elif [ $(get_battery_combined_percent) -lt 90 ]; then
-      echo ".";
-    elif [ $(get_battery_combined_percent) -lt 100 ]; then
-      echo ".";
+      # echo "🪫.";
+    # elif [ $(get_battery_combined_percent) -lt 30 ]; then
+    #   echo ".";
+    # elif [ $(get_battery_combined_percent) -lt 50 ]; then
+    #   echo ".";
+    # elif [ $(get_battery_combined_percent) -lt 60 ]; then
+    #   echo ".";
+    # elif [ $(get_battery_combined_percent) -lt 90 ]; then
+    #   echo ".";
+    # elif [ $(get_battery_combined_percent) -lt 100 ]; then
+    #   echo ".";
     else
-      # echo "🔋";
-      echo ".";
+      echo "🔋.";
+      # echo ".";
     fi
   else # acpi can give Unknown or Charging if charging, https://unix.stackexchange.com/questions/203741/lenovo-t440s-battery-status-unknown-but-charging
     echo ".";
@@ -291,9 +296,10 @@ if [ $rval = 0 ]; then
     vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
     vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-    STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  .$(print_mem)  $(dwm_alsa) $(getbrightness) $(network) $(print_date) [$(print_bat)]$(show_record) "
+    # STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  .$(print_mem)  $(dwm_alsa) $(getbrightness) $(network) $(print_date) [$(print_bat)]$(show_record) "
+    STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  🔲.$(print_mem)  $(dwm_alsa) $(getbrightness) $(network) $(print_date) [$(print_bat)]$(show_record) "
     # STATUS_BAR_NEW="   .$(print_mem)  $(dwm_alsa)  $(getbrightness)  $(print_date) [$(print_bat)]$(show_record) "
-    # 💿
+    # 💿⬛⚫💾🔘🔲🔳
     # STATUS_BAR_NEW="  $(print_date) ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) $(getbrightness) $(network) [$(print_bat)]$(show_record) "
     echo "$STATUS_BAR_NEW" > $TEMP_STATUS
     # STATUS_BAR_NEW="echo -e \033[34;41mColor Text\033[0m"
