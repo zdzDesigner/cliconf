@@ -1,4 +1,4 @@
-local G = require('v8/lua/G')
+local G = require('G')
 G.setup()
 -- print(vim.inspect(vim.opt.packpath:get()))
 -- print('vim.lsp::',vim.lsp.start)
