@@ -112,6 +112,7 @@ map <backspace2> set hidden!
 
 # quit
 map <esc> quit
+map \\ quit
 
 # use enter for shell commands
 # map <enter> shell

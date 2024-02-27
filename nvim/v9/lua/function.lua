@@ -3,7 +3,6 @@ local G = require('G')
 local neval = vim.api.nvim_eval
 local ncmd = vim.api.nvim_command
 
--- local Prettier = require('plugins/prettier')
 local Prettier = G.import('plugins/prettier')
 -- local comment = require('Comment/')
 -- print(vim.inspect(comment))
