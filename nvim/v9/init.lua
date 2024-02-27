@@ -22,7 +22,7 @@ vim.cmd([[
   " noremap <silent> <C-_><C-_> :Commentary<CR>
 
   " markdown
-  source $CLIENV/nvim/v8/vim/markdown.vim
+  source $CLIENV/nvim/v9/vim/markdown.vim
 
   " 透明背景
   hi Normal guibg=NONE

@@ -159,10 +159,10 @@ local function plugin(use)
       })
     end
   })
-  use {
-    'huggingface/llm.nvim',
-    config = "require('plugins/llm')",
-  }
+  -- use {
+  --   'huggingface/llm.nvim',
+  --   config = "require('plugins/llm')",
+  -- }
   -- use {
   --   'huggingface/llm.nvim',
   --   config = function()
