@@ -116,7 +116,7 @@ local function plugin(use)
   })
 
   -- 代码片段
-  use('SirVer/ultisnips')
+  -- use('SirVer/ultisnips')
 
 
   -- use({
@@ -160,10 +160,10 @@ local function plugin(use)
     end
   })
 
-  use {
-    'huggingface/llm.nvim',
-    config = "require('plugins/llm')",
-  }
+  -- use {
+  --   'huggingface/llm.nvim',
+  --   config = "require('plugins/llm')",
+  -- }
 
   -- use {
   --   'huggingface/llm.nvim',

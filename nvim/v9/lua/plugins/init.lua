@@ -116,7 +116,7 @@ local function plugin(use)
   })
 
   -- 代码片段
-  use('SirVer/ultisnips')
+  -- use('SirVer/ultisnips')
 
 
   -- use({
