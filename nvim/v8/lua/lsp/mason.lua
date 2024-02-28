@@ -29,6 +29,10 @@ local server_settings = {
   ['dockerls'] = 0,
   ['asm_lsp'] = 0,
   ['neocmake'] = 0,
+  -- ['html'] = 0,
+  -- ['vuels'] = 0,
+  -- ['volar'] = 0,
+  -- ['nginxls'] = require('lsp/lang/nginxls'),
   -- ['yamlls'] = 0,
   ['sqlls'] = require('lsp/lang/sqlls'),
   -- python3 -m pip install --user --upgrade pynvim

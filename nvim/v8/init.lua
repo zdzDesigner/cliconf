@@ -1,4 +1,4 @@
-local G = require('v8/lua/G')
+local G = require('G')
 G.setup()
 -- print(vim.inspect(vim.opt.packpath:get()))
 -- print('vim.lsp::',vim.lsp.start)
@@ -17,6 +17,7 @@ G.import('setting')
 
 
 vim.cmd([[
+
   " 注释
   " source $CLIENV/nvim/v8/vim/comment.vim
   " noremap <silent> <C-_><C-_> :Commentary<CR>
@@ -43,6 +44,7 @@ vim.cmd([[
 
   " 更改解析文件类型
   autocmd BufNewFile,BufRead *.wxml set filetype=html
+  " autocmd BufNewFile,BufRead *.vue set filetype=html
   autocmd BufNewFile,BufRead *zig.zon set filetype=zig
 
   " 设置c缩进
