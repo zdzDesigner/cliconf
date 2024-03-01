@@ -14,7 +14,10 @@ vim.api.nvim_create_user_command('Range', function() Term.openFullTerminal('rang
 local function ranger()
   local targetpath = '/tmp/temp.plugin.ranger'
   -- local targetpath = vim.fn.tempname()
-  local currentpath = vim.fn.expand('%')
+  -- local currentpath = vim.fn.expand('%')
+  local currentpath = string.gsub(vim.fn.expand('%:p'), '%s', '\\ ') -- fix  whitespace in path
+  -- local currentpath = string.gsub('/home/zdz/Documents/Try/Python/book/PythonHackingBook1/1.2 数值类型/Readme.md','%s',"\\ ")
+
   local fd = assert(vim.loop.fs_open(targetpath, "w", 438))
   -- local stat = vim.loop.fs_fstat(fd)
 
