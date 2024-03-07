@@ -1,7 +1,6 @@
 local map = vim.api.nvim_buf_set_keymap
 
 local on_attach = function(client, bufnr)
-
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   if client.config.flags then
@@ -9,11 +8,12 @@ local on_attach = function(client, bufnr)
     client.config.flags.debounce_text_changes  = 100
   end
 
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
 
   map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   map(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  map(bufnr, 'n', '<C-[>',  '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- map(bufnr, 'n', '<C-[>',  '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  map(bufnr, 'n', '<C-d>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts) -- 查看定义
   -- map(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   -- map(bufnr, 'n', 'gA', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- map(bufnr, 'v', 'gA', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
   -- neovim PR #16057
   -- https://github.com/neovim/neovim/pull/16057
 
-  local winopts  = "{ float =  { border = 'rounded' } }"
+  local winopts = "{ float =  { border = 'rounded' } }"
   map(bufnr, 'n', '<leader>lc', '<cmd>lua vim.diagnostic.reset()<CR>', opts)
   map(bufnr, 'n', '<C-e>', '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", border = "none" })<CR>', opts)
   map(bufnr, 'n', '[d', ('<cmd>lua vim.lsp.diagnostic.goto_prev(%s)<CR>'):format(winopts), opts)
@@ -68,7 +68,6 @@ local on_attach = function(client, bufnr)
   --   require('lsp.diag').virtual_text_set()
   --   require('lsp.diag').virtual_text_redraw()
   -- end
-
 end
 
 return { on_attach = on_attach }

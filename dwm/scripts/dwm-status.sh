@@ -3,7 +3,7 @@
 BG=$(cat $HOME/.bg/tmp)
 BG_NAME=${BG##*@}
 # BG_DIR=$HOME/.bg/favorite
-BG_DIR=$HOME/.bg/jz
+BG_DIR=$HOME/.bg/2024
 
 # 壁纸
 feh --bg-fill --no-fehbg $BG_DIR/$BG_NAME
