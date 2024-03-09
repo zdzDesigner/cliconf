@@ -27,7 +27,7 @@ cmp.setup({
   },
   completion = {
     -- autocomplete = false,
-    completeopt = 'menu,menuone,noselect',
+    completeopt = 'menu,menuone,noselect', -- 未验证
     keyword_length = 2,
   },
   sources = cmp.config.sources({

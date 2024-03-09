@@ -6,6 +6,9 @@ local function go(T)
       T.i(4), T.t({ "", "}" }),
 
     }),
+    T.s("im", {
+      T.t({ "import (", "\t\"" }), T.i(1), T.t("\""), T.t({ "", ")" }),
+    }),
 
   })
 end
