@@ -17,3 +17,5 @@ T.copy = function(args) return args[1] end
 
 require('snippets/all')(T)
 require('snippets/js')(T)
+require('snippets/python')(T)
+require('snippets/go')(T)

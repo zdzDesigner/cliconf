@@ -297,7 +297,7 @@ if [ $rval = 0 ]; then
     vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
     # STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  .$(print_mem)  $(dwm_alsa) $(getbrightness) $(network) $(print_date) [$(print_bat)]$(show_record) "
-    STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  🔲.$(print_mem)  $(dwm_alsa) $(getbrightness) $(network) $(print_date) [$(print_bat)]$(show_record) "
+    STATUS_BAR_NEW="  ⬆$vel_recv ⬇$vel_trans  .$(print_mem)  $(dwm_alsa) $(getbrightness) $(network) $(print_date) [$(print_bat)]$(show_record) "
     # STATUS_BAR_NEW="   .$(print_mem)  $(dwm_alsa)  $(getbrightness)  $(print_date) [$(print_bat)]$(show_record) "
     # 💿⬛⚫💾🔘🔲🔳
     # STATUS_BAR_NEW="  $(print_date) ⬇️$vel_recv ⬆️$vel_trans 💿$(print_mem)M  $(dwm_alsa) $(getbrightness) $(network) [$(print_bat)]$(show_record) "

@@ -62,7 +62,12 @@ local function plugin(use)
       run = ':TSUpdate',
       event = 'BufRead'
     })
-    use({ 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } })
+    -- use({ 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } })
+    use({
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      after = "nvim-treesitter",
+      requires = "nvim-treesitter/nvim-treesitter",
+    })
   end
 
   use('nvim-lua/plenary.nvim')
@@ -78,12 +83,6 @@ local function plugin(use)
     config = "require('plugins/dracula')",
   })
 
-  use({
-    -- Snip
-    'L3MON4D3/LuaSnip',
-    config = 'require("plugins/luasnips/init")',
-    event = 'InsertEnter'
-  })
 
   -- LSP
   use({
@@ -97,9 +96,25 @@ local function plugin(use)
     },
     config = 'require("plugins/cmp")',
     -- event = "InsertEnter", }
-    after = 'LuaSnip'
-  }
-  )
+    after = { 'LuaSnip' }
+  })
+
+  use({
+    -- Snip
+    'L3MON4D3/LuaSnip',
+    config = 'require("plugins/luasnips/init")',
+    event = 'InsertEnter'
+  })
+
+  -- ======  bug (loop or previous error loading module 'cmp_luasnip_choice')
+  -- use {
+  --   'L3MON4D3/cmp-luasnip-choice',
+  --   config = function()
+  --     require('cmp_luasnip_choice').setup({
+  --       auto_open = true, -- Automatically open nvim-cmp on choice node (default: true)
+  --     });
+  --   end,
+  -- }
 
   use({
     'williamboman/mason.nvim',

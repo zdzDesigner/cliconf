@@ -3,7 +3,7 @@ if not res then return end
 
 
 local luasnip = require("luasnip")
-local remap = require('util').remap
+-- local remap = require('util').remap
 
 
 local t = function(str)
@@ -17,26 +17,28 @@ local should_complete = function()
 end
 
 
-cmp.setup {
+cmp.setup({
   -- must define this if we aren't using a snippet engine
+  preselect = cmp.PreselectMode.None, -- 默认不选择
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-
   completion = {
+    -- autocomplete = false,
+    completeopt = 'menu,menuone,noselect', -- 未验证
     keyword_length = 2,
   },
-
-  sources = {
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
+    -- { name = 'luasnip',  priority = 1 },
     { name = 'luasnip' },
+    -- { name = 'luasnip_choice' },
     { name = 'path' },
     { name = 'buffer' },
-  },
-
+  }),
   mapping = {
     ['<Tab>'] = function(fallback)
       if vim.fn.pumvisible() == 1 then
@@ -72,48 +74,45 @@ cmp.setup {
     -- 直接选中
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     -- ['<CR>'] = function(fallback)
-      -- if (vim.fn.pumvisible() == 1 and not
-      --     vim.tbl_isempty(vim.v.completed_item)) or
-      --    (cmp.visible() and cmp.core.view:get_selected_entry()) then
-      --   cmp.confirm({
-      --         behavior = cmp.ConfirmBehavior.Replace,
-      --         select = true,
-      --       })
-      -- else
-      --   fallback()
-      -- end
+    -- if (vim.fn.pumvisible() == 1 and not
+    --     vim.tbl_isempty(vim.v.completed_item)) or
+    --    (cmp.visible() and cmp.core.view:get_selected_entry()) then
+    --   cmp.confirm({
+    --         behavior = cmp.ConfirmBehavior.Replace,
+    --         select = true,
+    --       })
+    -- else
+    --   fallback()
+    -- end
     -- end,
   },
-
-
   formatting = {
     deprecated = false,
     format = function(entry, vim_item)
-        -- fancy icons and a name of kind
-        local idx = vim.lsp.protocol.CompletionItemKind[vim_item.kind] or nil
-        if tonumber(idx)>0 then
-          vim_item.kind = vim.lsp.protocol.CompletionItemKind[idx]
-        end
+      -- fancy icons and a name of kind
+      local idx = vim.lsp.protocol.CompletionItemKind[vim_item.kind] or nil
+      if tonumber(idx) > 0 then
+        vim_item.kind = vim.lsp.protocol.CompletionItemKind[idx]
+      end
 
-        -- set a name for each source
-        vim_item.menu = ({
-          path = "[Path]",
-          buffer = "[Buffer]",
-          luasnip = "[LuaSnip]",
-          nvim_lua = "[Lua]",
-          nvim_lsp = "[LSP]",
-        })[entry.source.name]
-        return vim_item
+      -- set a name for each source
+      vim_item.menu = ({
+        path = "[Path]",
+        buffer = "[Buffer]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        nvim_lsp = "[LSP]",
+      })[entry.source.name]
+      return vim_item
     end,
   },
-
   -- DO NOT ENABLE
   -- just for testing with nvim native completion menu
   experimental = {
     native_menu = false,
     ghost_text = true,
   },
-}
+})
 
 
 -- <esc>:    revert selection (stay in insert mode)
