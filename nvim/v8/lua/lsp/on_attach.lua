@@ -13,7 +13,8 @@ local on_attach = function(client, bufnr)
 
   map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   map(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  map(bufnr, 'n', '<C-[>',  '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- map(bufnr, 'n', '<C-[>',  '<cmd>lua vim.lsp.buf.hover()<CR>', opts) -- Esc
+  map(bufnr, 'n', '<C-d>',  '<cmd>lua vim.lsp.buf.hover()<CR>', opts) -- Esc
   -- map(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   -- map(bufnr, 'n', 'gA', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- map(bufnr, 'v', 'gA', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
