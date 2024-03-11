@@ -33,8 +33,8 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    -- { name = 'luasnip',  priority = 1 },
-    { name = 'luasnip' },
+    { name = 'luasnip', priority = 1000 }, -- priority 生效
+    -- { name = 'luasnip' },
     -- { name = 'luasnip_choice' },
     { name = 'path' },
     { name = 'buffer' },
