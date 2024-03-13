@@ -71,7 +71,16 @@ local function plugin(use)
   end
 
   use('nvim-lua/plenary.nvim')
-  use('jose-elias-alvarez/null-ls.nvim')
+  use({
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('null-ls').register({
+        -- 避免覆盖其它lsp
+        filetypes = { "text" },
+        -- toggler = { line = '<C-_><C-_>', block = 'gbc' },
+      })
+    end
+  })
   use({
     'MunifTanjim/prettier.nvim',
     config = 'require("plugins/prettier")',
