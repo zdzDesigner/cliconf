@@ -183,6 +183,8 @@ local function plugin(use)
       })
     end
   })
+
+  -- use('ziglang/zig.vim')
   -- use {
   --   'huggingface/llm.nvim',
   --   config = "require('plugins/llm')",

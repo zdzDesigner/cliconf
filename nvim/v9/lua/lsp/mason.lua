@@ -23,7 +23,7 @@ local server_settings = {
   ['bashls'] = 0,
   ['lua_ls'] = require('lsp/lang/lua'),
   ['tsserver'] = require('lsp/lang/tsserver'),
-  ['zls'] = 0,
+  ['zls'] = require('lsp/lang/zig'),
   ['gopls'] = 0,
   ['clangd'] = 0,
   ['dockerls'] = 0,
@@ -51,6 +51,10 @@ for name, _ in pairs(server_settings) do
   -- if name == 'ccls' then
   -- print('lsp_server_name:',vim.inspect(server_opts(name)))
   -- end
+  -- {
+  --   on_attach,
+  --   capabilities,
+  -- }
   lspconfig[name].setup(server_opts(name))
 end
 

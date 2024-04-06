@@ -1,5 +1,4 @@
 if not pcall(require, "lspconfig") then return end -- 保护调用加载模块
-
 local lspconfig = require('lspconfig')
 
 return {
