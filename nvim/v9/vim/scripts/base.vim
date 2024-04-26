@@ -11,3 +11,11 @@ function! CleanF()
     :nohlsearch
 endfunction
 
+
+
+" 去除;
+function! CleanJ() 
+    :%s/\\//g
+    :nohlsearch
+endfunction
+

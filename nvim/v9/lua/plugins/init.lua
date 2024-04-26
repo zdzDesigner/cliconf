@@ -115,6 +115,11 @@ local function plugin(use)
     event = 'InsertEnter'
   })
 
+  use({
+    "pcolladosoto/tinygo.nvim",
+    config = function() require("tinygo").setup() end
+  })
+
   -- ======  bug (loop or previous error loading module 'cmp_luasnip_choice')
   -- use {
   --   'L3MON4D3/cmp-luasnip-choice',

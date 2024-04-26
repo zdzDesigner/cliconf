@@ -23,6 +23,8 @@ vim.cmd([[
 
   " markdown
   source $CLIENV/nvim/v9/vim/markdown.vim
+  source $CLIENV/nvim/v9/vim/scripts/base.vim
+  source $CLIENV/nvim/v9/vim/scripts/replace.vim
 
   " 透明背景
   hi Normal guibg=NONE
