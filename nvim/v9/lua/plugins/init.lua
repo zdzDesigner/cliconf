@@ -143,6 +143,11 @@ local function plugin(use)
     'folke/neodev.nvim',
     config = 'require("plugins/neodev")'
   })
+  -- use({
+  --   'jedrzejboczar/nvim-dap-cortex-debug',
+  --   requires = 'mfussenegger/nvim-dap'
+  -- })
+
 
   -- 代码片段
   -- use('SirVer/ultisnips')
