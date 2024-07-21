@@ -10,6 +10,9 @@ T.i = ls.insert_node
 T.f = ls.function_node
 T.c = ls.choice_node
 T.copy = function(args) return args[1] end
+ls.filetype_extend("javascript", { "javascriptreact" })
+ls.filetype_extend("javascript", { "html" })
+
 
 
 
