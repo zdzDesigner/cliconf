@@ -1,19 +1,36 @@
 #!/bin/bash
 
-LISTEN_FILE=/home/zdz/Documents/Try/Go/music/player/.fsnotify
+# LISTEN_FILE=/home/zdz/Documents/Try/Go/music/player/.fsnotify
+LISTEN_FILE=/home/zdz/.zdz/.ctrl_player
+
+
 
 
 if [[ $1 == "-next" ]]; then
-  echo "next" > $LISTEN_FILE
+  echo "N" > $LISTEN_FILE
   exit
 fi
 
 if [[ $1 == "-prev" ]]; then
-  echo "prev" > $LISTEN_FILE
+  echo "P" > $LISTEN_FILE
+  exit
+fi
+if [[ $1 == "-forward" ]]; then
+  echo "PP" > $LISTEN_FILE
+  exit
+fi
+
+if [[ $1 == "-backward" ]]; then
+  echo "BB" > $LISTEN_FILE
   exit
 fi
 
 if [[ $1 == "-pause" ]]; then
-  echo "pause" > $LISTEN_FILE
+  cur=$(cat $LISTEN_FILE)
+  if [[ $cur == 'S' ]]; then
+  echo "R" > $LISTEN_FILE
+  else
+  echo "S" > $LISTEN_FILE
+  fi
   exit
 fi
