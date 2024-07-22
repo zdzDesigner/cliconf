@@ -7,21 +7,21 @@ LISTEN_FILE=/home/zdz/.zdz/.ctrl_player
 
 
 if [[ $1 == "-next" ]]; then
-  echo "N" > $LISTEN_FILE
+  echo "P" > $LISTEN_FILE
   exit
 fi
 
 if [[ $1 == "-prev" ]]; then
-  echo "P" > $LISTEN_FILE
+  echo "O" > $LISTEN_FILE
   exit
 fi
 if [[ $1 == "-forward" ]]; then
-  echo "PP" > $LISTEN_FILE
+  echo "H" > $LISTEN_FILE
   exit
 fi
 
 if [[ $1 == "-backward" ]]; then
-  echo "BB" > $LISTEN_FILE
+  echo "\"" > $LISTEN_FILE
   exit
 fi
 
