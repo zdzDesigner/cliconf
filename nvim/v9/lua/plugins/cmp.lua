@@ -39,7 +39,7 @@ cmp.setup({
     { name = 'path' },
     { name = 'buffer' },
   }),
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = function(fallback)
       if vim.fn.pumvisible() == 1 then
         vim.fn.feedkeys(t('<C-n>'), 'n')
@@ -85,7 +85,7 @@ cmp.setup({
     --   fallback()
     -- end
     -- end,
-  },
+  }),
   formatting = {
     deprecated = false,
     format = function(entry, vim_item)

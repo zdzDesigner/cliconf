@@ -14,6 +14,7 @@ export WINIT_X11_SCALE_FACTOR=1
 
 
 /bin/bash $CLIENV/dwm/scripts/dwm-status.sh &
+/bin/bash $CLIENV/dwm/lsusb_w.sh &
 
 # 网络
 nm-applet &
