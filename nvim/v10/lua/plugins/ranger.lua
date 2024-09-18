@@ -5,7 +5,7 @@ end
 
 -- local util = import("util")
 -- local Term = import('../terminal')
-local Term = import('v9/lua/terminal')
+local Term = import('v10/lua/terminal')
 local vimscript = vim.api.nvim_exec
 
 vim.api.nvim_create_user_command('Range', function() Term.openFullTerminal('ranger') end, {})

@@ -39,7 +39,6 @@ dracula.setup({
   lualine_bg_color = "None", -- default nil
   -- set italic comment
   italic_comment = true,     -- default false
-
   -- reset color https://github.com/Mofiqul/dracula.nvim/issues/90
   overrides = {
     -- 高亮行

@@ -1,13 +1,13 @@
-local G = require('v9/lua/G')
-local Ranger = G.import('v9/lua/plugins/ranger')
+local G = require('v10/lua/G')
+local Ranger = G.import('v10/lua/plugins/ranger')
 -- G.setup()
 -- local buf = import('buffer')
-local fn = G.import('v9/lua/function')
+local fn = G.import('v10/lua/function')
 
--- local Ranger = G.import('plugins/ranger')
 -- 空格作为前缀
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = "\\"
 
 
 G.map({

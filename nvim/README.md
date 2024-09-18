@@ -1,3 +1,15 @@
+# path
+```sh
+ls -h /home/zdz/.config/nvim/lua
+lrwxrwxrwx 1 zdz zdz 24 10月 22  2021 lua -> /home/zdz/.zdz/nvim/lua/
+
+```
+
+
+
+
+
+
 # v4
 > neovim v0.4.0 配置
 

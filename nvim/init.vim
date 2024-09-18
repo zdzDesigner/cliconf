@@ -1,1 +1,0 @@
-/home/zdz/.zdz/nvim/v6/init.vim
