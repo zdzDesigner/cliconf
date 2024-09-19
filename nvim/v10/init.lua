@@ -32,7 +32,6 @@ vim.cmd([[
   " 注释
   " noremap <silent> <C-_><C-_> :Commentary<CR>
 
-
   " 透明背景
   hi Normal guibg=NONE
 
