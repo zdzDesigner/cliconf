@@ -8,5 +8,11 @@ local M = {}
 -- vim.cmd('Tabpagenr $')
 
 -- keymap.set('n','<C-t>',function() print('tab new xxx') end,{desc='quit'})
+-- print(vim.inspect(vim.opt.packpath:get()))
+-- print('vim.lsp::',vim.lsp.start)
+-- require('plugins/fzf/mappings')
+-- require('plugins/fzf/init')
+-- import('vimapi')
+
 
 return M

@@ -1,17 +1,16 @@
-local G = require('v10/lua/G')
-G.setup()
--- print(vim.inspect(vim.opt.packpath:get()))
--- print('vim.lsp::',vim.lsp.start)
--- require('plugins/fzf/mappings')
--- require('plugins/fzf/init')
--- import('vimapi')
+-- ===================================================
+vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v10')
+vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v10')
+-- ===================================================
+local G = require('G')
+G.setup('v10')
 
 -- import('plugins/colors/init').set('embark')
 -- import('plugins/colors/init').set('onedark')
 G.import('plugins/init')
 -- 回写路径
--- G.import('lsp/init')
--- G.import('dap/dap')
+G.import('lsp/init')
+G.import('dap/dap')
 G.import('plugins/ranger')
 G.import('keymap')
 G.import('setting')
@@ -21,16 +20,14 @@ G.import('setting')
 -- ===================================================
 -- cmd ===============================================
 -- ===================================================
--- string.format
--- vim.cmd(string.format('source "%s"', string.format('source $CLIENV/nvim/"%s"/vim/scripts/base.vim', G.version)))
--- vim.cmd(string.format('source $CLIENV/nvim/v10/vim/scripts/base.vim', G.version))
--- vim.cmd('source $CLIENV/nvim/"' .. G.version .. '"/vim/scripts/replace.vim')
+-- vim.cmd('source $CLIENV/nvim/' .. G.version .. '/vim/scripts/base.vim')
+-- vim.cmd(string.format('source $CLIENV/nvim/%s/vim/scripts/base.vim', G.version))
 vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/markdown.vim ]])
+-- vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/comment.vim ]])
 vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/scripts/base.vim ]])
 vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/scripts/replace.vim ]])
 vim.cmd([[
   " 注释
-  " source $CLIENV/nvim/v8/vim/comment.vim
   " noremap <silent> <C-_><C-_> :Commentary<CR>
 
 

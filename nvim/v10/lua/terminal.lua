@@ -1,4 +1,4 @@
-local util = require("v9/lua/util")
+local util = require("util")
 
 local M = {}
 local lastOpenedTerminalJobId = nil
@@ -49,10 +49,7 @@ function M.execInPopupTerminal(cmd)
   vim.fn.chansend(lastOpenedTerminalJobId, cmd)
 end
 
-
-
 function M.openFloatTerm(cmd, hook)
-
   -- local ratio = 0.6
   local ratio = 0.8
   local buf = vim.api.nvim_create_buf(false, true)
@@ -79,7 +76,7 @@ function M.openFloatTerm(cmd, hook)
   }
   local win = vim.api.nvim_open_win(buf, true, opts)
   -- 设置高亮
-  vim.api.nvim_win_set_option(win,'winhl','Normal:NvimFloatingWindow,FloatBorder:NvimFloatingBorder')
+  vim.api.nvim_win_set_option(win, 'winhl', 'Normal:NvimFloatingWindow,FloatBorder:NvimFloatingBorder')
   local on_exit = function()
     hook.exit()
     vim.api.nvim_win_close(win, true)
@@ -87,21 +84,19 @@ function M.openFloatTerm(cmd, hook)
   end
 
   -- local on_stdout = function(jobid,data)
-    -- if jobid~=lastOpenedTerminalJobId then return end
-    -- util.write_file('/tmp/xxx', jobid..'-'..lastOpenedTerminalJobId)
+  -- if jobid~=lastOpenedTerminalJobId then return end
+  -- util.write_file('/tmp/xxx', jobid..'-'..lastOpenedTerminalJobId)
 
-    -- util.write_file('/tmp/xxx', jobid..'-'..vim.inspect(stdout_iter(data)))
-    -- util.write_file('/tmp/xxx', data)
-    -- vim.o.tabline = 'stdout-'..lastOpenedTerminalJobId..'-'..jobid
-    -- end
+  -- util.write_file('/tmp/xxx', jobid..'-'..vim.inspect(stdout_iter(data)))
+  -- util.write_file('/tmp/xxx', data)
+  -- vim.o.tabline = 'stdout-'..lastOpenedTerminalJobId..'-'..jobid
+  -- end
 
-    vim.api.nvim_command("startinsert")
-    lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
-      on_exit = on_exit,
-      -- on_stdout = on_stdout,
-    })
+  vim.api.nvim_command("startinsert")
+  lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
+    on_exit = on_exit,
+    -- on_stdout = on_stdout,
+  })
+end
 
-  end
-
-
-  return M
+return M

@@ -8,5 +8,5 @@ devicons.setup({
       color = "#a074c4",
       name = "Sol"
     }
-  };
+  },
 })

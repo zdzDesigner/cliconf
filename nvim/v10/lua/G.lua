@@ -12,6 +12,7 @@ G.opt = vim.opt
 function G.import(module)
   package.loaded[module] = nil
   vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/' .. G.version)
+  vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/' .. G.version)
   return require(module)
 end
 
@@ -52,15 +53,18 @@ function G.eval(c)
   return G.api.nvim_eval(c)
 end
 
-function G.setup()
+function G.setup(version)
+  -- vim.g.my_version = 'v10'
+
+  G.version = version
   vim.o.exrc = true
   vim.o.secure = true
 
   vim.opt.termguicolors = true
 
   -- 运行路径和包路径都要设置, lua 包路径/home/zdz/.config/nvim
-  -- vim.opt.packpath:prepend('/home/zdz/.config/nvim/v10') -- 插件模块
-  -- vim.opt.rtp:prepend('/home/zdz/.config/nvim/v10')
+  -- vim.opt.packpath:prepend('/home/zdz/.config/nvim/v10')
+  -- vim.opt.rtp:prepend('/home/zdz/.config/nvim/v10') -- 插件模块
 
 
   -- vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v10') -- 自定义配置模块
