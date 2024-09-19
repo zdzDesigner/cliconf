@@ -68,7 +68,7 @@ lazy.setup({
       },
       init = function() G.import('plugins/fzf/mappings') end,
       config = function() G.import('plugins/fzf/init') end,
-      lazy = true,
+      -- lazy = true,
     },
 
     -- 高亮
