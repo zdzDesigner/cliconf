@@ -1,3 +1,5 @@
+local G = require('v10/lua/G')
+
 -- local function plugin(use)
 --   use('wbthomason/packer.nvim')
 --   use('jiangmiao/auto-pairs') -- 成对符号
@@ -241,7 +243,7 @@ lazy.setup({
   {
     -- Theme
     'Mofiqul/dracula.nvim',
-    config = function() require('v10/lua/plugins/dracula') end,
+    config = function() G.import('plugins/dracula') end,
   },
   -- {
   --   'dracula/vim',
@@ -251,14 +253,14 @@ lazy.setup({
   {
     'kyazdani42/nvim-web-devicons',
     event = 'VimEnter',
-    config = function() require('v10/lua/plugins/devicons') end,
+    config = function() G.import('plugins/devicons') end,
   },
   -- 底部状态栏
   {
     'nvim-lualine/lualine.nvim',
     -- event = 'VimEnter',
-    config = function() require('v10/lua/plugins/statusline') end,
     dependencies = { 'kyazdani42/nvim-web-devicons' },
+    config = function() G.import('plugins/statusline') end,
   },
   -- 提示
   { 'jiangmiao/auto-pairs' },
@@ -268,6 +270,6 @@ lazy.setup({
   -- 格式化
   {
     'MunifTanjim/prettier.nvim',
-    config = function() require("v10/lua/plugins/prettier") end,
+    config = function() G.import("plugins/prettier") end,
   },
 })

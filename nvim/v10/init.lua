@@ -10,7 +10,6 @@ G.setup()
 -- import('plugins/colors/init').set('onedark')
 G.import('plugins/init')
 -- 回写路径
-vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v10')
 -- G.import('lsp/init')
 -- G.import('dap/dap')
 G.import('plugins/ranger')
@@ -18,15 +17,22 @@ G.import('keymap')
 G.import('setting')
 
 
+
+-- ===================================================
+-- cmd ===============================================
+-- ===================================================
+-- string.format
+-- vim.cmd(string.format('source "%s"', string.format('source $CLIENV/nvim/"%s"/vim/scripts/base.vim', G.version)))
+-- vim.cmd(string.format('source $CLIENV/nvim/v10/vim/scripts/base.vim', G.version))
+-- vim.cmd('source $CLIENV/nvim/"' .. G.version .. '"/vim/scripts/replace.vim')
+vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/markdown.vim ]])
+vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/scripts/base.vim ]])
+vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/scripts/replace.vim ]])
 vim.cmd([[
   " 注释
   " source $CLIENV/nvim/v8/vim/comment.vim
   " noremap <silent> <C-_><C-_> :Commentary<CR>
 
-  " markdown
-  source $CLIENV/nvim/v9/vim/markdown.vim
-  source $CLIENV/nvim/v9/vim/scripts/base.vim
-  source $CLIENV/nvim/v9/vim/scripts/replace.vim
 
   " 透明背景
   hi Normal guibg=NONE

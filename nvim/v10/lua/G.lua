@@ -1,4 +1,5 @@
 local G = {}
+G.version = 'v10'
 
 G.g = vim.g
 G.b = vim.b
@@ -10,6 +11,7 @@ G.opt = vim.opt
 
 function G.import(module)
   package.loaded[module] = nil
+  vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/' .. G.version)
   return require(module)
 end
 
@@ -58,9 +60,11 @@ function G.setup()
 
   -- 运行路径和包路径都要设置, lua 包路径/home/zdz/.config/nvim
   -- vim.opt.packpath:prepend('/home/zdz/.config/nvim/v10') -- 插件模块
-  vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v10') -- 自定义配置模块
   -- vim.opt.rtp:prepend('/home/zdz/.config/nvim/v10')
-  vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v10')
+
+
+  -- vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v10') -- 自定义配置模块
+  -- vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v10')
   -- 清除jumps ctrl-o
   vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjumps() end })
 end
