@@ -1,9 +1,11 @@
 -- ===================================================
-vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v10')
-vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v10')
+vim.g.my_version = 'v10'
+vim.g.my_rootpath = '/home/zdz/.zdz/nvim/' .. vim.g.my_version
+vim.opt.rtp:prepend(vim.g.my_rootpath)
+vim.opt.packpath:prepend(vim.g.my_rootpath)
 -- ===================================================
 local G = require('G')
-G.setup('v10')
+G.setup(vim.g.my_version, vim.g.my_rootpath)
 
 -- import('plugins/colors/init').set('embark')
 -- import('plugins/colors/init').set('onedark')

@@ -1,8 +1,8 @@
 local G = require('G')
 
 -- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
--- local lazypath = "/home/zdz/.zdz/nvim/v10/lua/lazy/lazy.nvim"
+local lazyroot = G.rootpath .. "/lua/lazy"
+local lazypath = lazyroot .. "/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
@@ -16,29 +16,31 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
--- vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v10/lua/lazy')
--- vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v10/lua/lazy')
+-- vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v10')
+-- vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v10')
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 
-
 local lazy = require("lazy")
+
 lazy.setup({
-  root = '/home/zdz/.zdz/nvim/v10/lua/lazy',
+  -- 安装目录
+  root = lazyroot,
+  -- root = '/home/zdz/.zdz/nvim/v10/lua/lazy',
   spec = {
     {
       -- Theme
       'Mofiqul/dracula.nvim',
-      -- config = function() G.import('plugins/dracula') end,
-      config = function() require('plugins/dracula') end,
+      -- config = function() require('plugins/dracula') end,
+      config = function() G.import('plugins/dracula') end,
     },
     -- { 'dracula/vim', name = 'dracula' },
     -- icons
     {
       'kyazdani42/nvim-web-devicons',
-      config = function() G.import('plugins/devicons') end,
+      config = function() require('plugins/devicons') end,
       event = 'VimEnter',
     },
     -- 底部状态栏
@@ -147,8 +149,7 @@ lazy.setup({
       event = "VeryLazy",
       lazy = false,
       version = false, -- set this if you want to always pull the latest change
-      -- config = function() G.import('plugins/avante') end,
-      config = function() require('plugins/avante') end,
+      config = function() G.import('plugins/avante') end,
       opts = {
         -- add any opts here
       },

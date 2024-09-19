@@ -1,5 +1,6 @@
 local G = {}
 G.version = 'v10'
+G.rootpath = '/xxx'
 
 G.g = vim.g
 G.b = vim.b
@@ -11,8 +12,8 @@ G.opt = vim.opt
 
 function G.import(module)
   package.loaded[module] = nil
-  vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/' .. G.version)
-  vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/' .. G.version)
+  vim.opt.rtp:prepend(G.rootpath)
+  vim.opt.packpath:prepend(G.rootpath)
   return require(module)
 end
 
@@ -53,10 +54,10 @@ function G.eval(c)
   return G.api.nvim_eval(c)
 end
 
-function G.setup(version)
-  -- vim.g.my_version = 'v10'
-
+function G.setup(version, rootpath)
   G.version = version
+  G.rootpath = rootpath
+
   vim.o.exrc = true
   vim.o.secure = true
 
