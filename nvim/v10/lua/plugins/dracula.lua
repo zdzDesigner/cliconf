@@ -44,6 +44,9 @@ dracula.setup({
   overrides = {
     -- 高亮行
     CursorLine = { bg = colors.deep, },
+    -- ["@markup.heading.2"] = { fg = dracula.colors().purple },
+    -- ["@markup.heading.3"] = { fg = dracula.colors().yellow },
+    ["@markup.raw"] = { fg = dracula.colors().comment },
     -- Normal = { bg='NONE' }
     -- Examples
     -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
