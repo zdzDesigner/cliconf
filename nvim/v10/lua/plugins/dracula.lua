@@ -26,6 +26,9 @@ local colors = {
   gutter_fg = "#4B5263",
   nontext = "#3B4048",
   deep = "#1f1f28",
+  -- codeblock = "#b984c9",
+  -- codeblock = "#c98484",
+  codeblock = "#db97b1",
   -- #482b3f
 }
 dracula.setup({
@@ -46,7 +49,7 @@ dracula.setup({
     CursorLine = { bg = colors.deep, },
     -- ["@markup.heading.2"] = { fg = dracula.colors().purple },
     -- ["@markup.heading.3"] = { fg = dracula.colors().yellow },
-    ["@markup.raw"] = { fg = dracula.colors().comment },
+    ["@markup.raw"] = { fg = colors.codeblock },
     -- Normal = { bg='NONE' }
     -- Examples
     -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white

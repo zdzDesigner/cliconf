@@ -1,4 +1,4 @@
-local util = require("v9/lua/util")
+local util = require("util")
 
 local M = {}
 local lastOpenedTerminalJobId = nil

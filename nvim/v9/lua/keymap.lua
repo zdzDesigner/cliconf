@@ -1,8 +1,8 @@
-local G = require('v9/lua/G')
-local Ranger = G.import('v9/lua/plugins/ranger')
+local G = require('G')
+local Ranger = G.import('plugins/ranger')
 -- G.setup()
 -- local buf = import('buffer')
-local fn = G.import('v9/lua/function')
+local fn = G.import('function')
 
 -- local Ranger = G.import('plugins/ranger')
 -- 空格作为前缀
