@@ -1,6 +1,7 @@
 local dracula = require("dracula")
 -- print('dracula...')
-
+-- markdown
+-- markdown_inline
 
 local colors = {
   bg = "#282A36",
@@ -46,7 +47,9 @@ dracula.setup({
     CursorLine = { bg = colors.deep, },
     -- ["@markup.heading.2"] = { fg = dracula.colors().purple },
     -- ["@markup.heading.3"] = { fg = dracula.colors().yellow },
-    ["@markup.raw"] = { fg = dracula.colors().comment },
+    -- ["@markup.raw"] = { fg = dracula.colors().deep },
+    -- markdownCodeBlock = { fg = dracula.colors().deep },
+    -- ['@markup.emphasis'] = { fg = colors.green, italic = true, },   -- italic
     -- Normal = { bg='NONE' }
     -- Examples
     -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
