@@ -1,4 +1,6 @@
 local G = {}
+G.version = 'v9'
+G.rootpath = '/xxx'
 
 G.g = vim.g
 G.b = vim.b
@@ -50,15 +52,17 @@ function G.eval(c)
   return G.api.nvim_eval(c)
 end
 
-function G.setup()
+function G.setup(version, rootpath)
+  G.version = version
+  G.rootpath = rootpath
   vim.o.exrc = true
   vim.o.secure = true
 
   -- 运行路径和包路径都要设置
-  vim.opt.packpath:prepend('/home/zdz/.config/nvim/v9') -- 插件模块
-  vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v9')    -- 自定义配置模块
-  vim.opt.rtp:prepend('/home/zdz/.config/nvim/v9')
-  vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v9')
+  -- vim.opt.packpath:prepend('/home/zdz/.config/nvim/v9') -- 插件模块
+  -- vim.opt.packpath:prepend('/home/zdz/.zdz/nvim/v9')    -- 自定义配置模块
+  -- vim.opt.rtp:prepend('/home/zdz/.config/nvim/v9')
+  -- vim.opt.rtp:prepend('/home/zdz/.zdz/nvim/v9')
   -- 清除jumps ctrl-o
   vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.cmd.clearjumps() end })
 end

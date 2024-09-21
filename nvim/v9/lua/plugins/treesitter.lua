@@ -21,13 +21,14 @@ require('nvim-treesitter.configs').setup({
     "toml",
     "vue",
     "tsx",
+    "markdown",
     -- for `nvim-treesitter/playground`
     -- "query",
   },
   highlight        = {
     enable = true,
     -- slow on big files
-    -- disable = { "c", "cpp", }
+    disable = { "markdown" }
   },
   textobjects      = {
     select = {
@@ -113,9 +114,9 @@ parser_config.solidity = {
   filetype = 'solidity'
 }
 -- install with ':TSInstallSync markdown'
-parser_config.markdown = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-markdown",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
+-- parser_config.markdown = {
+--   install_info = {
+--     url = "https://github.com/ikatyang/tree-sitter-markdown",
+--     files = { "src/parser.c", "src/scanner.cc" },
+--   }
+-- }

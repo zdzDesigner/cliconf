@@ -1,5 +1,12 @@
-local G = require('v9/lua/G')
-G.setup()
+-- ===================================================
+vim.g.my_version = 'v9'
+vim.g.my_rootpath = '/home/zdz/.zdz/nvim/' .. vim.g.my_version
+vim.opt.rtp:prepend(vim.g.my_rootpath)
+vim.opt.packpath:prepend(vim.g.my_rootpath)
+-- ===================================================
+local G = require('G')
+G.setup(vim.g.my_version, vim.g.my_rootpath)
+
 -- print(vim.inspect(vim.opt.packpath:get()))
 -- print('vim.lsp::',vim.lsp.start)
 -- require('plugins/fzf/mappings')
@@ -16,15 +23,16 @@ G.import('keymap')
 G.import('setting')
 
 
+-- vim.cmd('source $CLIENV/nvim/' .. G.version .. '/vim/scripts/base.vim')
+-- vim.cmd(string.format('source $CLIENV/nvim/%s/vim/scripts/base.vim', G.version))
+vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/markdown.vim ]])
+-- vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/comment.vim ]])
+vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/scripts/base.vim ]])
+vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/scripts/replace.vim ]])
 vim.cmd([[
   " 注释
   " source $CLIENV/nvim/v8/vim/comment.vim
   " noremap <silent> <C-_><C-_> :Commentary<CR>
-
-  " markdown
-  source $CLIENV/nvim/v9/vim/markdown.vim
-  source $CLIENV/nvim/v9/vim/scripts/base.vim
-  source $CLIENV/nvim/v9/vim/scripts/replace.vim
 
   " 透明背景
   hi Normal guibg=NONE

@@ -9,11 +9,11 @@
 -- event : 加载条件
 -- ft : 什么格式文件使用
 
+local G = require('G')
 
 vim.opt.termguicolors = true
 
 -- append test directory
-local test_dir = '/home/zdz/.config/nvim/v9'
 
 local function plugin(use)
   use('wbthomason/packer.nvim')
@@ -195,6 +195,12 @@ local function plugin(use)
     end
   })
 
+  use {
+    'luozhiya/fittencode.nvim',
+    config = function()
+      require('plugins/fittencode')
+    end,
+  }
   -- use('ziglang/zig.vim')
   -- use {
   --   'huggingface/llm.nvim',
@@ -235,8 +241,8 @@ end
 local packer = require("packer")
 
 local config = {
-  package_root = test_dir .. "/pack",                       -- 包路径
-  compile_path = test_dir .. "/plugin/packer_compiled.lua", -- 编译结果
+  package_root = G.rootpath .. "/pack",                       -- 包路径
+  compile_path = G.rootpath .. "/plugin/packer_compiled.lua", -- 编译结果
 }
 packer.init(config)
 packer.startup(plugin)

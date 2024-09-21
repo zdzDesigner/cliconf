@@ -61,7 +61,7 @@ function G.setup(version, rootpath)
   vim.o.exrc = true
   vim.o.secure = true
 
-  vim.opt.termguicolors = true
+  -- vim.opt.termguicolors = true
 
   -- 运行路径和包路径都要设置, lua 包路径/home/zdz/.config/nvim
   -- vim.opt.packpath:prepend('/home/zdz/.config/nvim/v10')

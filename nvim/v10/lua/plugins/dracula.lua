@@ -27,6 +27,9 @@ local colors = {
   gutter_fg = "#4B5263",
   nontext = "#3B4048",
   deep = "#1f1f28",
+  -- codeblock = "#b984c9",
+  -- codeblock = "#c98484",
+  codeblock = "#db97b1",
   -- #482b3f
 }
 dracula.setup({
@@ -50,6 +53,7 @@ dracula.setup({
     -- ["@markup.raw"] = { fg = dracula.colors().deep },
     -- markdownCodeBlock = { fg = dracula.colors().deep },
     -- ['@markup.emphasis'] = { fg = colors.green, italic = true, },   -- italic
+    ["@markup.raw"] = { fg = colors.codeblock },
     -- Normal = { bg='NONE' }
     -- Examples
     -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
