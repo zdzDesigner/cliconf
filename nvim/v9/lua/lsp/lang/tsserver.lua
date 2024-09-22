@@ -17,6 +17,6 @@ return {
   --       or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
   -- end,
   -- root_dir            = lspconfig.util.root_pattern('package.json', 'jsconfig.json', '.git'),
-  root_dir            = lspconfig.util.root_pattern('.git'),
+  root_dir            = lspconfig.util.root_pattern('.git', 'package.json'),
   single_file_support = false
 }
