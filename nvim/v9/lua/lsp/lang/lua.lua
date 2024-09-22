@@ -10,6 +10,7 @@ return {
         path = paths,
       },
       diagnostics = {
+        disable = { 'missing-fields' },
         -- Get the language server to recognize the `vim` global
         globals = {
           'vim',

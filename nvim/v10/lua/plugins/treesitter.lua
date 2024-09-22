@@ -21,13 +21,14 @@ require('nvim-treesitter.configs').setup({
     "toml",
     "vue",
     "tsx",
+    "markdown",
     -- for `nvim-treesitter/playground`
     -- "query",
   },
   highlight        = {
     enable = true,
     -- slow on big files
-    -- disable = { "c", "cpp", }
+    disable = { "markdown", }
   },
   textobjects      = {
     select = {
