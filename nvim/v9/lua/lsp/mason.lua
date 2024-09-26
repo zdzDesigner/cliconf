@@ -19,7 +19,8 @@ mason.setup({
 masonlsp.setup()
 
 local server_settings = {
-  ['rust_analyzer'] = 0,
+  -- ['rust_analyzer'] = 0,
+  ['rust_analyzer'] = require('lsp/lang/rust'),
   ['bashls'] = 0,
   ['lua_ls'] = require('lsp/lang/lua'),
   ['ts_ls'] = require('lsp/lang/tsserver'),

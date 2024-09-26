@@ -17,6 +17,7 @@ prettier.setup({
     "css",
     "graphql",
     "html",
+    "vue",
     "javascript",
     "javascriptreact",
     "json",
@@ -36,7 +37,7 @@ M.filetypes = {
   graphql = "graphql",
   gql = "graphql",
   html = "html",
-  vue = "html",
+  vue = "vue", -- 格式化出错无提示(在shell中主动使用 pretter xxxx.file 查看错误)
   js = "javascript",
   jsm = "javascript",
   mjs = "javascript",
