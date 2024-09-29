@@ -115,6 +115,7 @@ local function plugin(use)
     event = 'InsertEnter'
   })
 
+  -- tinygo嵌入式(慢)
   -- use({
   --   "pcolladosoto/tinygo.nvim",
   --   config = function() require("tinygo").setup() end
