@@ -22,8 +22,9 @@ return {
   port = "${port}",
   executable = {
     -- CHANGE THIS to your path!
-    -- command = '/home/zdz/.local/share/nvim/mason/packages/codelldb/codelldb/extension/adapter/codelldb',
-    command = '/home/zdz/.local/share/nvim/mason/packages/codelldb/codelldb',
+    -- TODO:: codelldb路径, 不同系统可能不同
+    command = '/home/zdz/.local/share/nvim/mason/packages/codelldb/codelldb/extension/adapter/codelldb',
+    -- command = '/home/zdz/.local/share/nvim/mason/packages/codelldb/codelldb',
     args = { "--port", "${port}" },
     -- On windows you may have to uncomment this:
     -- detached = false,
