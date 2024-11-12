@@ -23,6 +23,18 @@ G.import('keymap')
 G.import('setting')
 
 
+-- 在 Neovim 的 init.lua 文件中设置 GOARCH 和 GOOS 环境变量
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.go",
+  callback = function()
+    local file_name = vim.fn.expand('%:t')
+    if file_name:match("main.go") then
+      vim.env.GOARCH = "wasm"
+      vim.env.GOOS = "js"
+      print("Setting GOARCH=wasm GOOS=js for WebAssembly project")
+    end
+  end,
+})
 -- vim.cmd('source $CLIENV/nvim/' .. G.version .. '/vim/scripts/base.vim')
 -- vim.cmd(string.format('source $CLIENV/nvim/%s/vim/scripts/base.vim', G.version))
 vim.cmd([[ source $CLIENV/nvim/]] .. G.version .. [[/vim/markdown.vim ]])

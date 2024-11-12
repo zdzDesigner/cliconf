@@ -4,7 +4,10 @@
 LISTEN_FILE=/home/zdz/.zdz/.ctrl_player
 
 
-
+if [[ $1 == "-exit" ]]; then
+  echo "E" > $LISTEN_FILE
+  exit
+fi
 
 if [[ $1 == "-next" ]]; then
   echo "P" > $LISTEN_FILE
@@ -15,6 +18,7 @@ if [[ $1 == "-prev" ]]; then
   echo "O" > $LISTEN_FILE
   exit
 fi
+
 if [[ $1 == "-forward" ]]; then
   echo "H" > $LISTEN_FILE
   exit
