@@ -15,6 +15,7 @@ G.setup(vim.g.my_version, vim.g.my_rootpath)
 
 -- import('plugins/colors/init').set('embark')
 -- import('plugins/colors/init').set('onedark')
+local util = G.import('util')
 G.import('plugins/init')
 G.import('lsp/init')
 G.import('dap/dap')
@@ -27,12 +28,17 @@ G.import('setting')
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*.go",
   callback = function()
-    local file_name = vim.fn.expand('%:t')
-    if file_name:match("main.go") then
+    if util.go_js() then
       vim.env.GOARCH = "wasm"
       vim.env.GOOS = "js"
       print("Setting GOARCH=wasm GOOS=js for WebAssembly project")
     end
+    -- local file_name = vim.fn.expand('%:t')
+    -- if file_name:match("main.go") then
+    --   vim.env.GOARCH = "wasm"
+    --   vim.env.GOOS = "js"
+    --   print("Setting GOARCH=wasm GOOS=js for WebAssembly project")
+    -- end
   end,
 })
 -- vim.cmd('source $CLIENV/nvim/' .. G.version .. '/vim/scripts/base.vim')
