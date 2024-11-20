@@ -205,7 +205,7 @@ function M.go_js()
   local pattern = 'import%s*%(.-%)' -- 匹配 import (...) 块
   local imports_block = buf_content:match(pattern)
 
-  if imports_block == false then return false end
+  if imports_block == nil then return false end
   -- 移除注释掉的部分（以 // 开头的行）
   imports_block = imports_block:gsub('%s*//[^\n]*', '') -- 移除注释
   -- 检查是否包含 "syscall/js"

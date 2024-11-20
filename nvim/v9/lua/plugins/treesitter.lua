@@ -22,6 +22,7 @@ require('nvim-treesitter.configs').setup({
     "vue",
     "tsx",
     "markdown",
+    "xml",
     -- for `nvim-treesitter/playground`
     -- "query",
   },
