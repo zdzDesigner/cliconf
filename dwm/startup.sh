@@ -45,7 +45,7 @@ bluetooth off &
 # 解除静音
 # alsamixer &
 google-chrome-stable &
-goldendict &
+# goldendict &
 # systemctl start trojan.service &
 
 # ======清除字体缓存==============
