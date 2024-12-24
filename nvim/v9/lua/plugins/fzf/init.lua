@@ -37,6 +37,17 @@ end
 --------------
 fzf_lua.setup {
   -- lua_io             = true,            -- perf improvement, experimental
+  hls              = {
+    normal      = 'Normal',
+    border      = 'NvimFloatingBorder', -- 颜色 init.lua
+    -- border   = 'FloatBorder',
+    -- builtin preview
+    cursor      = 'Cursor',
+    cursorline  = 'CursorLine',
+    title       = 'ModeMsg',
+    scrollbar_e = 'Visual',
+    scrollbar_f = 'WildMenu',
+  },
   winopts          = {
     -- split            = "belowright new",
     -- split            = "aboveleft vnew",
@@ -50,17 +61,6 @@ fzf_lua.setup {
     -- border           = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
     -- border = { {'╭', 'IncSearch'}, {'─', 'IncSearch'}, {'╮', 'IncSearch'}, '│', '╯', '─', '╰', '│' },
     -- fullscreen       = true,           -- start fullscreen?
-    hl        = {
-      normal      = 'Normal',
-      border      = 'NvimFloatingBorder',
-      -- border   = 'FloatBorder',
-      -- builtin preview
-      cursor      = 'Cursor',
-      cursorline  = 'CursorLine',
-      title       = 'ModeMsg',
-      scrollbar_e = 'Visual',
-      scrollbar_f = 'WildMenu',
-    },
     preview   = {
       -- default   = 'bat',
       border       = 'none',
@@ -130,9 +130,9 @@ fzf_lua.setup {
       pager = "delta",
     },
     builtin = {
-      syntax         = true, -- preview syntax highlight?
+      syntax         = true,        -- preview syntax highlight?
       syntax_limit_b = 1024 * 1024, -- syntax limit (bytes), 0=nolimit
-      syntax_limit_l = 0, -- syntax limit (lines), 0=nolimit
+      syntax_limit_l = 0,           -- syntax limit (lines), 0=nolimit
     },
   },
   lsp              = {
@@ -355,7 +355,6 @@ end
 
 return setmetatable({}, {
   __index = function(_, k)
-
     if M[k] then
       return M[k]
     else

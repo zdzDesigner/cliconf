@@ -195,12 +195,12 @@ local function plugin(use)
     end
   })
 
-  use {
+  use ({
     'luozhiya/fittencode.nvim',
     config = function()
       require('plugins/fittencode')
     end,
-  }
+  })
   -- use('ziglang/zig.vim')
   -- use {
   --   'huggingface/llm.nvim',
