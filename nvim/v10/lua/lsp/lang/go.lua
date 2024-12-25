@@ -13,7 +13,7 @@ return {
   cmd = { "gopls" },
   settings = {
     gopls = {
-      allowModfileModifications = true,
+      -- allowModfileModifications = true,
       gofumpt = true,
       analyses = {
         unusedparams = true,

@@ -1,5 +1,4 @@
 local map_fzf = function(mode, key, f, options, buffer)
-
   local rhs = function()
     if not pcall(require, 'fzf-lua') then
       require('packer').loader('nvim-fzf')
@@ -28,7 +27,9 @@ map_fzf('n', '<C-p>', "files", {})
 --   }})
 map_fzf('n', '<C-l>', "buffers")
 -- map_fzf('n', '<C-f>', "grep_cword", {})
-map_fzf('n', '<C-f>', "live_grep_glob", { repeat_last_search = false })
+-- map_fzf('n', '<C-f>', "live_grep_glob", { repeat_last_search = true }) -- repeat_last_search -> resume
+map_fzf('n', '<C-f>', "live_grep_glob", { resume = false })
+
 -- map_fzf('n', '<leader>fr', "grep", {})
 -- map_fzf('n', '<leader>fl', "live_grep_glob", {})
 -- map_fzf('n', '<leader>ff', "grep", { repeat_last_search = true} )

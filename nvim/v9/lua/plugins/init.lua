@@ -58,6 +58,7 @@ local function plugin(use)
     -- TSxxx
     use({
       'nvim-treesitter/nvim-treesitter',
+      tag = 'v0.8.5.2',
       config = "require('plugins/treesitter')",
       run = ':TSUpdate',
       event = 'BufRead'
@@ -195,12 +196,12 @@ local function plugin(use)
     end
   })
 
-  use {
+  use ({
     'luozhiya/fittencode.nvim',
     config = function()
       require('plugins/fittencode')
     end,
-  }
+  })
   -- use('ziglang/zig.vim')
   -- use {
   --   'huggingface/llm.nvim',

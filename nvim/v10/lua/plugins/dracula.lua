@@ -48,6 +48,7 @@ dracula.setup({
   overrides = {
     -- 高亮行
     CursorLine = { bg = colors.deep, },
+    Cursor = { bg = colors.yellow, },
     -- ["@markup.heading.2"] = { fg = dracula.colors().purple },
     -- ["@markup.heading.3"] = { fg = dracula.colors().yellow },
     -- ["@markup.raw"] = { fg = dracula.colors().deep },

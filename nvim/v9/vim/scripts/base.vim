@@ -19,3 +19,9 @@ function! CleanJ()
     :nohlsearch
 endfunction
 
+
+
+" format xml
+function! FmtXML() 
+    :%!xmllint "%" --format
+endfunction

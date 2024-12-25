@@ -10,8 +10,15 @@ T.i = ls.insert_node
 T.f = ls.function_node
 T.c = ls.choice_node
 T.copy = function(args) return args[1] end
-ls.filetype_extend("javascript", { "javascriptreact" })
-ls.filetype_extend("javascript", { "html" })
+-- ls.filetype_extend("javascript", { "javascriptreact" })
+-- ls.filetype_extend("javascript", { "html" })
+
+-- ls.filetype_extend("typescript", {"javascript"})
+require("luasnip/loaders/from_vscode").load({include = {"html"}})
+require("luasnip/loaders/from_vscode").lazy_load()
+
+
+
 
 
 
@@ -24,3 +31,4 @@ require('snippets/python')(T)
 require('snippets/go')(T)
 require('snippets/md')(T)
 require('snippets/zig')(T)
+
