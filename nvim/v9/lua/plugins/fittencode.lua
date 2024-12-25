@@ -41,16 +41,16 @@ require('fittencode').setup(
     inline_completion = {
       -- Enable inline code completion.
       ---@type boolean
-      enable = true,
+      enable = false,
       -- Disable auto completion when the cursor is within the line.
       ---@type boolean
-      disable_completion_within_the_line = false,
+      disable_completion_within_the_line = true,
       -- Disable auto completion when pressing Backspace or Delete.
       ---@type boolean
-      disable_completion_when_delete = false,
+      disable_completion_when_delete = true,
       -- Auto triggering completion
       ---@type boolean
-      auto_triggering_completion = true,
+      auto_triggering_completion = false,
       -- Accept Mode
       -- Available options:
       -- * `commit` (VSCode style accept, also default)
@@ -132,7 +132,7 @@ require('fittencode').setup(
     -- Setting for source completion.
     source_completion = {
       -- Enable source completion.
-      enable = true,
+      enable = false,
       -- trigger characters for source completion.
       -- Available options:
       -- * A  list of characters like {'a', 'b', 'c', ...}

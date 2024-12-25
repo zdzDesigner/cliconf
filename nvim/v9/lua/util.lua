@@ -50,8 +50,8 @@ end
 ---@return string
 function M.remove_ansi(str)
   local ret = str
-      :gsub("\x1b%[[%d;]*m", "")-- Strip color codes
-      :gsub("\x1b%[%d*K", "") -- Strip the "erase in line" codes
+      :gsub("\x1b%[[%d;]*m", "") -- Strip color codes
+      :gsub("\x1b%[%d*K", "")    -- Strip the "erase in line" codes
   return ret
 end
 
@@ -190,6 +190,26 @@ function M.have_compiler()
     return true
   end
   return false
+end
+
+function M.go_js()
+  -- 获取当前文件的扩展名
+  -- local filename = vim.fn.expand('%:t')
+  -- local file_extension = filename:match("^.+(%..+)$")
+  -- -- 检查是否为 Go 文件
+  -- if file_extension ~= '.go' then return end
+  -- 获取当前缓冲区的内容
+  local buf_content = vim.fn.join(vim.fn.getline(1, "$"), "\n")
+
+  -- 匹配整个 import 块（跨多行的情况）
+  local pattern = 'import%s*%(.-%)' -- 匹配 import (...) 块
+  local imports_block = buf_content:match(pattern)
+
+  if imports_block == false then return false end
+  -- 移除注释掉的部分（以 // 开头的行）
+  imports_block = imports_block:gsub('%s*//[^\n]*', '') -- 移除注释
+  -- 检查是否包含 "syscall/js"
+  return imports_block:find('syscall/js')
 end
 
 return M

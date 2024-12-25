@@ -62,6 +62,7 @@ function M.Format()
   -- print(vim.fn.expand('%:e'))
   -- Prettier.config_exists()
   if Prettier.ismatch(vim.fn.expand('%:e')) then
+    -- print("==format==")
     -- return vim.cmd([[:Prettier]])
     return ncmd(':Prettier')
   end
