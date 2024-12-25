@@ -58,6 +58,7 @@ local function plugin(use)
     -- TSxxx
     use({
       'nvim-treesitter/nvim-treesitter',
+      tag = 'v0.8.5.2',
       config = "require('plugins/treesitter')",
       run = ':TSUpdate',
       event = 'BufRead'

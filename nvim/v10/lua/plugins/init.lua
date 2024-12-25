@@ -38,13 +38,15 @@ lazy.setup({
     -- icons
     {
       'kyazdani42/nvim-web-devicons',
-      config = function() require('plugins/devicons') end,
+      -- config = function() require('plugins/devicons') end,
+      config = function() G.import('plugins/devicons') end,
       event = 'VimEnter',
     },
     -- 底部状态栏
     {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'kyazdani42/nvim-web-devicons' },
+      -- config = function() require('plugins/statusline') end,
       config = function() G.import('plugins/statusline') end,
       event = 'VimEnter',
     },
@@ -54,6 +56,7 @@ lazy.setup({
     -- 格式化
     {
       'MunifTanjim/prettier.nvim',
+      -- config = function() require("plugins/prettier") end,
       config = function() G.import("plugins/prettier") end,
     },
 
@@ -64,6 +67,8 @@ lazy.setup({
         'vijaymarupudi/nvim-fzf',
         'kyazdani42/nvim-web-devicons',
       },
+      -- init = function() require('plugins/fzf/mappings') end,
+      -- config = function() require('plugins/fzf/init') end,
       init = function() G.import('plugins/fzf/mappings') end,
       config = function() G.import('plugins/fzf/init') end,
       -- lazy = true,
@@ -72,6 +77,7 @@ lazy.setup({
     -- 高亮
     {
       'nvim-treesitter/nvim-treesitter',
+      -- config = function() require('plugins/treesitter') end,
       config = function() G.import('plugins/treesitter') end,
       build = ':TSUpdate',
       event = 'BufRead',
@@ -106,12 +112,14 @@ lazy.setup({
         'saadparwaiz1/cmp_luasnip',
         'LuaSnip'
       },
+      -- config = function() require("plugins/cmp") end,
       config = function() G.import("plugins/cmp") end,
       -- event = "InsertEnter",
     },
     -- Snip
     {
       'L3MON4D3/LuaSnip',
+      -- config = function() require("plugins/luasnips/init") end,
       config = function() G.import("plugins/luasnips/init") end,
       event = 'InsertEnter'
     },
@@ -139,55 +147,57 @@ lazy.setup({
         })
       end
     },
+    -- lua 插件开发工具库
+    {'nvim-lua/plenary.nvim'}
 
 
-    -- LLM Behaviour Cursor
-    {
-      "yetone/avante.nvim",
-      event = "VeryLazy",
-      lazy = false,
-      version = false, -- set this if you want to always pull the latest change
-      -- config = function() G.import('plugins/avante') end,
-      opts = {
-        -- add any opts here
-      },
-      -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-      build = "make",
-      -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-      dependencies = {
-        "stevearc/dressing.nvim",
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        --- The below dependencies are optional,
-        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",      -- for providers='copilot'
-        {
-          -- support for image pasting
-          "HakonHarnes/img-clip.nvim",
-          event = "VeryLazy",
-          opts = {
-            -- recommended settings
-            default = {
-              embed_image_as_base64 = false,
-              prompt_for_file_name = false,
-              drag_and_drop = {
-                insert_mode = true,
-              },
-              -- required for Windows users
-              use_absolute_path = true,
-            },
-          },
-        },
-        -- {
-        --   -- Make sure to set this up properly if you have lazy=true
-        --   'MeanderingProgrammer/render-markdown.nvim',
-        --   opts = {
-        --     file_types = { "markdown", "Avante" },
-        --   },
-        --   ft = { "markdown", "Avante" },
-        -- },
-      },
-    }
+    -- -- LLM Behaviour Cursor
+    -- {
+    --   "yetone/avante.nvim",
+    --   event = "VeryLazy",
+    --   lazy = false,
+    --   version = false, -- set this if you want to always pull the latest change
+    --   -- config = function() G.import('plugins/avante') end,
+    --   opts = {
+    --     -- add any opts here
+    --   },
+    --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    --   build = "make",
+    --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    --   dependencies = {
+    --     "stevearc/dressing.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --     "MunifTanjim/nui.nvim",
+    --     --- The below dependencies are optional,
+    --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    --     "zbirenbaum/copilot.lua",      -- for providers='copilot'
+    --     {
+    --       -- support for image pasting
+    --       "HakonHarnes/img-clip.nvim",
+    --       event = "VeryLazy",
+    --       opts = {
+    --         -- recommended settings
+    --         default = {
+    --           embed_image_as_base64 = false,
+    --           prompt_for_file_name = false,
+    --           drag_and_drop = {
+    --             insert_mode = true,
+    --           },
+    --           -- required for Windows users
+    --           use_absolute_path = true,
+    --         },
+    --       },
+    --     },
+    --     -- {
+    --     --   -- Make sure to set this up properly if you have lazy=true
+    --     --   'MeanderingProgrammer/render-markdown.nvim',
+    --     --   opts = {
+    --     --     file_types = { "markdown", "Avante" },
+    --     --   },
+    --     --   ft = { "markdown", "Avante" },
+    --     -- },
+    --   },
+    -- }
 
 
 
@@ -218,8 +228,6 @@ lazy.setup({
     -- setup = function()print('xxx')end,
     -- })
 
-    -- lua 插件开发工具库
-    -- {'nvim-lua/plenary.nvim'}
     -- {
     --   'folke/neodev.nvim',
     --   config = function() G.import("plugins/neodev") end

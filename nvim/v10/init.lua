@@ -7,8 +7,8 @@ vim.opt.packpath:prepend(vim.g.my_rootpath)
 local G = require('G')
 G.setup(vim.g.my_version, vim.g.my_rootpath)
 
--- import('plugins/colors/init').set('embark')
--- import('plugins/colors/init').set('onedark')
+-- G.import('plugins/colors/init').set('embark')
+-- G.import('plugins/colors/init').set('onedark')
 G.import('plugins/init')
 -- 回写路径
 G.import('lsp/init')
@@ -34,6 +34,8 @@ vim.cmd([[
 
   " 透明背景
   hi Normal guibg=NONE
+  " 命令底部状态文字颜色 -- INSERT --
+  hi ModeMsg guibg=NONE guifg=#ffffff gui=bold
 
   " 配置ranger 背景
   hi def NvimFloatingWindow  term=None guifg=white guibg=None ctermfg=white ctermbg=210
@@ -65,4 +67,3 @@ vim.cmd([[
   augroup END
 
 ]])
-
