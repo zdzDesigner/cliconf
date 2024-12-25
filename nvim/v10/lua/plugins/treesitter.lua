@@ -23,6 +23,7 @@ require('nvim-treesitter.configs').setup({
     "tsx",
     "markdown",
     "editorconfig",
+    "zig",
 
     -- for `nvim-treesitter/playground`
     -- "query",
