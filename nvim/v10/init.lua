@@ -7,8 +7,6 @@ vim.opt.packpath:prepend(vim.g.my_rootpath)
 local G = require('G')
 G.setup(vim.g.my_version, vim.g.my_rootpath)
 
--- G.import('plugins/colors/init').set('embark')
--- G.import('plugins/colors/init').set('onedark')
 G.import('plugins/init')
 -- 回写路径
 G.import('lsp/init')
@@ -16,6 +14,8 @@ G.import('dap/dap')
 G.import('plugins/ranger')
 G.import('keymap')
 G.import('setting')
+-- G.import('plugins/colors/init').set('onedark')
+-- G.import('plugins/colors/init').set('embark')
 
 
 

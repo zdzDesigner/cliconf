@@ -48,8 +48,14 @@ dracula.setup({
   overrides = {
     -- 高亮行
     CursorLine = { bg = colors.deep, },
-    Cursor = { bg = colors.yellow, },
-    -- ["@markup.heading.2"] = { fg = dracula.colors().purple },
+    -- Cursor = { bg = colors.yellow, },
+    markdownH1 = { fg = colors.pink, bold = true },
+    markdownH2 = { fg = colors.pink, bold = true },
+    markdownH3 = { fg = colors.pink, bold = true },
+    markdownH4 = { fg = colors.pink, bold = true },
+    markdownH5 = { fg = colors.pink, bold = true },
+    markdownH6 = { fg = colors.pink, bold = true },
+    -- ["@markdown.heading.2"] = { fg = colors.pink },
     -- ["@markup.heading.3"] = { fg = dracula.colors().yellow },
     -- ["@markup.raw"] = { fg = dracula.colors().deep },
     -- markdownCodeBlock = { fg = dracula.colors().deep },
