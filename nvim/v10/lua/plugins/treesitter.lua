@@ -117,9 +117,9 @@ parser_config.solidity = {
   filetype = 'solidity'
 }
 -- install with ':TSInstallSync markdown'
-parser_config.markdown = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-markdown",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
+-- parser_config.markdown = {
+--   install_info = {
+--     url = "https://github.com/ikatyang/tree-sitter-markdown",
+--     files = { "src/parser.c", "src/scanner.cc" },
+--   }
+-- }

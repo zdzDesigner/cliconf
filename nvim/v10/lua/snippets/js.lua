@@ -6,7 +6,21 @@ local function js(T)
       T.t(")"),
     }),
   })
+  T.ls.add_snippets("typescript", {
+    T.s("cl", {
+      T.t("console.log("),
+      T.i(1),
+      T.t(")"),
+    }),
+  })
   T.ls.add_snippets("javascriptreact", {
+    T.s("cl", {
+      T.t("console.log("),
+      T.i(1),
+      T.t(")"),
+    }),
+  })
+  T.ls.add_snippets("typescriptreact", {
     T.s("cl", {
       T.t("console.log("),
       T.i(1),

@@ -46,11 +46,16 @@ dracula.setup({
   italic_comment = true,     -- default false
   -- reset color https://github.com/Mofiqul/dracula.nvim/issues/90
   overrides = {
-    -- 高亮行
-    CursorLine = { bg = colors.deep, },
-    Cursor = { bg = colors.yellow, },
-    -- ["@markup.heading.2"] = { fg = dracula.colors().purple },
-    -- ["@markup.heading.3"] = { fg = dracula.colors().yellow },
+    CursorLine = { bg = colors.deep, }, -- 当前行背景
+    -- Cursor = { bg = colors.yellow, },
+    markdownH1 = { fg = colors.pink, bold = true },
+    markdownH2 = { fg = colors.pink, bold = true },
+    markdownH3 = { fg = colors.pink, bold = true },
+    markdownH4 = { fg = colors.pink, bold = true },
+    markdownH5 = { fg = colors.pink, bold = true },
+    markdownH6 = { fg = colors.pink, bold = true },
+    -- ["@markdown.heading.2"] = { fg = colors.pink },
+    -- ["@markup.heading.3"] = { fg = colors.yellow },
     -- ["@markup.raw"] = { fg = dracula.colors().deep },
     -- markdownCodeBlock = { fg = dracula.colors().deep },
     -- ['@markup.emphasis'] = { fg = colors.green, italic = true, },   -- italic
