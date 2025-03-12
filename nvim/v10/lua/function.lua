@@ -106,4 +106,53 @@ end
 -- vim.api.nvim_create_user_command('Upper', 'echo toupper(<q-args>)', { nargs = 1 })
 -- vim.cmd('Upper hello world')
 
+
+
+-- vim.api.nvim_create_augroup("debounce_save", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   pattern = "*",
+--   group = "debounce_save",
+--   callback = function()
+--     -- 在这里添加你想要执行的命令
+--     -- 例如，自动格式化代码
+--     print('xxxxxxx')
+--     vim.lsp.buf.format()
+--   end,
+--   debounce = 500, -- 500ms 的延迟
+-- })
+
+
+local debounce_timers = {}
+-- 防抖保存函数
+function M.Debounced_save()
+  local buf = vim.api.nvim_get_current_buf()
+  -- 如果当前缓冲区已有定时器，则先关闭
+  if debounce_timers[buf] then
+    debounce_timers[buf]:close()
+  end
+  -- 设置新的定时器，延迟 500 毫秒后保存
+  debounce_timers[buf] = vim.defer_fn(function()
+    vim.cmd('silent! update')     -- 使用 :update 仅在修改时保存
+    debounce_timers[buf] = nil
+  end, 500)
+end
+
+function M.Save()
+  vim.cmd('silent! update')       -- 使用 :update 仅在修改时保存
+end
+
+-- debounced_save()
+
+-- 自定义防抖保存命令
+-- vim.api.nvim_create_user_command('DebouncedWrite', function()
+--     if manual_debounce_timer then
+--         manual_debounce_timer:close()
+--     end
+--     manual_debounce_timer = vim.defer_fn(function()
+--         vim.cmd('silent! write') -- 执行保存
+--         manual_debounce_timer = nil
+--     end, 500)
+-- end, {})
+
+
 return M

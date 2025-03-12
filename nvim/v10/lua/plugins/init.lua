@@ -148,7 +148,8 @@ lazy.setup({
       end
     },
     -- lua 插件开发工具库
-    { 'nvim-lua/plenary.nvim' }
+    { 'nvim-lua/plenary.nvim' },
+    { 'ziglang/zig.vim' }
 
 
     -- -- LLM Behaviour Cursor
