@@ -148,7 +148,9 @@ lazy.setup({
       end
     },
     -- lua 插件开发工具库
-    {'nvim-lua/plenary.nvim'}
+    { 'nvim-lua/plenary.nvim' },
+    { 'ziglang/zig.vim' }
+
 
 
     -- -- LLM Behaviour Cursor
@@ -201,7 +203,6 @@ lazy.setup({
 
 
 
-    -- use('ziglang/zig.vim')
     -- LLM
     -- use {
     --   'huggingface/llm.nvim',
@@ -258,3 +259,32 @@ lazy.setup({
 
   }
 })
+
+
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   pattern = { "*.zig", "*.zon" },
+--   callback = function(ev)
+--     vim.lsp.buf.format()
+--   end
+-- })
+
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   pattern = { "*.zig", "*.zon" },
+--   callback = function(ev)
+--     vim.lsp.buf.code_action({
+--       context = { only = { "source.fixAll" } },
+--       apply = true,
+--     })
+--   end
+-- })
+
+
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   pattern = { "*.zig", "*.zon" },
+--   callback = function(ev)
+--     vim.lsp.buf.code_action({
+--       context = { only = { "source.organizeImports" } },
+--       apply = true,
+--     })
+--   end
+-- })

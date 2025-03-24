@@ -184,8 +184,8 @@ get_battery_charging_status() {
     if [ $(get_battery_combined_percent) -lt 25 ]; then
       if [ $rval = 0 ]; then
         # zenity --warning --text "请充电" --width=300 --height=10 --timeout=1
-        # /home/zdz/.zdz/dwm/scripts/power
-        /home/zdz/.zdz/dwm/scripts/power font=/usr/share/fonts/adobe-source-han-sans/SourceHanSansCN-Regular.otf
+        power
+        # /home/zdz/.zdz/dwm/scripts/power font=/usr/share/fonts/adobe-source-han-sans/SourceHanSansCN-Regular.otf
       fi
     fi
 

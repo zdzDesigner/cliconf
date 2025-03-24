@@ -91,7 +91,7 @@ cmp.setup({
     format = function(entry, vim_item)
       -- fancy icons and a name of kind
       local idx = vim.lsp.protocol.CompletionItemKind[vim_item.kind] or nil
-      if tonumber(idx) > 0 then
+      if idx ~= nil and tonumber(idx) > 0 then
         vim_item.kind = vim.lsp.protocol.CompletionItemKind[idx]
       end
 

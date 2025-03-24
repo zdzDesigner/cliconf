@@ -18,6 +18,7 @@ require('nvim-treesitter.configs').setup({
     "rust",
     "html",
     "css",
+    "scss",
     "toml",
     "vue",
     "tsx",
