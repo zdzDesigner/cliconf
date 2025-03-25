@@ -132,13 +132,13 @@ function M.Debounced_save()
   end
   -- 设置新的定时器，延迟 500 毫秒后保存
   debounce_timers[buf] = vim.defer_fn(function()
-    vim.cmd('silent! update')     -- 使用 :update 仅在修改时保存
+    vim.cmd('silent! update') -- 使用 :update 仅在修改时保存
     debounce_timers[buf] = nil
   end, 500)
 end
 
 function M.Save()
-  vim.cmd('silent! update')       -- 使用 :update 仅在修改时保存
+  vim.cmd('silent! update') -- 使用 :update 仅在修改时保存
 end
 
 -- debounced_save()
