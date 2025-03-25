@@ -132,7 +132,7 @@ require('fittencode').setup(
     -- Setting for source completion.
     source_completion = {
       -- Enable source completion.
-      enable = true,
+      enable = false,
       -- trigger characters for source completion.
       -- Available options:
       -- * A  list of characters like {'a', 'b', 'c', ...}

@@ -43,7 +43,9 @@ G.map({
   } },
   { 'v', 'sj',    ':join<CR>',            { noremap = true, silent = true, desc = '合并一行' } },
   { '',  '<C-a>', ':tabnew  ~/temp/log/', { noremap = true, desc = '快速创建临时文件' } },
-  { '',  'S',     ':w<CR>',               { silent = true, desc = '保存' } },
+  -- { '',  'S',     ':w<CR>',               { silent = true, desc = '保存' } },
+  { '',  'S',     fn.Save,                { silent = true, desc = '保存' } },
+  -- { '',  'S',     fn.Debounced_save,      { silent = true, desc = '保存' } },
   { '',  'Q',     ':q<CR>',               { desc = '退出' } },
 
 

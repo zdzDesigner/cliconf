@@ -620,6 +620,20 @@ class quitall(Command):
     def execute(self):
         self._exit_no_work()
 
+class quitallJump(Command):
+    """:quitallJump
+
+    Quits if there are no tasks in progress.
+    """
+    def _exit_no_work(self):
+        if self.fm.loader.has_work():
+            self.fm.notify('Not quitting: Tasks in progress: Use `quitallJump!` to force quit')
+        else:
+            self.fm.exit()
+
+    def execute(self):
+        self._exit_no_work()
+
 
 class quitall_bang(Command):
     """:quitall!
