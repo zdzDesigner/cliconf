@@ -1,9 +1,9 @@
 if not pcall(require, "lspconfig") then return end -- 保护调用加载模块
 -- local lspconfig = require('lspconfig')
-
 return {
   -- cmd = { '/home/zdz/Application/zig/lsp/zls/zig-out/bin/zls' },
-  cmd = { '/home/zdz/Application/zig/lsp/zls/zig-out/bin/zls' },
+  -- cmd = { '/home/zdz/Application/zig/lsp/zls/zig-out/bin/zls' },
+  cmd = { '/home/zdz/Application/zig/lsp/bin/zls' },
   filetypes = { "zig", "zon" },
   -- single_file_support = false, // false 支持库中跳转, 内存开销大
   settings = {
@@ -14,7 +14,9 @@ return {
       -- zig_lib_path = '/home/zdz/Application/zig/zig-linux-x86_64-0.13.0/lib',
       zig_exe_path = '/home/zdz/Application/zig/zig-linux-x86_64-0.14.0/zig',
       zig_lib_path = '/home/zdz/Application/zig/zig-linux-x86_64-0.14.0/lib',
-      semantic_tokens = 'none',
+      -- semantic_tokens = "partial",
+      semantic_tokens = "none", -- 去除自定义颜色(保存时高亮闪烁)
+      -- semantic_tokens = "full",
 
 
       -- build_on_save_step = "",
@@ -24,7 +26,7 @@ return {
       -- enable_inlay_hints = false,
       -- completion_label_details = false,
       -- enable_autofix = false,
-      -- skip_std_references = false,
+      skip_std_references = true,
       -- root_dir = lspconfig.util.root_pattern("build.zig", ".git"),
       -- root_dir = lspconfig.util.root_pattern('build.zig'),
     }
