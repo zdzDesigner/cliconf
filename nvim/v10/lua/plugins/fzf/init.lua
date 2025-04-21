@@ -191,6 +191,9 @@ fzf_lua.setup {
     file_icons   = false,
     input_prompt = 'Grep For❯ ',
     actions      = { ["ctrl-q"] = false },
+    rg_glob      = true,
+    -- rg_opts      = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+
     -- 'true' enables file and git icons in 'live_grep'
     -- degrades performance in large datasets, YMMV
     experimental = true,
