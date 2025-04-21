@@ -60,7 +60,7 @@ map_fzf('n', '<C-f>', "live_grep_glob", { resume = false })
 -- map_fzf('n', '<leader>ly', "lsp_typedefs")
 -- map_fzf('n', '<leader>lm', "lsp_implementations")
 -- map_fzf('n', '<C-;>', "lsp_document_symbols")
-map_fzf('n', '<leader>ls', "lsp_document_symbols")
+map_fzf('n', '<leader>l', "lsp_document_symbols")
 -- map_fzf('n', '<leader>lS', "lsp_workspace_symbols")
 -- map_fzf('n', '<leader>la', "lsp_code_actions", {
 --   winopts = {

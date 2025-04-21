@@ -136,6 +136,37 @@ fzf_lua.setup {
     },
   },
   lsp              = {
+    file_icons = false,
+    symbols = {
+      symbol_icons = {
+        File          = "󰈙",
+        Module        = "",
+        Namespace     = "󰦮",
+        Package       = "",
+        Class         = "󰆧",
+        Method        = "󰊕",
+        Property      = "",
+        Field         = "",
+        Constructor   = "",
+        Enum          = "",
+        Interface     = "",
+        Function      = "󰊕",
+        Variable      = "󰀫",
+        Constant      = "󰏿",
+        String        = "",
+        Number        = "󰎠",
+        Boolean       = "󰨙",
+        Array         = "󱡠",
+        Object        = "",
+        Key           = "󰌋",
+        Null          = "󰟢",
+        EnumMember    = "",
+        Struct        = "󰆼",
+        Event         = "",
+        Operator      = "󰆕",
+        TypeParameter = "󰗴",
+      },
+    },
     actions = {
       -- ["default"] = function(...)
       --   print(vim.inspect(select(1, ...)))
