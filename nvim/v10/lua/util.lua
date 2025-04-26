@@ -50,8 +50,8 @@ end
 ---@return string
 function M.remove_ansi(str)
   local ret = str
-      :gsub("\x1b%[[%d;]*m", "")-- Strip color codes
-      :gsub("\x1b%[%d*K", "") -- Strip the "erase in line" codes
+      :gsub("\x1b%[[%d;]*m", "") -- Strip color codes
+      :gsub("\x1b%[%d*K", "")    -- Strip the "erase in line" codes
   return ret
 end
 
@@ -175,6 +175,7 @@ function M.remap(modes, lhs, rhs, opts)
 
   for _, mode in ipairs(modes) do
     if buffer then
+      -- vim.keymap.set()
       vim.api.nvim_buf_set_keymap(0, mode, lhs, _rhs, opts)
     else
       vim.api.nvim_set_keymap(mode, lhs, _rhs, opts)

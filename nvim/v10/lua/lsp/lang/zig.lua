@@ -2,8 +2,8 @@ if not pcall(require, "lspconfig") then return end -- 保护调用加载模块
 -- local lspconfig = require('lspconfig')
 return {
   -- cmd = { '/home/zdz/Application/zig/lsp/zls/zig-out/bin/zls' },
-  -- cmd = { '/home/zdz/Application/zig/lsp/zls/zig-out/bin/zls' },
-  cmd = { '/home/zdz/Application/zig/lsp/bin/zls' },
+  cmd = { '/home/zdz/Application/zig/lsp/zls/zig-out/bin/zls' },
+  -- cmd = { '/home/zdz/Application/zig/lsp/bin/zls' },
   filetypes = { "zig", "zon" },
   -- single_file_support = false, // false 支持库中跳转, 内存开销大
   settings = {
