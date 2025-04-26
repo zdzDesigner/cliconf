@@ -136,6 +136,37 @@ fzf_lua.setup {
     },
   },
   lsp              = {
+    file_icons = false,
+    symbols = {
+      symbol_icons = {
+        File          = "󰈙",
+        Module        = "",
+        Namespace     = "󰦮",
+        Package       = "",
+        Class         = "󰆧",
+        Method        = "󰊕",
+        Property      = "",
+        Field         = "",
+        Constructor   = "",
+        Enum          = "",
+        Interface     = "",
+        Function      = "󰊕",
+        Variable      = "󰀫",
+        Constant      = "󰏿",
+        String        = "",
+        Number        = "󰎠",
+        Boolean       = "󰨙",
+        Array         = "󱡠",
+        Object        = "",
+        Key           = "󰌋",
+        Null          = "󰟢",
+        EnumMember    = "",
+        Struct        = "󰆼",
+        Event         = "",
+        Operator      = "󰆕",
+        TypeParameter = "󰗴",
+      },
+    },
     actions = {
       -- ["default"] = function(...)
       --   print(vim.inspect(select(1, ...)))
@@ -191,6 +222,9 @@ fzf_lua.setup {
     file_icons   = false,
     input_prompt = 'Grep For❯ ',
     actions      = { ["ctrl-q"] = false },
+    rg_glob      = true,
+    -- rg_opts      = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+
     -- 'true' enables file and git icons in 'live_grep'
     -- degrades performance in large datasets, YMMV
     experimental = true,

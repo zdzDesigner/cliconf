@@ -10,14 +10,16 @@ local function ranger()
   local targetpath = '/tmp/temp.plugin.ranger'
   -- local targetpath = vim.fn.tempname()
   -- local currentpath = vim.fn.expand('%')
-  local currentpath = string.gsub(vim.fn.expand('%:p'), '%s', '\\ ') -- fix  whitespace in path
+  -- local currentpath = string.gsub(vim.fn.expand('%:p'), '%s', '\\ ') -- fix  whitespace in path
+  local currentpath = vim.fn.expand('%:p') -- fix  whitespace in path
   -- local currentpath = string.gsub('/home/zdz/Documents/Try/Python/book/PythonHackingBook1/1.2 数值类型/Readme.md','%s',"\\ ")
 
   local fd = assert(vim.loop.fs_open(targetpath, "w", 438))
   -- local stat = vim.loop.fs_fstat(fd)
   local newpath = vim.fn.shellescape(currentpath)
+  -- local newpath = currentpath
 
-  -- print('targetpath:', targetpath, 'currentpath:', currentpath, 'newpath:', newpath)
+  print('targetpath:', targetpath, 'currentpath:', currentpath, 'newpath:', newpath)
   -- local cmd = 'ranger ' .. '--choosefiles=' .. targetpath .. ' --selectfile=' .. current_path
   -- lf  /tmp/temp.plugin.ranger ~/.ssh/known_hosts
   -- local cmd = 'lf ' .. '-selection-path ' .. targetpath .. ' ' .. currentpath

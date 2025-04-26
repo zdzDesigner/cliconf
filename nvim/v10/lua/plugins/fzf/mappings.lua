@@ -69,7 +69,7 @@ map_fzf('n', '<leader>l', "lsp_document_symbols")
 --     win_width        = 0.70,
 --     win_row          = 0.40,
 --   }})
--- map_fzf('n', '<leader>lg', "lsp_document_diagnostics", { file_icons = false })
+map_fzf('n', '<leader>d', "lsp_document_diagnostics", { file_icons = false })
 -- map_fzf('n', '<leader>lG', "lsp_workspace_diagnostics", { file_icons = false })
 
 -- Git

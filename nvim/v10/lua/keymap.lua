@@ -159,30 +159,30 @@ G.map({
   end, { noremap = true, silent = true, expr = true } },
 
   -- dap ------------------------------------------------------------
-  -- 开始
-  { "n", "<leader>dd", ":<CR>",                                       { noremap = true, silent = true } },
-  -- 结束
-  {
-    "n",
-    "<leader>de",
-    ":lua require'dap'.close()<CR>"
-    .. ":lua require'dap'.terminate()<CR>"
-    .. ":lua require'dap.repl'.close()<CR>"
-    .. ":lua require'dapui'.close()<CR>"
-    .. ":lua require('dap').clear_breakpoints()<CR>"
-    .. "<C-w>o<CR>",
-    { noremap = true, silent = true } },
-  -- 继续
-  { "n", "<leader>dc", ":lua require'dap'.continue()<CR>",            { noremap = true, silent = true } },
-  -- 设置断点
-  { "n", "<leader>dt", ":lua require('dap').toggle_breakpoint()<CR>", { noremap = true, silent = true } },
-  { "n", "<leader>dT", ":lua require('dap').clear_breakpoints()<CR>", { noremap = true, silent = true } },
-  --  stepOver, stepOut, stepInto
-  { "n", "<leader>dj", ":lua require'dap'.step_over()<CR>",           { noremap = true, silent = true } },
-  { "n", "<leader>dk", ":lua require'dap'.step_out()<CR>",            { noremap = true, silent = true } },
-  { "n", "<leader>dl", ":lua require'dap'.step_into()<CR>",           { noremap = true, silent = true } },
-  -- 弹窗
-  { "n", "<leader>dh", ":lua require'dapui'.eval()<CR>",              { noremap = true, silent = true } },
+  -- -- 开始
+  -- { "n", "<leader>dd", ":<CR>",                                       { noremap = true, silent = true } },
+  -- -- 结束
+  -- {
+  --   "n",
+  --   "<leader>de",
+  --   ":lua require'dap'.close()<CR>"
+  --   .. ":lua require'dap'.terminate()<CR>"
+  --   .. ":lua require'dap.repl'.close()<CR>"
+  --   .. ":lua require'dapui'.close()<CR>"
+  --   .. ":lua require('dap').clear_breakpoints()<CR>"
+  --   .. "<C-w>o<CR>",
+  --   { noremap = true, silent = true } },
+  -- -- 继续
+  -- { "n", "<leader>dc", ":lua require'dap'.continue()<CR>",            { noremap = true, silent = true } },
+  -- -- 设置断点
+  -- { "n", "<leader>dt", ":lua require('dap').toggle_breakpoint()<CR>", { noremap = true, silent = true } },
+  -- { "n", "<leader>dT", ":lua require('dap').clear_breakpoints()<CR>", { noremap = true, silent = true } },
+  -- --  stepOver, stepOut, stepInto
+  -- { "n", "<leader>dj", ":lua require'dap'.step_over()<CR>",           { noremap = true, silent = true } },
+  -- { "n", "<leader>dk", ":lua require'dap'.step_out()<CR>",            { noremap = true, silent = true } },
+  -- { "n", "<leader>dl", ":lua require'dap'.step_into()<CR>",           { noremap = true, silent = true } },
+  -- -- 弹窗
+  -- { "n", "<leader>dh", ":lua require'dapui'.eval()<CR>",              { noremap = true, silent = true } },
 
 })
 
