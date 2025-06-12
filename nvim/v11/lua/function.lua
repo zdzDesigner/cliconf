@@ -73,7 +73,8 @@ end
 
 -- TODO: has gd
 function M.ClangToggle()
-  local active_lsp = vim.lsp.get_active_clients()
+  -- local active_lsp = vim.lsp.get_active_clients()
+  local active_lsp = vim.lsp.get_clients()
   print(vim.inspect(active_lsp))
 end
 

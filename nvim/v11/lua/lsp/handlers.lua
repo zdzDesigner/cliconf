@@ -61,7 +61,8 @@ function M.preview_location_callback(err, res, ctx, cfg)
     vim.notify('Unable to find code location.', vim.log.levels.WARN)
     return nil
   end
-  if vim.tbl_islist(res) then
+  -- if vim.tbl_islist(res) then
+  if vim.islist(res) then
     _, _float_win = M.preview_location(res[1], ctx, cfg)
   else
     _, _float_win = M.preview_location(res, ctx, cfg)
