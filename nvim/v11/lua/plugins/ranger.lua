@@ -19,7 +19,7 @@ local function ranger()
   local newpath = vim.fn.shellescape(currentpath)
   -- local newpath = currentpath
 
-  print('targetpath:', targetpath, 'currentpath:', currentpath, 'newpath:', newpath)
+  -- print('targetpath:', targetpath, 'currentpath:', currentpath, 'newpath:', newpath)
   -- local cmd = 'ranger ' .. '--choosefiles=' .. targetpath .. ' --selectfile=' .. current_path
   -- lf  /tmp/temp.plugin.ranger ~/.ssh/known_hosts
   -- local cmd = 'lf ' .. '-selection-path ' .. targetpath .. ' ' .. currentpath
