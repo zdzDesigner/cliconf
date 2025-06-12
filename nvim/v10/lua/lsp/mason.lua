@@ -16,7 +16,7 @@ mason.setup({
   },
 })
 
-masonlsp.setup()
+-- masonlsp.setup()
 
 local server_settings = {
   ['rust_analyzer'] = require('lsp/lang/rust'),
