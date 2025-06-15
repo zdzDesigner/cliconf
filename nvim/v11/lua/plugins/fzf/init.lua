@@ -76,7 +76,7 @@ fzf_lua.setup {
       -- scrollchars         = {'█', '░' },
     },
     on_create = function()
-      -- print("on_create")
+      -- print("on_createxx")
       -- vim.cmd("set winhl=Normal:NormalFloat,FloatBorder:Normal")
     end,
   },
@@ -172,7 +172,20 @@ fzf_lua.setup {
       --   print(vim.inspect(select(1, ...)))
       --   require'fzf-lua'.actions.file_edit_or_qf(...)
       -- end
-    }
+    },
+    -- document_symbols = {
+    --   symbols = {
+    --     current = true, -- 高亮当前符号
+    --     current_fn = true, -- 高亮当前函数（更精确）
+    --     current_marker = "●", -- 高亮标记符号（可选）
+    --   },
+    --   -- 应用自定义选择器
+    --   selected = function(opts, selected)
+    --     return require("fzf-lua").lsp_document_symbols({
+    --       selected = opts.fn_selected(selected)
+    --     })
+    --   end,
+    -- },
   },
   lines            = { prompt = 'Lines❯ ', },
   blines           = { prompt = 'BLines❯ ', },

@@ -3,6 +3,12 @@ vim.g.my_version = 'v11'
 vim.g.my_rootpath = '/home/zdz/.zdz/nvim/' .. vim.g.my_version
 vim.opt.rtp:prepend(vim.g.my_rootpath)
 vim.opt.packpath:prepend(vim.g.my_rootpath)
+-- vim.deprecation = {
+--   show = false,  -- 不显示弃用警告
+--   error = false, -- 不将弃用作为错误抛出
+--   silent = true, -- 静默模式，不输出任何弃用警告
+-- }
+
 -- ===================================================
 local G = require('G')
 G.setup(vim.g.my_version, vim.g.my_rootpath)
