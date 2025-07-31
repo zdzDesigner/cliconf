@@ -90,18 +90,23 @@ lazy.setup({
     -- 将外部工具（如代码格式化工具、诊断工具、代码片段和其他语言服务器功能）
     -- 无缝地集成到 Neovim 的内置 LSP（Language Server Protocol）框架中。
     -- 它的主要功能是通过一种“虚拟”语言服务器方式，允许 Neovim 使用本地可执行文件来提供 LSP 功能，而不需要真实的语言服务器。
-    {
-      'jose-elias-alvarez/null-ls.nvim',
-      config = function()
-        -- 从当前插件文件路径查找
-        require('null-ls').register({
-          -- 避免覆盖其它lsp
-          filetypes = { "text" },
-          -- toggler = { line = '<C-_><C-_>', block = 'gbc' },
-        })
-      end
-    },
+    -- {
+    --   'jose-elias-alvarez/null-ls.nvim',
+    --   config = function()
+    --     -- 从当前插件文件路径查找
+    --     require('null-ls').register({
+    --       -- 避免覆盖其它lsp
+    --       filetypes = { "text" },
+    --       -- toggler = { line = '<C-_><C-_>', block = 'gbc' },
+    --     })
+    --   end
+    -- },
     -- 补全
+    {
+      "nvimtools/none-ls.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      config = function() G.import("plugins/none_ls") end,
+    },
     {
       'hrsh7th/nvim-cmp',
       dependencies = {
@@ -257,6 +262,20 @@ lazy.setup({
     -- },
 
   }
+}, {
+  root = lazyroot,
+  performance = {
+    rtp = {
+      paths = { -- 添加额外运行时路径
+        lazyroot
+      },
+      -- disabled_plugins = { -- 禁用不需要的插件
+      --   "gzip",
+      --   "netrwPlugin",
+      -- }
+    }
+  }
+
 })
 
 
