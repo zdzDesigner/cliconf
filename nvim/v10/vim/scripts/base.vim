@@ -19,3 +19,14 @@ function! CleanJ()
     :nohlsearch
 endfunction
 
+
+
+function! GDiag()
+lua << EOF
+local diagnostics = vim.diagnostic.get(0)
+print(vim.inspect(diagnostics))
+EOF
+
+endfunction
+
+
