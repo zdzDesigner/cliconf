@@ -14,8 +14,10 @@ return {
       -- zig_lib_path = '/home/zdz/Application/zig/zig-linux-x86_64-0.13.0/lib',
       -- zig_exe_path = '/home/zdz/Application/zig/zig-linux-x86_64-0.14.0/zig',
       -- zig_lib_path = '/home/zdz/Application/zig/zig-linux-x86_64-0.14.0/lib',
-      zig_exe_path = '/home/zdz/Application/zig/zig-x86_64-linux-0.15.0-dev/zig',
-      zig_lib_path = '/home/zdz/Application/zig/zig-x86_64-linux-0.15.0-dev/lib',
+      -- zig_exe_path = '/home/zdz/Application/zig/zig-x86_64-linux-0.15.0-dev/zig',
+      -- zig_lib_path = '/home/zdz/Application/zig/zig-x86_64-linux-0.15.0-dev/lib',
+      zig_exe_path = '/home/zdz/Application/zig/zig-x86_64-linux-0.15.1/zig',
+      zig_lib_path = '/home/zdz/Application/zig/zig-x86_64-linux-0.15.1/lib',
       -- semantic_tokens = "partial",
       semantic_tokens = "none", -- 去除自定义颜色(保存时高亮闪烁)
       -- semantic_tokens = "full",
