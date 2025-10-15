@@ -1,6 +1,6 @@
 return {
   -- cmd = { "rust-analyzer" },
-  cmd = { "/home/zdz/Application/rust/lsp/rust-analyzer" },
+  cmd = { "/home/zdz/Application/rust/lsp/rust-analyzer/rust-analyzer" },
   filetypes = { 'rust' },
   settings = {
     ["rust-analyzer"] = {
