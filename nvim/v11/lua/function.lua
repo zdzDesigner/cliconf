@@ -4,6 +4,7 @@ local neval = vim.api.nvim_eval
 local ncmd = vim.api.nvim_command
 
 local Prettier = G.import('plugins/prettier')
+local Conform = G.import('plugins/conform')
 -- local comment = require('Comment/')
 -- print(vim.inspect(comment))
 
@@ -67,6 +68,20 @@ function M.Format()
   end
   if vim.fn.expand('%:e') == 'md' then
     return
+  end
+  if vim.fn.expand('%:e') == 'py' then
+    Conform.format({
+      lsp_fallback = true,
+      async = false,
+      timeout_ms = 500,
+    })
+    return
+    -- 仅用pylsp格式化（忽略null-ls等其他工具）
+    -- vim.lsp.buf.format({
+    --   filter = function(client)
+    --     return client.name == "pylsp" -- 仅选择名为"pylsp"的LSP服务器
+    --   end
+    -- })
   end
   vim.lsp.buf.format()
 end
@@ -158,4 +173,3 @@ end
 
 
 return M
-
