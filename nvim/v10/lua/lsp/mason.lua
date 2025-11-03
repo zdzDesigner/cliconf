@@ -35,6 +35,7 @@ local server_settings = {
   ['sqlls'] = require('lsp/lang/sqlls'),
   -- python3 -m pip install --user --upgrade pynvim
   ['pylsp'] = require('lsp/lang/python'),
+  -- ['pyrefly'] = require('lsp/lang/python'),
   -- ['pylyzer'] = 0,
   -- ['llm-ls'] = 0,
   -- ['ccls'] = require('lsp/ccls')
