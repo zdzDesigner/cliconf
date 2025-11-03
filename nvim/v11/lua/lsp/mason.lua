@@ -34,7 +34,8 @@ local server_settings = {
   -- ['yamlls'] = 0,
   ['sqlls'] = require('lsp/lang/sqlls'),
   -- python3 -m pip install --user --upgrade pynvim
-  ['pylsp'] = require('lsp/lang/python'),
+  -- ['pylsp'] = require('lsp/lang/python'),
+  ['pyrefly'] = require('lsp/lang/python'),
   -- ['pylyzer'] = 0,
   -- ['llm-ls'] = 0,
   -- ['ccls'] = require('lsp/ccls')
@@ -57,7 +58,13 @@ for name, _ in pairs(server_settings) do
   --   on_attach,
   --   capabilities,
   -- }
-  lspconfig[name].setup(server_opts(name))
+  -- if name == 'pylsp' then
+  --   -- vim.lsp.config('pylsp', server_opts(name))
+  --   break
+  -- end
+  -- lspconfig[name].setup(server_opts(name))
+  vim.lsp.config(name, server_opts(name))
+  vim.lsp.enable(name)
 end
 
 

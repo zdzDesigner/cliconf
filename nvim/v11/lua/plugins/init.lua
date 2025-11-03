@@ -154,7 +154,11 @@ lazy.setup({
     },
     -- lua 插件开发工具库
     { 'nvim-lua/plenary.nvim' },
-    { 'ziglang/zig.vim' }
+    { 'ziglang/zig.vim' },
+    {
+      'stevearc/conform.nvim',
+      config = function() G.import("plugins/conform") end,
+    },
 
 
     -- -- LLM Behaviour Cursor
