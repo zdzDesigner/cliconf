@@ -1,4 +1,16 @@
+local util = require('lspconfig.util')
+
+local root_dir = util.root_pattern(
+  '.git',
+  'pyproject.toml',
+  'setup.cfg',
+  '.venv',
+  'venv'
+);
+
 return {
+  root_dir = root_dir,
+  cmd = { '/home/zdz/Documents/Try/Python/course/http-server/.venv/bin/python', '-m', 'pylsp' },
   pylsp = {
     plugins = {
       -- formatter options
